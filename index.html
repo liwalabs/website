@@ -4,16 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Liwa Labs</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Liwa Labs builds Mulazim, a sovereign AI platform for government and industry: Mulazim AI, Mulazim Studio and Assembly OS. Runs on your own servers. Built in Pakistan.">
 <meta property="og:title" content="Liwa Labs: Sovereign AI for government and industry">
 <meta property="og:description" content="Mulazim AI, Mulazim Studio and Assembly OS. Private AI that runs on your own servers and cites its sources. Built in Pakistan.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0f15" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&display=swap">
+<link rel="preload" href="assets/fonts/archivo-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
 /* Layout: one left-aligned 1160px column; sections breathe on white, product rows alternate text/visual, soft-blue bands mark the two "proof" sections. */
 :root{
@@ -21,9 +20,10 @@
   --bg-soft:#f3f6f9;
   --ink:#0d1520;
   --ink-2:#4b5967;
-  --ink-3:#66737f;
+  --ink-3:#5b6874;
   --line:#e1e7ee;
-  --blue:#0a71d4;
+  --field-line:#8b97a3;
+  --blue:#0866c0;
   --blue-strong:#075bb0;
   --blue-soft:#e9f2fc;
   --on-blue:#ffffff;
@@ -45,15 +45,15 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0a0f15;--bg-soft:#10171f;--ink:#e8edf3;--ink-2:#a1adb9;--ink-3:#748291;--line:#1e2834;
-    --blue:#4a9ff0;--blue-strong:#71b5f5;--blue-soft:#0f2236;--on-blue:#06121f;--ok:#3cc28f;--neg:#f08a5d;--card:#0e151d;--deep:#0f1923;--on-deep:#e8edf3;--on-deep-2:#94a3b2;--deep-line:#22303e;
+    --bg:#0a0f15;--bg-soft:#10171f;--ink:#e8edf3;--ink-2:#a1adb9;--ink-3:#748291;--line:#1e2834;--field-line:#56626f;
+    --blue:#4a9ff0;--blue-strong:#71b5f5;--blue-soft:#0f2236;--on-blue:#06121f;--ok:#3cc28f;--neg:#f08a5d;--card:#0e151d;--deep:#132131;--on-deep:#e8edf3;--on-deep-2:#94a3b2;--deep-line:#22303e;
     --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0a0f15;--bg-soft:#10171f;--ink:#e8edf3;--ink-2:#a1adb9;--ink-3:#748291;--line:#1e2834;
-  --blue:#4a9ff0;--blue-strong:#71b5f5;--blue-soft:#0f2236;--on-blue:#06121f;--ok:#3cc28f;--neg:#f08a5d;--card:#0e151d;--deep:#0f1923;--on-deep:#e8edf3;--on-deep-2:#94a3b2;--deep-line:#22303e;
+  --bg:#0a0f15;--bg-soft:#10171f;--ink:#e8edf3;--ink-2:#a1adb9;--ink-3:#748291;--line:#1e2834;--field-line:#56626f;
+  --blue:#4a9ff0;--blue-strong:#71b5f5;--blue-soft:#0f2236;--on-blue:#06121f;--ok:#3cc28f;--neg:#f08a5d;--card:#0e151d;--deep:#132131;--on-deep:#e8edf3;--on-deep-2:#94a3b2;--deep-line:#22303e;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
   color-scheme:dark;
 }
@@ -150,7 +150,8 @@ ul{margin:0;padding:0;list-style:none}
 
 /* Audience strip */
 .audience{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.audience-row{display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr));align-items:center;gap:24px;padding-block:26px}
+.audience-row{display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr));align-items:start;gap:24px;padding-block:26px}
+.audience-row .label{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;line-height:1.4}
 .audience-row .item{font-family:var(--f-display);font-weight:600;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
 .audience-row .item small{display:block;font-family:var(--f-body);font-weight:400;font-size:13.5px;color:var(--ink-3);letter-spacing:0;margin-top:2px}
 @media (max-width:860px){.audience-row{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.audience-row .label{grid-column:1/-1}}
@@ -175,7 +176,8 @@ section[id]{scroll-margin-top:60px}
 
 .product{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,6vw,80px);align-items:start;scroll-margin-top:96px}
 .product+.product{margin-top:clamp(80px,11vw,140px);padding-top:clamp(80px,11vw,140px);border-top:1px solid var(--line)}
-.product h3{font-size:clamp(30px,3.6vw,44px);font-weight:700;margin-top:14px}
+.product h3.label{font-family:var(--f-mono);font-size:12.5px;line-height:1.4;letter-spacing:.08em}
+.product .ptitle{font-family:var(--f-display);font-size:clamp(30px,3.6vw,44px);font-weight:700;margin-top:14px;letter-spacing:-.02em;line-height:1.08;text-wrap:balance;color:var(--ink)}
 .product .tagline{font-size:19px;color:var(--ink);margin-top:14px;font-weight:500;max-width:34ch;line-height:1.45}
 .product .desc{color:var(--ink-2);margin-top:16px;max-width:52ch}
 .feats{display:grid;gap:0;margin-top:28px;border-top:1px solid var(--line)}
@@ -214,6 +216,7 @@ section[id]{scroll-margin-top:60px}
 .phases{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .phase{font-family:var(--f-mono);font-size:12px;padding:6px 10px;border-radius:6px;border:1px solid var(--line);color:var(--ink-2);background:var(--card)}
 .phase.done{color:var(--ink);border-color:color-mix(in srgb,var(--blue) 35%,var(--line))}
+.ph{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .arrow{color:var(--ink-3);font-size:12px}
 .graph-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--bg-soft)}
 .graph{display:block;min-width:520px;width:100%;height:auto}
@@ -232,7 +235,7 @@ section[id]{scroll-margin-top:60px}
 .chip.approve{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
 .outputs{display:flex;flex-wrap:wrap;gap:6px}
 .outputs span{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-2);border:1px dashed var(--line);border-radius:6px;padding:4px 8px}
-@media (max-width:480px){.gate-card{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.gate-card{grid-template-columns:minmax(0,1fr)}.graph-wrap{display:none}}
 
 /* Assembly visual */
 .apps{display:grid;gap:14px}
@@ -284,6 +287,18 @@ section[id]{scroll-margin-top:60px}
 @media (max-width:900px){.deploy-grid{grid-template-columns:minmax(0,1fr)}.promises{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.promises{grid-template-columns:minmax(0,1fr)}.mode{padding:22px}}
 
+/* Portfolio */
+.portfolio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:start}
+.pf-group{border-top:2px solid var(--ink);padding-top:18px;min-width:0}
+.pf-group header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:4px}
+.pf-group h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
+.pf-group header span{font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.pf-group li{padding:14px 0;border-bottom:1px solid var(--line);display:grid;gap:4px}
+.pf-group li:last-child{border-bottom:0}
+.pf-group li b{font-weight:600;font-size:16px}
+.pf-group li span{font-size:14.5px;color:var(--ink-2);line-height:1.55}
+@media (max-width:900px){.portfolio{grid-template-columns:minmax(0,1fr);gap:40px}}
+
 /* Company */
 .company-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
 .company-copy{display:grid;gap:18px}
@@ -296,15 +311,11 @@ section[id]{scroll-margin-top:60px}
 .team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 28px;margin-top:clamp(48px,6vw,72px);padding-top:clamp(40px,5vw,56px);border-top:1px solid var(--line)}
 .person{display:grid;gap:14px;align-content:start}
 .person img{width:88px;height:88px;border-radius:50%;object-fit:cover;filter:grayscale(1) contrast(1.05);background:var(--line)}
-.person h4{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+.person h3{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
 .person .role{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-top:6px}
 .person p{font-size:14.5px;color:var(--ink-2);margin-top:10px;line-height:1.55}
-.earlier{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:20px 28px;margin-top:clamp(40px,5vw,56px);padding-top:28px;border-top:1px solid var(--line);align-items:start}
-.earlier li b{display:block;font-weight:600;font-size:15px}
-.earlier li span{font-size:14px;color:var(--ink-2)}
-.earlier .label{padding-top:3px;min-width:9em}
-@media (max-width:920px){.company-top{grid-template-columns:minmax(0,1fr);align-items:start}.team{grid-template-columns:repeat(2,minmax(0,1fr))}.earlier{grid-template-columns:repeat(3,minmax(0,1fr))}.earlier .label{grid-column:1/-1}}
-@media (max-width:560px){.team{grid-template-columns:minmax(0,1fr)}.person{grid-template-columns:72px minmax(0,1fr);gap:16px}.person img{width:72px;height:72px}.earlier{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:920px){.company-top{grid-template-columns:minmax(0,1fr);align-items:start}.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.team{grid-template-columns:minmax(0,1fr)}.person{grid-template-columns:72px minmax(0,1fr);gap:16px}.person img{width:72px;height:72px}}
 
 /* Contact */
 .contact{background:var(--deep);color:var(--on-deep)}
@@ -314,8 +325,7 @@ section[id]{scroll-margin-top:60px}
 .contact .label{color:var(--on-deep-2)}
 .details{display:grid;gap:22px;margin-top:40px}
 .detail{display:grid;gap:4px}
-.detail .val{font-size:17px;color:var(--on-deep);user-select:all;-webkit-user-select:all}
-.detail .val.addr{user-select:text;-webkit-user-select:text}
+.detail .val{font-size:17px;color:var(--on-deep)}
 .detail a.val{justify-self:start;text-decoration:none;border-bottom:1px solid var(--deep-line)}
 .detail a.val:hover{border-bottom-color:var(--on-deep)}
 .form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;background:var(--card);border:1px solid var(--deep-line);color:var(--ink);border-radius:14px;padding:clamp(22px,3vw,32px)}
@@ -323,14 +333,15 @@ section[id]{scroll-margin-top:60px}
 .field.full{grid-column:1/-1}
 .field label{font-size:13.5px;font-weight:600;color:var(--ink)}
 .field label span{font-weight:400;color:var(--ink-3)}
-.field input,.field select,.field textarea{font:inherit;font-size:15.5px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px 12px;width:100%;min-width:0;transition:border-color .15s}
+.field input,.field select,.field textarea{font:inherit;font-size:15.5px;color:var(--ink);background:var(--bg);border:1px solid var(--field-line);border-radius:8px;padding:11px 12px;width:100%;min-width:0;transition:border-color .15s}
 .field textarea{min-height:120px;resize:vertical}
+.field [aria-invalid="true"]{border-color:var(--neg)}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
 .interest{display:flex;flex-wrap:wrap;gap:8px;border:0;padding:0;margin:0}
 .interest legend{font-size:13.5px;font-weight:600;margin-bottom:8px;padding:0}
 .interest label{position:relative;cursor:pointer}
 .interest input{position:absolute;opacity:0;width:1px;height:1px}
-.interest span{display:inline-block;font-size:14px;padding:8px 13px;border:1px solid var(--line);border-radius:999px;color:var(--ink-2);transition:all .15s}
+.interest span{display:inline-block;font-size:14px;padding:8px 13px;border:1px solid var(--field-line);border-radius:999px;color:var(--ink-2);transition:all .15s}
 .interest input:checked+span{border-color:var(--blue);color:var(--blue);background:var(--blue-soft)}
 .interest input:focus-visible+span{outline:2px solid var(--blue);outline-offset:2px}
 .form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:4px}
@@ -369,6 +380,7 @@ section[id]{scroll-margin-top:60px}
     <nav class="nav-links" id="nav-links" aria-label="Main">
       <a href="#products">Products</a>
       <a href="#deployment">Deployment</a>
+      <a href="#portfolio">Portfolio</a>
       <a href="#company">Company</a>
       <a href="#contact">Contact</a>
       <a class="btn btn-primary" href="#contact">Book a demo</a>
@@ -384,14 +396,14 @@ section[id]{scroll-margin-top:60px}
     <div>
       <p class="label blue">Liwa Labs · Karachi</p>
       <h1>Sovereign AI for government and <em>industry.</em></h1>
-      <p class="lede">We build Mulazim, a private AI platform that runs on your own servers, learns from your own records and shows the source behind every answer. Your data never leaves your control.</p>
+      <p class="lede">Our flagship, Mulazim, is a private AI platform installed on your own servers. It works from your own databases and documents, shows the source behind every answer, and can run fully offline.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#contact">Book a demo</a>
         <a class="btn btn-ghost" href="#products">See the products</a>
       </div>
       <div class="hero-meta">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Runs on your premises</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h10M4 19h7"/></svg>Urdu, Sindhi and English</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Cites its sources</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/></svg>Built in Pakistan</span>
       </div>
     </div>
@@ -409,7 +421,7 @@ section[id]{scroll-margin-top:60px}
           </div>
           <div class="a">
             <p class="urdu" lang="ur">تمام محکمے اپنے نظرثانی شدہ بجٹ تخمینے ۱۵ مارچ تک محکمۂ خزانہ کو جمع کرائیں۔ نئے منصوبوں کے لیے منظور شدہ پی سی ون لازمی ہے۔</p>
-            <p class="en">All departments must send revised budget estimates to the Finance Department by 15 March. New schemes need an approved PC-1.</p>
+            <p class="en">All departments must send revised budget estimates to the Finance Department by 15 March. New schemes need an approved PC&#8209;1.</p>
             <div class="cites">
               <span class="cite"><b>p. 2</b> ¶ 4 · Submission deadline</span>
               <span class="cite"><b>p. 6</b> ¶ 1 · New schemes</span>
@@ -427,13 +439,13 @@ section[id]{scroll-margin-top:60px}
 </section>
 
 <!-- Audience -->
-<section class="audience" aria-label="Who we work with">
+<section class="audience" aria-labelledby="aud-h">
   <div class="wrap audience-row">
-    <span class="label">Built for</span>
+    <h2 class="label" id="aud-h">Built for</h2>
     <div class="item">Legislatures<small>Assemblies and secretariats</small></div>
     <div class="item">Government<small>Ministries and departments</small></div>
     <div class="item">Enterprises<small>Finance, operations, data teams</small></div>
-    <div class="item">Engineering<small>Automotive and aerospace makers</small></div>
+    <div class="item">Engineering<small>Automotive, defence and drones</small></div>
   </div>
 </section>
 
@@ -441,8 +453,8 @@ section[id]{scroll-margin-top:60px}
 <section class="section" id="products">
   <div class="wrap">
     <div class="section-head">
-      <p class="label blue">Products</p>
-      <h2>One private AI platform. Three products.</h2>
+      <p class="label blue">Flagship · Mulazim</p>
+      <h2>One private AI platform, three products.</h2>
       <p class="lede">Mulazim is one platform that runs inside your organisation. Each product is built on it for a specific kind of work, and each can run fully offline on your own hardware.</p>
     </div>
 
@@ -464,9 +476,9 @@ section[id]{scroll-margin-top:60px}
     <!-- Mulazim AI -->
     <article class="product" id="mulazim-ai">
       <div>
-        <p class="label blue">Mulazim AI</p>
-        <h3>Ask your organisation anything.</h3>
-        <p class="tagline">Answers from your own databases and documents, with every figure and quote traced back to where it came from.</p>
+        <h3 class="label blue">Mulazim AI</h3>
+        <p class="ptitle">Answers from your own data, with the source.</p>
+        <p class="tagline">Ask in plain language. Every figure and quote is traced back to the query or page it came from.</p>
         <p class="desc">Public chatbots have never seen your records, and anything you paste into them leaves your control. Mulazim connects to your systems inside your network, reasons over the data and writes up what it finds.</p>
         <ul class="feats">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg><span><b>Data analyst.</b> Plain-language questions over your ERP and databases, answered with the numbers behind them.</span></li>
@@ -501,10 +513,10 @@ section[id]{scroll-margin-top:60px}
     <!-- Mulazim Studio -->
     <article class="product" id="mulazim-studio">
       <div>
-        <p class="label blue">Mulazim Studio</p>
-        <h3>An engineering team of AI specialists.</h3>
+        <h3 class="label blue">Mulazim Studio</h3>
+        <p class="ptitle">An engineering team of AI specialists.</p>
         <p class="tagline">Give it a brief and reference designs. Get blueprints, CAD models, analysis and renders, reviewed at every step.</p>
-        <p class="desc">Studio plans the work as a graph of specialist roles, from body design and chassis to propulsion and homologation, and runs it with real engineering tools. Nothing moves forward until an engineer approves it.</p>
+        <p class="desc">Studio plans the work as a graph of specialist roles, from body design and chassis to propulsion and homologation, and runs it with real engineering tools. Every step stops at an approval gate, and you decide which gates need an engineer's sign-off.</p>
         <ul class="feats">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7 6h10M6 8l5 8M18 8l-5 8"/></svg><span><b>59 specialist roles.</b> Automotive, armoured vehicle and drone engineering, picked per project.</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12M21 7l-9 5-9-5"/></svg><span><b>Real outputs.</b> STEP, STL and 3D models, FEA, renders and dimensioned drawings.</span></li>
@@ -517,12 +529,12 @@ section[id]{scroll-margin-top:60px}
         <div class="panel">
           <div class="panel-head"><span>Project · Utility vehicle, iteration 2</span><span class="label">Example</span></div>
           <div class="panel-body pipeline">
-            <div class="phases" aria-label="Planning phases, all complete">
-              <span class="phase done">Interpret</span><span class="arrow">→</span>
-              <span class="phase done">Goal</span><span class="arrow">→</span>
-              <span class="phase done">Research</span><span class="arrow">→</span>
-              <span class="phase done">Ratify</span><span class="arrow">→</span>
-              <span class="phase done">Plan</span>
+            <div class="phases">
+              <span class="ph"><span class="phase done">Interpret</span><span class="arrow">→</span></span>
+              <span class="ph"><span class="phase done">Goal</span><span class="arrow">→</span></span>
+              <span class="ph"><span class="phase done">Research</span><span class="arrow">→</span></span>
+              <span class="ph"><span class="phase done">Ratify</span><span class="arrow">→</span></span>
+              <span class="ph"><span class="phase done">Plan</span></span>
             </div>
             <div class="graph-wrap">
               <svg class="graph" viewBox="0 0 560 206" role="img" aria-label="Plan graph: blueprint engineer feeds chassis, body design and spec designer; these feed the CAD modeler, which waits at an approval gate before review.">
@@ -550,10 +562,10 @@ section[id]{scroll-margin-top:60px}
               </svg>
             </div>
             <div class="gate-card">
-              <div><p class="t">Gate: CAD model of the vehicle</p><p class="s">Mass within margin · CG check passed · 0 open findings</p></div>
+              <div><p class="t">Gate: CAD model of the vehicle</p><p class="s">Mass within margin · CG check passed · 0&nbsp;open findings</p></div>
               <div class="gate-actions" aria-hidden="true"><span class="chip">Send back</span><span class="chip approve">Approve</span></div>
             </div>
-            <div class="outputs" aria-label="Output files"><span>vehicle.step</span><span>vehicle.glb</span><span>modal-fea.pdf</span><span>render-front.png</span><span>drawing-a3.pdf</span></div>
+            <div class="outputs"><span>vehicle.step</span><span>vehicle.glb</span><span>modal-fea.pdf</span><span>render-front.png</span><span>drawing-a3.pdf</span></div>
           </div>
         </div>
       </div>
@@ -562,10 +574,10 @@ section[id]{scroll-margin-top:60px}
     <!-- Assembly OS -->
     <article class="product" id="assembly-os">
       <div>
-        <p class="label blue">Assembly OS</p>
-        <h3>Sixteen applications. One platform.</h3>
+        <h3 class="label blue">Assembly OS</h3>
+        <p class="ptitle">Sixteen applications for the whole Assembly.</p>
         <p class="tagline">Purpose-built for a legislative assembly: its members, officers and staff, each seeing only what their role allows.</p>
-        <p class="desc">Assembly OS learns from the Assembly's own rules, records and proceedings, and works in Urdu, Sindhi and English by voice or text. It runs inside the Assembly, without the internet, and records every action.</p>
+        <p class="desc">Assembly OS works from the Assembly's own rules, records and proceedings, in Urdu, Sindhi and English, by voice or text. It runs inside the Assembly, can work without the internet, and keeps an audit record of every action.</p>
         <ul class="feats">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg><span><b>Bills, start to finish.</b> Research, first draft and a legal check against existing law, for the Law branch to finalise.</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9h8M8 13h5"/><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg><span><b>Questions and replies.</b> Sorted by subject, sent to the right minister, tracked until answered.</span></li>
@@ -606,7 +618,7 @@ section[id]{scroll-margin-top:60px}
               <li><b>Smart search</b>Any record you may see</li>
             </ul>
           </section>
-          <p class="langs" aria-label="Languages: Urdu, Sindhi, English"><span class="ur" lang="ur">اردو</span><span class="sep">·</span><span class="sd" lang="sd">سنڌي</span><span class="sep">·</span><span>English</span></p>
+          <p class="langs"><span class="ur" lang="ur">اردو</span><span class="sep">·</span><span class="sd" lang="sd">سنڌي</span><span class="sep">·</span><span>English</span></p>
         </div>
       </div>
     </article>
@@ -627,7 +639,7 @@ section[id]{scroll-margin-top:60px}
       <div class="outcome"><p class="task">Summarising the daily mail</p><p class="from">By hand: <b>2 hours</b></p><p class="with">With Mulazim</p><p class="to">5 min</p></div>
       <div class="outcome"><p class="task">Translating a document</p><p class="from">By hand: <b>2 days</b></p><p class="with">With Mulazim</p><p class="to">2 min</p></div>
     </div>
-    <p class="outcomes-note">Estimates for typical Assembly tasks, measured against the same work done manually.</p>
+    <p class="outcomes-note">Estimated times for typical Assembly tasks, compared with the same work done by hand.</p>
   </div>
 </section>
 
@@ -636,8 +648,8 @@ section[id]{scroll-margin-top:60px}
   <div class="wrap">
     <div class="section-head">
       <p class="label blue">Deployment</p>
-      <h2>Your data stays where it is.</h2>
-      <p class="lede">Mulazim is installed in your environment, not rented from ours. Choose how it runs; you can change later without rebuilding anything.</p>
+      <h2>Runs where your data lives.</h2>
+      <p class="lede">Mulazim is installed in your environment, not rented from ours. Choose how it generates answers. You can switch later without rebuilding anything.</p>
     </div>
     <div class="deploy-grid">
       <div class="mode primary">
@@ -645,17 +657,17 @@ section[id]{scroll-margin-top:60px}
         <h3>Blackbox</h3>
         <p>The whole platform, including the AI models, runs on your own GPU server. It can work with no internet connection at all.</p>
         <dl>
-          <dt>Leaves your building</dt><dd>Nothing</dd>
+          <dt>Leaves your building</dt><dd>Nothing. It can run air-gapped.</dd>
           <dt>Hardware</dt><dd>One GPU server in your data centre</dd>
           <dt>Suits</dt><dd>Assemblies, ministries, defence, regulated data</dd>
         </dl>
       </div>
       <div class="mode">
-        <p class="label"><span>Private cloud</span><span>No GPU needed</span></p>
+        <p class="label"><span>Your servers + hosted model</span><span>No GPU needed</span></p>
         <h3>Networked</h3>
-        <p>The platform runs on your servers and calls a leading AI model of your choice for language generation. Search, storage and access control stay on your side.</p>
+        <p>The platform runs on your servers and sends each request to a hosted model you choose, such as Claude or DeepSeek, to write the answer. Search, storage, speech and access control stay on your side.</p>
         <dl>
-          <dt>Leaves your building</dt><dd>Only the text of each request, to the model you choose</dd>
+          <dt>Leaves your building</dt><dd>Each question, with the document passages or database rows used to answer it</dd>
           <dt>Hardware</dt><dd>Standard servers</dd>
           <dt>Suits</dt><dd>Enterprises and pilots</dd>
         </dl>
@@ -664,18 +676,18 @@ section[id]{scroll-margin-top:60px}
     <div class="promises">
       <div class="promise">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/></svg>
-        <h4>Owned outright</h4>
-        <p>Installed on your hardware under your control. No dependency on a foreign platform.</p>
+        <h4>Installed, not rented</h4>
+        <p>Runs on your hardware under your control. Move to fully offline whenever you are ready.</p>
       </div>
       <div class="promise">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 11l2 2 4-4"/></svg>
         <h4>Access by role</h4>
-        <p>Each person sees only what their role allows. Passwords and keys never reach the AI.</p>
+        <p>Each person sees only what their role allows. Database passwords and keys never reach the AI.</p>
       </div>
       <div class="promise">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h8M8 8h4"/></svg>
-        <h4>A full record</h4>
-        <p>Every request and every action is logged, so nothing goes unaccounted for.</p>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg>
+        <h4>Read-only data access</h4>
+        <p>The AI queries your databases through a read-only account. The database itself refuses any change.</p>
       </div>
       <div class="promise">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
@@ -686,16 +698,57 @@ section[id]{scroll-margin-top:60px}
   </div>
 </section>
 
+<!-- Portfolio -->
+<section class="section" id="portfolio">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="label blue">Portfolio</p>
+      <h2>Products we have built and launched.</h2>
+      <p class="lede">Mulazim is our flagship. Alongside it, our team has shipped products in AI, finance and Web3.</p>
+    </div>
+    <div class="portfolio">
+      <section class="pf-group" aria-labelledby="pf-ai">
+        <header><h3 id="pf-ai">AI &amp; Mobile</h3><span>4 products</span></header>
+        <ul>
+          <li><b>Aitells</b><span>A conversational AI platform developed before the widespread adoption of modern LLMs, designed to understand and respond to user queries in natural language.</span></li>
+          <li><b>Callwala</b><span>An AI-driven representative for contact centres that qualifies leads, handles calls intelligently and cuts operational costs.</span></li>
+          <li><b>Eve</b><span>The core anti-harassment technology providing tools for user safety and security, and the foundation of the official Zainab Alert app.</span></li>
+          <li><b>Swift Me</b><span>A one-window application for the restaurants of a shopping mall or food street, streamlining ordering and discovery.</span></li>
+        </ul>
+      </section>
+      <section class="pf-group" aria-labelledby="pf-fin">
+        <header><h3 id="pf-fin">FinTech &amp; DeFi</h3><span>3 products</span></header>
+        <ul>
+          <li><b>Oro Gold</b><span>A comprehensive on-chain ecosystem built on a fully gold-backed digital token, enabling users to instantly invest, trade, earn and borrow.</span></li>
+          <li><b>Liquid Prop</b><span>A platform democratising real estate investment through fractional ownership of U.S. properties on the blockchain.</span></li>
+          <li><b>Zar</b><span>A digital wallet enabling users to convert cash into digital dollars and spend globally with virtual and physical Visa cards.</span></li>
+        </ul>
+      </section>
+      <section class="pf-group" aria-labelledby="pf-web3">
+        <header><h3 id="pf-web3">Blockchain &amp; Web3</h3><span>6 products</span></header>
+        <ul>
+          <li><b>Honeycomb Protocol</b><span>A foundational platform on the Solana blockchain that provides essential utilities to decentralised projects and streamlines development for game creators.</span></li>
+          <li><b>Sol Patrol</b><span>A real-time multiplayer strategy game on Solana where players build cities, form guilds and send NFTs on missions to conquer the grid.</span></li>
+          <li><b>Ocean Explorers</b><span>A blockchain-based strategy game on Solana combining NFT ownership with immersive, on-chain strategic missions.</span></li>
+          <li><b>RFRSH</b><span>An all-in-one platform for Solana NFTs, offering portfolio tracking, wallet analytics, trading tools and market data.</span></li>
+          <li><b>Bright Switch</b><span>A burn-to-mint platform on Solana that lets users exchange old NFT collections for new ones.</span></li>
+          <li><b>Pooks</b><span>A digital collectible on the blockchain that serves as an online avatar and grants membership to the Pooks community.</span></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</section>
+
 <!-- Company -->
 <section class="section band" id="company">
   <div class="wrap">
     <div class="company-top">
       <div class="company-copy">
         <p class="label blue">Company</p>
-        <h2>An AI lab in Karachi.</h2>
+        <h2>A technology company in Karachi.</h2>
       </div>
       <div class="company-side">
-        <p>Liwa Labs builds private AI for institutions that cannot hand their records to a public chatbot. We design, install and support everything ourselves, from the models to the applications people use every day, in the languages our clients work in.</p>
+        <p>Liwa Labs builds private AI for institutions that cannot hand their records to a public chatbot, alongside financial and Web3 products used around the world. We design, build and support everything ourselves.</p>
         <div class="name-note">
           <span class="ur" lang="ur">ملازم</span>
           <p><b>Mulazim</b> means one who serves: an aide who knows the office, keeps its confidences and does the groundwork.</p>
@@ -704,28 +757,22 @@ section[id]{scroll-margin-top:60px}
     </div>
     <div class="team">
       <div class="person">
-        <img src="assets/team-mannan.jpg" alt="K. A. Mannan Spanogiannis" width="88" height="88">
-        <div><h4>K. A. Mannan Spanogiannis</h4><p class="role">CEO &amp; Co-founder</p><p>International entrepreneur who has built and launched technology ventures from concept to market.</p></div>
+        <img src="assets/team-mannan.jpg" alt="" width="88" height="88">
+        <div><h3>K. A. Mannan Spanogiannis</h3><p class="role">CEO &amp; Co-founder</p><p>An experienced international entrepreneur with a proven record of building tech ventures and leading successful Web3 projects from concept to launch.</p></div>
       </div>
       <div class="person">
-        <img src="assets/team-ghulam.jpg" alt="Ghulam Mustafa Raza Qadri" width="88" height="88">
-        <div><h4>Ghulam Mustafa Raza Qadri</h4><p class="role">Co-founder</p><p>Engineer with more than eight years of technical leadership. His teaching has reached over 120,000 students in Pakistan.</p></div>
+        <img src="assets/team-ghulam.jpg" alt="" width="88" height="88">
+        <div><h3>Ghulam Mustafa Raza Qadri</h3><p class="role">Co-founder</p><p>An engineer and decentralisation advocate with 8+ years of experience. He has provided technical leadership for key ventures, and his educational work has reached over 120,000 students in Pakistan.</p></div>
       </div>
       <div class="person">
-        <img src="assets/team-moiz.jpg" alt="Engr. Muhammad Moiz Yousuf" width="88" height="88">
-        <div><h4>Engr. Muhammad Moiz Yousuf</h4><p class="role">Co-founder</p><p>PEC-registered automotive engineer, and the youngest committee chairman in the history of the FPCCI.</p></div>
+        <img src="assets/team-moiz.jpg" alt="" width="88" height="88">
+        <div><h3>Engr. Muhammad Moiz Yousuf</h3><p class="role">Co-founder</p><p>A PEC-registered automotive engineer and Web 3.0 entrepreneur who co-founded Cerberus-Tech, and the youngest committee chairman in the history of the FPCCI.</p></div>
       </div>
       <div class="person">
-        <img src="assets/team-ammar.jpg" alt="Muhammad Ammar Irfan Bhabha" width="88" height="88">
-        <div><h4>Muhammad Ammar Irfan Bhabha</h4><p class="role">Co-founder</p><p>Recipient of the Fakhar-e-Pakistan award and an International AI Champion. Member of Pakistan's Youth Parliament.</p></div>
+        <img src="assets/team-ammar.jpg" alt="" width="88" height="88">
+        <div><h3>Muhammad Ammar Irfan Bhabha</h3><p class="role">Co-founder</p><p>Recipient of the Fakhar-e-Pakistan award, CEO of Bhabha Technologies and an International AI Champion recognised by the Government of Russia. Serves in Pakistan's Youth Parliament.</p></div>
       </div>
     </div>
-    <ul class="earlier" aria-label="Earlier AI work">
-      <li class="label">Earlier AI work</li>
-      <li><b>Callwala</b><span>AI agent for contact centres that qualifies leads and handles calls.</span></li>
-      <li><b>Eve</b><span>Safety technology behind the Zainab Alert app.</span></li>
-      <li><b>Aitells</b><span>A conversational AI platform, built before today's large language models.</span></li>
-    </ul>
   </div>
 </section>
 
@@ -738,7 +785,7 @@ section[id]{scroll-margin-top:60px}
       <p class="lede">Tell us what you want to try. We will set up a demo with your documents or data, on your premises or ours.</p>
       <div class="details">
         <div class="detail"><span class="label">Email</span><a class="val" href="mailto:info@liwalabs.com">info@liwalabs.com</a></div>
-        <div class="detail"><span class="label">Phone</span><span class="val">+92 326 2263160</span></div>
+        <div class="detail"><span class="label">Phone</span><a class="val" href="tel:+923262263160">+92 326 2263160</a></div>
         <div class="detail"><span class="label">Office</span><span class="val addr">Office 505, Tai Roshan Trade Center<br>Shaheed-e-Millat Road, Karachi</span></div>
       </div>
     </div>
@@ -755,7 +802,7 @@ section[id]{scroll-margin-top:60px}
         <label><input type="radio" name="interest" id="cf-i-other" value="Something else"><span>Something else</span></label>
       </fieldset>
       <div class="field full"><label for="cf-msg">What would you like to do?</label><textarea id="cf-msg" name="message" required placeholder="For example: answer questions over our finance data, or digitise our records."></textarea></div>
-      <p class="form-status" id="cf-status" role="status" hidden></p>
+      <p class="form-status" id="cf-status" role="status" aria-live="polite" hidden></p>
       <div class="form-foot">
         <small>We reply within one working day.</small>
         <button class="btn btn-primary" type="submit" id="cf-submit">Send message</button>
@@ -778,12 +825,13 @@ section[id]{scroll-margin-top:60px}
       <a href="#mulazim-studio">Mulazim Studio</a>
       <a href="#assembly-os">Assembly OS</a>
       <a href="#deployment">Deployment</a>
+      <a href="#portfolio">Portfolio</a>
       <a href="#company">Company</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="social">
       <a href="https://www.instagram.com/liwalabs" target="_blank" rel="noopener" aria-label="Liwa Labs on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-      <a href="https://twitter.com/liwalabs" target="_blank" rel="noopener" aria-label="Liwa Labs on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="https://x.com/liwalabs" target="_blank" rel="noopener" aria-label="Liwa Labs on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
     </div>
   </div>
   <div class="wrap foot" style="margin-top:28px">
@@ -804,6 +852,9 @@ section[id]{scroll-margin-top:60px}
     btn.setAttribute('aria-expanded',open?'true':'false');
     btn.setAttribute('aria-label',open?'Close menu':'Open menu');
   });
+  function closeMenu(){links.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu')}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&links.classList.contains('open')){closeMenu();btn.focus()}});
+  document.addEventListener('click',function(e){if(links.classList.contains('open')&&!e.target.closest('.nav'))closeMenu()});
   links.addEventListener('click',function(e){
     if(e.target.closest('a')){links.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu')}
   });
@@ -817,14 +868,17 @@ section[id]{scroll-margin-top:60px}
   });
 
   var form=document.getElementById('contact-form'),status=document.getElementById('cf-status'),submit=document.getElementById('cf-submit');
-  function show(msg,ok){status.textContent=msg;status.className='form-status'+(ok?' ok':'');status.hidden=false}
+  function show(msg,ok){status.setAttribute('role',ok?'status':'alert');status.textContent=msg;status.className='form-status'+(ok?' ok':'');status.hidden=false}
+  form.addEventListener('input',function(e){e.target.removeAttribute('aria-invalid')});
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var missing=[].slice.call(form.querySelectorAll('[required]')).filter(function(el){return !el.value.trim()});
     var email=document.getElementById('cf-email');
     var names={'cf-name':'your name','cf-org':'your organisation','cf-email':'your work email','cf-msg':'a short message'};
+    form.querySelectorAll('[aria-invalid]').forEach(function(el){el.removeAttribute('aria-invalid')});
+    missing.forEach(function(el){el.setAttribute('aria-invalid','true');el.setAttribute('aria-describedby','cf-status')});
     if(missing.length){var n=missing.map(function(el){return names[el.id]});show('Please add '+(n.length>1?n.slice(0,-1).join(', ')+' and '+n[n.length-1]:n[0])+'.');missing[0].focus();return}
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){show('Please enter a valid email address.');email.focus();return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){email.setAttribute('aria-invalid','true');show('Please enter a valid email address.');email.focus();return}
     var data={};new FormData(form).forEach(function(v,k){data[k]=String(v).trim()});
     submit.disabled=true;submit.textContent='Sending…';
     fetch('/submit-contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
