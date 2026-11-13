@@ -6,7 +6,7 @@
 <title>Liwa Labs</title>
 <meta name="description" content="Liwa Labs is a Karachi technology company building AI, fintech and Web3 products, led by Mulazim, a private AI platform for government and industry.">
 <meta property="og:title" content="Liwa Labs: AI, fintech and Web3 products">
-<meta property="og:description" content="A Karachi technology company. Flagship: Mulazim private AI. Fifteen products launched across AI, finance and Web3.">
+<meta property="og:description" content="A Karachi technology company. Flagship: Mulazim private AI. Products across AI, government software, finance and Web3.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -237,6 +237,7 @@ section[id]{scroll-margin-top:60px}
 .tag{display:inline-block;font-size:13.5px;line-height:1.2;padding:7px 11px;border-radius:7px;border:1px solid var(--line);color:var(--ink);background:var(--bg);text-decoration:none;white-space:nowrap}
 .tag.flag{background:var(--blue);border-color:var(--blue);color:var(--on-blue);font-weight:600}
 a.tag.flag:hover{background:var(--blue-strong)}
+a.tag:not(.flag):hover{border-color:var(--blue);color:var(--blue)}
 .map-foot{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);padding-top:14px}
 .map-foot .tag{width:14px;height:14px;padding:0;border-radius:4px}
 
@@ -256,6 +257,27 @@ a.tag.flag:hover{background:var(--blue-strong)}
 .mz-name{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;border-top:1px solid var(--line);padding-top:18px;margin-top:6px;font-size:14.5px;color:var(--ink-2)}
 .mz-name .ur{font-family:var(--f-urdu);font-size:28px;line-height:1.7;color:var(--ink);direction:rtl}
 @media (max-width:920px){.mz-head{grid-template-columns:minmax(0,1fr)}}
+
+/* Government software */
+.gov{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
+.gov-item{border:1px solid var(--line);border-radius:14px;padding:clamp(22px,3vw,32px);background:var(--card);display:grid;gap:14px;min-width:0}
+.gov-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.gov-top h3.label{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;line-height:1.4}
+.status{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2)}
+.status.live{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 40%,var(--line))}
+.gov-title{font-family:var(--f-display);font-weight:700;font-size:clamp(24px,2.6vw,30px);letter-spacing:-.02em;line-height:1.15;text-wrap:balance}
+.gov-item .desc{color:var(--ink-2);font-size:15.5px}
+.gov-item .feats{margin-top:4px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.search-demo{border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13.5px}
+.sd-box{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--bg-soft);font-family:var(--f-mono);font-size:12.5px;color:var(--ink)}
+.sd-box svg{width:14px;height:14px;color:var(--ink-3)}
+.sd-row{display:grid;gap:2px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.sd-row:last-child{border-bottom:0}
+.sd-row b{font-weight:600;color:var(--ink)}
+.sd-row span{color:var(--ink-2)}
+.sd-row mark{background:var(--blue-soft);color:var(--blue);padding:0 2px;border-radius:3px}
+@media (max-width:900px){.gov{grid-template-columns:minmax(0,1fr)}}
 
 /* Portfolio */
 .portfolio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:start}
@@ -350,6 +372,7 @@ a.tag.flag:hover{background:var(--blue-strong)}
     <nav class="nav-links" id="nav-links" aria-label="Main">
       <a href="#services">What we do</a>
       <a href="#mulazim">Mulazim</a>
+      <a href="#government">Government</a>
       <a href="#work">Work</a>
       <a href="#company">Company</a>
       <a class="btn btn-primary" href="#contact">Contact us</a>
@@ -365,7 +388,7 @@ a.tag.flag:hover{background:var(--blue-strong)}
     <div>
       <p class="label blue">Liwa Labs · Karachi</p>
       <h1>We build AI, fintech and <em>Web3</em> products.</h1>
-      <p class="lede">Liwa Labs is a technology company. We design, build and run our own products, led by the Mulazim private AI platform, and we build software for governments, enterprises and founders.</p>
+      <p class="lede">Liwa Labs is a technology company. We design, build and run our own products, led by the Mulazim private AI platform, and we build software for government departments, enterprises and founders.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#contact">Start a conversation</a>
         <a class="btn btn-ghost" href="#work">See our work</a>
@@ -373,7 +396,7 @@ a.tag.flag:hover{background:var(--blue-strong)}
     </div>
 
     <div class="map" aria-labelledby="map-h">
-      <div class="map-head"><h2 class="label" id="map-h">Our products</h2><span class="label">15 launched</span></div>
+      <div class="map-head"><h2 class="label" id="map-h">Our products</h2><span class="label">17 products</span></div>
       <div class="map-row">
         <h3>AI</h3>
         <ul>
@@ -383,6 +406,13 @@ a.tag.flag:hover{background:var(--blue-strong)}
           <li><span class="tag">Aitells</span></li>
           <li><span class="tag">Eve</span></li>
           <li><span class="tag">Swift Me</span></li>
+        </ul>
+      </div>
+      <div class="map-row">
+        <h3>Government</h3>
+        <ul>
+          <li><a class="tag" href="#e-dfa">e-DFA</a></li>
+          <li><a class="tag" href="#e-dms">e-DMS</a></li>
         </ul>
       </div>
       <div class="map-row">
@@ -421,7 +451,7 @@ a.tag.flag:hover{background:var(--blue-strong)}
       <li class="svc">
         <h3>AI products &amp; custom AI</h3>
         <p>Private assistants, document and data analysis, voice agents for contact centres. Built on our own Mulazim platform or to your specification, on your servers or in the cloud.</p>
-        <p class="svc-work"><span class="label">Our work</span> Mulazim, Callwala, Aitells, Eve</p>
+        <p class="svc-work"><span class="label">Our work</span> Mulazim, e-DFA, Callwala, Aitells, Eve</p>
       </li>
       <li class="svc">
         <h3>Blockchain &amp; Web3 development</h3>
@@ -436,7 +466,7 @@ a.tag.flag:hover{background:var(--blue-strong)}
       <li class="svc">
         <h3>Cloud &amp; data infrastructure</h3>
         <p>Cloud platforms, data pipelines and analytics, and on-premises servers for private AI.</p>
-        <p class="svc-work"><span class="label">Our work</span> Mulazim Blackbox deployments</p>
+        <p class="svc-work"><span class="label">Our work</span> Mulazim Blackbox, e-DFA and e-DMS on department servers</p>
       </li>
       <li class="svc">
         <h3>Strategy &amp; training</h3>
@@ -653,6 +683,52 @@ a.tag.flag:hover{background:var(--blue-strong)}
   </div>
 </section>
 
+<!-- Government software -->
+<section class="section" id="government">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="label blue">Government software</p>
+      <h2>Office work, moved off paper.</h2>
+      <p class="lede">Two systems built for a directorate of the Government of Sindh. Both install on the department's own server with a one-file installer, work on the office network, and keep every record on that server.</p>
+    </div>
+    <div class="gov">
+      <article class="gov-item" id="e-dfa">
+        <div class="gov-top"><h3 class="label blue">e-DFA</h3><span class="status live">In use</span></div>
+        <p class="gov-title">Draft, review and approve official letters.</p>
+        <p class="desc">Drafters write letters in the browser. Each draft goes up to the reviewing officer and the approving authority, and comes back with comments until it is approved and printed on the department's letterhead.</p>
+        <div class="flow" aria-label="A letter's path: draft, review, approve, print">
+          <span class="ph"><span class="phase done">Draft</span><span class="arrow">→</span></span>
+          <span class="ph"><span class="phase done">Review</span><span class="arrow">→</span></span>
+          <span class="ph"><span class="phase done">Approve</span><span class="arrow">→</span></span>
+          <span class="ph"><span class="phase done">Print</span></span>
+        </div>
+        <ul class="feats">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg><span><b>One copy, every version kept.</b> The server numbers each version and links it to the last, so no one can work on the wrong file or alter an approved letter.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9h8M8 13h5"/><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg><span><b>No missed corrections.</b> Every comment stays open until it is resolved, and a draft cannot go back up while any comment is open.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg><span><b>Mulazim AI built in.</b> Grammar checks, more formal wording and a private document summariser, running on the department's own server.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="7" rx="1"/><rect x="4" y="10" width="16" height="7" rx="1"/><path d="M8 17v4h8v-4"/></svg><span><b>Letters ready to sign.</b> PDF and Word output on the official letterhead, from the department's own templates.</span></li>
+        </ul>
+      </article>
+      <article class="gov-item" id="e-dms">
+        <div class="gov-top"><h3 class="label blue">e-DMS</h3><span class="status">In development</span></div>
+        <p class="gov-title">Scan, search and file the department's documents.</p>
+        <p class="desc">Officers capture paper with a phone camera or upload it from a PC. The server reads the text, so every document can be found by what it says, and each officer files their own documents in their own dashboard.</p>
+        <div class="search-demo" aria-hidden="true">
+          <div class="sd-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>revised estimates</div>
+          <div class="sd-row"><b>Finance circular, March.pdf</b><span>p. 2 · “…send <mark>revised estimates</mark> to the Finance Department by…”</span></div>
+          <div class="sd-row"><b>Notification 0412 (scan).pdf</b><span>p. 1 · “…the <mark>revised estimates</mark> for the current year…”</span></div>
+        </div>
+        <ul class="feats">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg><span><b>Capture anywhere.</b> Phone camera or PC upload. Captures made without a connection wait on the phone and upload later.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span><b>Searchable text.</b> Text is read on the server, never in the cloud, and every scan becomes a searchable PDF.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><b>Personal stays personal.</b> A personal document is seen only by its owner and the people they share it with, not even by an administrator.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg><span><b>Handover built in.</b> When an officer moves on, the administrator transfers their official documents to the successor.</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- Portfolio -->
 <section class="section" id="work">
   <div class="wrap">
@@ -703,7 +779,7 @@ a.tag.flag:hover{background:var(--blue-strong)}
         <h2>A technology company in Karachi.</h2>
       </div>
       <div class="company-side">
-        <p>Liwa Labs is a product and engineering company. Our founders bring backgrounds in engineering, entrepreneurship, education and public service, and our team has launched fifteen products in AI, finance and Web3.</p>
+        <p>Liwa Labs is a product and engineering company. Our founders bring backgrounds in engineering, entrepreneurship, education and public service, and our team has built products in AI, government software, finance and Web3.</p>
         <p>We design, build and support everything ourselves, from smart contracts to on-premises AI.</p>
       </div>
     </div>
@@ -749,6 +825,7 @@ a.tag.flag:hover{background:var(--blue-strong)}
       <fieldset class="interest field full">
         <legend>Interested in</legend>
         <label><input type="radio" name="interest" id="cf-i-mulazim" value="Mulazim" checked><span>Mulazim</span></label>
+        <label><input type="radio" name="interest" id="cf-i-gov" value="e-DFA or e-DMS"><span>e-DFA / e-DMS</span></label>
         <label><input type="radio" name="interest" id="cf-i-ai" value="AI development"><span>AI development</span></label>
         <label><input type="radio" name="interest" id="cf-i-fintech" value="FinTech"><span>FinTech</span></label>
         <label><input type="radio" name="interest" id="cf-i-web3" value="Web3 and blockchain"><span>Web3 &amp; blockchain</span></label>
@@ -776,6 +853,7 @@ a.tag.flag:hover{background:var(--blue-strong)}
     <nav aria-label="Footer">
       <a href="#services">What we do</a>
       <a href="#mulazim">Mulazim</a>
+      <a href="#government">Government</a>
       <a href="#work">Work</a>
       <a href="#company">Company</a>
       <a href="#contact">Contact</a>
