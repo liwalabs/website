@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, abort
 from flask_mail import Mail, Message
 import os
 from dotenv import load_dotenv
@@ -20,13 +20,26 @@ app.config['MAIL_DEFAULT_SENDER'] = os.getenv('SMTP_USER')
 # Initialize Mail
 mail = Mail(app)
 
+PUBLIC_PAGES = {'index.html', 'about.html', 'contact.html', 'services.html', 'projects.html'}
+
+
 @app.route('/')
 def index():
     return send_from_directory('.', 'index.html')
 
-@app.route('/<path:filename>')
-def serve_static(filename):
-    return send_from_directory('.', filename)
+
+@app.route('/assets/<path:filename>')
+def assets(filename):
+    return send_from_directory('assets', filename)
+
+
+@app.route('/<page>')
+def page(page):
+    # Serve only the public pages; never the app source or .env
+    if page not in PUBLIC_PAGES:
+        abort(404)
+    return send_from_directory('.', page)
+
 
 @app.route('/submit-contact', methods=['POST'])
 def submit_contact():
@@ -34,38 +47,32 @@ def submit_contact():
         # Get form data
         data = request.get_json() if request.is_json else request.form.to_dict()
         
-        first_name = data.get('first-name', '')
-        last_name = data.get('last-name', '')
-        email = data.get('email', '')
-        phone = data.get('phone', '')
-        company = data.get('company', '')
-        subject_type = data.get('subject', '')
-        message_content = data.get('message', '')
-        
-        # Validate required fields
-        if not all([first_name, last_name, email, subject_type, message_content]):
-            return jsonify({'error': 'Missing required fields'}), 400
-        
-        # Create email message
-        subject = f"New Contact Form Submission - {subject_type}"
-        
-        # Format the email body
-        email_body = f"""
-New contact form submission from Liwa Labs website:
+        name = data.get('name', '').strip()
+        organisation = data.get('organisation', '').strip()
+        email = data.get('email', '').strip()
+        phone = data.get('phone', '').strip()
+        interest = data.get('interest', '').strip() or 'Not specified'
+        message_content = data.get('message', '').strip()
 
-Name: {first_name} {last_name}
+        # Validate required fields
+        if not all([name, organisation, email, message_content]):
+            return jsonify({'error': 'Missing required fields'}), 400
+
+        subject = f"Website enquiry: {interest} ({organisation})"
+
+        email_body = f"""
+New enquiry from the Liwa Labs website:
+
+Name: {name}
+Organisation: {organisation}
 Email: {email}
 Phone: {phone if phone else 'Not provided'}
-Company: {company if company else 'Not provided'}
-Service Interest: {subject_type}
+Interested in: {interest}
 
 Message:
 {message_content}
-
----
-This message was sent from the Liwa Labs contact form.
         """
-        
+
         # Create and send email
         msg = Message(
             subject=subject,
@@ -84,10 +91,9 @@ This message was sent from the Liwa Labs contact form.
     except Exception as e:
         print(f"Error sending email: {str(e)}")
         return jsonify({
-            'error': 'Failed to send message. Please try again or contact us directly.',
-            'details': str(e)
+            'error': 'Failed to send message. Please try again or contact us directly.'
         }), 500
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=os.environ.get('FLASK_DEBUG') == '1')

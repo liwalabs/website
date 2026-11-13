@@ -1,682 +1,839 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Liwa Labs - Technology Solutions</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="./attached_assets/ChatGPT_Image_Jul_24__2025__08_27_22_PM-removebg-preview_1754939130452.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./attached_assets/ChatGPT_Image_Jul_24__2025__08_27_22_PM-removebg-preview_1754939130452.png">
-    <link rel="shortcut icon" href="./attached_assets/ChatGPT_Image_Jul_24__2025__08_27_22_PM-removebg-preview_1754939130452.png">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts - Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Custom CSS for brand colors and font setup -->
-    <style>
-        :root {
-            --primary-bg: #FFFFFF;
-            --primary-text: #0D253F;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--primary-text);
-        }
-        
-        /* Tailwind CSS configuration for custom colors */
-        .text-primary {
-            color: var(--primary-text);
-        }
-        
-        .bg-primary {
-            background-color: var(--primary-bg);
-        }
-        
-        /* Logo styling */
-        .logo {
-            height: 50px;
-            width: auto;
-        }
-        
-        @media (max-width: 640px) {
-            .logo {
-                height: 45px;
-            }
-        }
-        
-        /* Custom animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        .animate-fadeInUp {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-        
-        .animate-pulse-slow {
-            animation: pulse 3s infinite;
-        }
-        
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .service-card {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .service-card:hover::before {
-            left: 100%;
-        }
-        
-        .team-card {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .team-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
-        
-        .team-card:hover::before {
-            left: 100%;
-        }
-    </style>
-    
-    <!-- Tailwind CSS custom configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'primary-text': '#0D253F',
-                        'primary-bg': '#FFFFFF',
-                        'accent-blue': '#007BFF',
-                    }
-                }
-            }
-        }
-    </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Liwa Labs</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Liwa Labs builds Mulazim, a sovereign AI platform for government and industry: Mulazim AI, Mulazim Studio and Assembly OS. Runs on your own servers. Built in Pakistan.">
+<meta property="og:title" content="Liwa Labs: Sovereign AI for government and industry">
+<meta property="og:description" content="Mulazim AI, Mulazim Studio and Assembly OS. Private AI that runs on your own servers and cites its sources. Built in Pakistan.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&display=swap">
+<style>
+/* Layout: one left-aligned 1160px column; sections breathe on white, product rows alternate text/visual, soft-blue bands mark the two "proof" sections. */
+:root{
+  --bg:#ffffff;
+  --bg-soft:#f3f6f9;
+  --ink:#0d1520;
+  --ink-2:#4b5967;
+  --ink-3:#66737f;
+  --line:#e1e7ee;
+  --blue:#0a71d4;
+  --blue-strong:#075bb0;
+  --blue-soft:#e9f2fc;
+  --on-blue:#ffffff;
+  --ok:#11845b;
+  --neg:#c2410c;
+  --card:#ffffff;
+  --deep:#0d1520;
+  --on-deep:#ffffff;
+  --on-deep-2:#a9b6c3;
+  --deep-line:#25313e;
+  --shadow:0 1px 2px rgba(13,21,32,.05),0 8px 24px -12px rgba(13,21,32,.12);
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-urdu:"Noto Nastaliq Urdu","Noto Naskh Arabic","Jameel Noori Nastaleeq",serif;
+  --f-naskh:"Noto Naskh Arabic","Noto Nastaliq Urdu",serif;
+  --wrap:1160px;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a0f15;--bg-soft:#10171f;--ink:#e8edf3;--ink-2:#a1adb9;--ink-3:#748291;--line:#1e2834;
+    --blue:#4a9ff0;--blue-strong:#71b5f5;--blue-soft:#0f2236;--on-blue:#06121f;--ok:#3cc28f;--neg:#f08a5d;--card:#0e151d;--deep:#0f1923;--on-deep:#e8edf3;--on-deep-2:#94a3b2;--deep-line:#22303e;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a0f15;--bg-soft:#10171f;--ink:#e8edf3;--ink-2:#a1adb9;--ink-3:#748291;--line:#1e2834;
+  --blue:#4a9ff0;--blue-strong:#71b5f5;--blue-soft:#0f2236;--on-blue:#06121f;--ok:#3cc28f;--neg:#f08a5d;--card:#0e151d;--deep:#0f1923;--on-deep:#e8edf3;--on-deep-2:#94a3b2;--deep-line:#22303e;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.02em;line-height:1.08}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+.wrap{max-width:calc(var(--wrap) + 64px);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:720px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+
+.label{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:500}
+.label.blue{color:var(--blue)}
+.lede{font-size:clamp(17px,1.6vw,19px);color:var(--ink-2);max-width:60ch}
+.mono{font-family:var(--f-mono)}
+
+.skip{position:absolute;left:16px;top:-60px;z-index:100;background:var(--blue);color:var(--on-blue);padding:10px 14px;border-radius:8px;font-weight:600;text-decoration:none}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.5em;font:600 15px/1 var(--f-body);padding:13px 20px;border-radius:8px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.btn-primary{background:var(--blue);color:var(--on-blue)}
+.btn-primary:hover{background:var(--blue-strong)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--ink-3)}
+.btn svg{width:16px;height:16px}
+
+/* Header */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+.site-header.scrolled{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand img{width:34px;height:34px}
+.brand-word{font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:.01em;line-height:1}
+.brand-word span{color:var(--blue)}
+.mark-light{display:none!important}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .mark-dark{display:none!important}:root:not([data-theme="light"]) .mark-light{display:block!important}}
+:root[data-theme="dark"] .mark-dark{display:none!important}
+:root[data-theme="dark"] .mark-light{display:block!important}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{text-decoration:none;font-size:15px;font-weight:500;color:var(--ink-2)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links .btn{color:var(--on-blue);padding:10px 16px}
+.menu-btn{display:none;background:none;border:0;color:var(--ink);padding:8px;margin-right:-8px;cursor:pointer}
+.menu-btn svg{width:24px;height:24px}
+@media (max-width:860px){
+  .menu-btn{display:block}
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px))}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:14px 0;border-bottom:1px solid var(--line);font-size:17px}
+  .nav-links .btn{margin-top:16px;justify-content:center;border-bottom:0;padding:14px}
+}
+
+/* Hero */
+.hero{padding-block:clamp(56px,9vw,112px) clamp(56px,8vw,96px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(40px,6vw,88px);align-items:center}
+.hero h1{font-size:clamp(42px,6.4vw,80px);font-weight:800;letter-spacing:-.035em;line-height:1.0;margin-top:22px}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero .lede{margin-top:26px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:40px;color:var(--ink-3);font-size:14px}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.hero-meta svg{width:16px;height:16px;color:var(--blue)}
+@media (max-width:920px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Answer card (product mock) */
+.answer{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;font-size:15px}
+.answer-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--bg-soft)}
+.answer-bar .who{display:flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px}
+.answer-bar .who i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:block}
+.answer-bar .label{font-size:11px}
+.answer-body{padding:20px 20px 22px;display:grid;gap:16px}
+.q{justify-self:end;max-width:88%;background:var(--blue-soft);color:var(--ink);padding:10px 14px;border-radius:12px 12px 2px 12px;font-size:14.5px}
+.q .file{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:12px;color:var(--ink-2);margin-bottom:6px}
+.q .file svg{width:14px;height:14px}
+.a{display:grid;gap:12px}
+.urdu{font-family:var(--f-urdu);direction:rtl;text-align:right;font-size:19px;line-height:2.15;color:var(--ink)}
+.a .en{color:var(--ink-2);font-size:14px;line-height:1.55}
+.cites{display:flex;flex-wrap:wrap;gap:6px}
+.cite{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;color:var(--blue);background:var(--blue-soft);border-radius:6px;padding:4px 8px}
+.cite b{font-weight:500;color:var(--ink-2)}
+.answer-foot{display:flex;flex-wrap:wrap;gap:6px 16px;padding:12px 20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+.answer-foot span{display:inline-flex;align-items:center;gap:6px}
+.answer-foot svg{width:13px;height:13px}
+.mock-note{margin-top:10px;font-size:12.5px;color:var(--ink-3);text-align:right}
+
+/* Audience strip */
+.audience{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.audience-row{display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr));align-items:center;gap:24px;padding-block:26px}
+.audience-row .item{font-family:var(--f-display);font-weight:600;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
+.audience-row .item small{display:block;font-family:var(--f-body);font-weight:400;font-size:13.5px;color:var(--ink-3);letter-spacing:0;margin-top:2px}
+@media (max-width:860px){.audience-row{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.audience-row .label{grid-column:1/-1}}
+
+/* Sections */
+.section{padding-block:clamp(72px,10vw,128px)}
+section[id]{scroll-margin-top:60px}
+.section-head{display:grid;gap:18px;max-width:760px;margin-bottom:clamp(40px,6vw,72px)}
+.section-head h2{font-size:clamp(32px,4.2vw,52px);font-weight:700}
+.band{background:var(--bg-soft)}
+
+/* Products */
+.products-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:clamp(64px,9vw,112px)}
+.pi{display:grid;gap:10px;align-content:start;padding:26px 26px 28px;text-decoration:none;color:var(--ink);background:var(--card);transition:background .15s}
+.pi+.pi{border-left:1px solid var(--line)}
+.pi:hover{background:var(--bg-soft)}
+.pi h3{font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pi h3 svg{width:18px;height:18px;color:var(--blue);flex:none;transition:transform .15s}
+.pi:hover h3 svg{transform:translateY(2px)}
+.pi p{color:var(--ink-2);font-size:15.5px}
+@media (max-width:860px){.products-index{grid-template-columns:minmax(0,1fr)}.pi+.pi{border-left:0;border-top:1px solid var(--line)}}
+
+.product{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,6vw,80px);align-items:start;scroll-margin-top:96px}
+.product+.product{margin-top:clamp(80px,11vw,140px);padding-top:clamp(80px,11vw,140px);border-top:1px solid var(--line)}
+.product h3{font-size:clamp(30px,3.6vw,44px);font-weight:700;margin-top:14px}
+.product .tagline{font-size:19px;color:var(--ink);margin-top:14px;font-weight:500;max-width:34ch;line-height:1.45}
+.product .desc{color:var(--ink-2);margin-top:16px;max-width:52ch}
+.feats{display:grid;gap:0;margin-top:28px;border-top:1px solid var(--line)}
+.feats li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--ink-2)}
+.feats li b{color:var(--ink);font-weight:600}
+.feats svg{width:18px;height:18px;color:var(--blue);margin-top:3px}
+.product .btn{margin-top:28px}
+.product-visual{min-width:0;position:sticky;top:100px}
+@media (max-width:920px){.product{grid-template-columns:minmax(0,1fr)}.product-visual{position:static}}
+
+/* Analyst visual */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--bg-soft);font-size:13.5px;font-weight:600}
+.panel-body{padding:20px 18px}
+.trace{display:grid;gap:14px}
+.trace .ask{font-family:var(--f-display);font-weight:600;font-size:19px;letter-spacing:-.01em;line-height:1.3}
+.steps{display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.step{position:relative;padding:4px 0 14px 20px;font-size:14px;color:var(--ink-2)}
+.step::before{content:"";position:absolute;left:-7px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--blue)}
+.step b{display:block;color:var(--ink);font-weight:600;font-size:14.5px}
+.step code{font-family:var(--f-mono);font-size:12px;color:var(--blue);background:var(--blue-soft);padding:2px 6px;border-radius:4px;word-break:break-word}
+.result{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.result div{background:var(--card);padding:14px}
+.result .k{font-size:12px;color:var(--ink-3)}
+.result .v{font-family:var(--f-display);font-weight:700;font-size:24px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin-top:2px}
+.result .v{white-space:nowrap}
+.result .v.neg{color:var(--neg)}
+.result .v.blue{color:var(--blue)}
+.ro{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);padding:12px 18px;border-top:1px solid var(--line)}
+.ro svg{width:14px;height:14px;color:var(--ok);flex:none}
+@media (max-width:480px){.result div{padding:12px 10px}.result .v{font-size:18px}}
+@media (max-width:370px){.result .v{font-size:16px}}
+
+/* Studio visual */
+.pipeline{display:grid;gap:18px}
+.phases{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.phase{font-family:var(--f-mono);font-size:12px;padding:6px 10px;border-radius:6px;border:1px solid var(--line);color:var(--ink-2);background:var(--card)}
+.phase.done{color:var(--ink);border-color:color-mix(in srgb,var(--blue) 35%,var(--line))}
+.arrow{color:var(--ink-3);font-size:12px}
+.graph-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--bg-soft)}
+.graph{display:block;min-width:520px;width:100%;height:auto}
+.graph text{font-family:var(--f-mono);font-size:11px;fill:var(--ink)}
+.graph .sub{fill:var(--ink-3);font-size:10px}
+.graph .node{fill:var(--card);stroke:var(--line)}
+.graph .node.ok{stroke:var(--blue)}
+.graph .edge{stroke:var(--ink-3);stroke-width:1.2;fill:none}
+.graph .gate{fill:var(--blue)}
+.graph .gate-wait{fill:var(--card);stroke:var(--blue);stroke-width:1.5}
+.gate-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--card)}
+.gate-card .t{font-weight:600;font-size:14.5px}
+.gate-card .s{font-size:13px;color:var(--ink-3);margin-top:2px}
+.gate-actions{display:flex;gap:8px}
+.chip{font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:7px;border:1px solid var(--line);color:var(--ink-2);background:var(--card)}
+.chip.approve{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
+.outputs{display:flex;flex-wrap:wrap;gap:6px}
+.outputs span{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-2);border:1px dashed var(--line);border-radius:6px;padding:4px 8px}
+@media (max-width:480px){.gate-card{grid-template-columns:minmax(0,1fr)}}
+
+/* Assembly visual */
+.apps{display:grid;gap:14px}
+.app-group{border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden}
+.app-group header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--bg-soft)}
+.app-group header b{font-family:var(--f-display);font-weight:700;font-size:15px;letter-spacing:-.01em}
+.app-group header span{font-size:12.5px;color:var(--ink-3)}
+.app-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.app-list li{padding:11px 16px;font-size:14px;border-bottom:1px solid var(--line);color:var(--ink-2)}
+.app-list li b{display:block;color:var(--ink);font-weight:600;font-size:14.5px}
+.app-list li:nth-child(odd){border-right:1px solid var(--line)}
+.app-list li:last-child{border-bottom:0}
+.app-list li:last-child:nth-child(odd){grid-column:1/-1;border-right:0}
+.app-list li:nth-last-child(2):nth-child(odd){border-bottom:0}
+.langs{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--ink-2);padding:2px 2px 0}
+.langs .ur{font-family:var(--f-urdu);font-size:17px;line-height:1.6;color:var(--ink)}
+.langs .sd{font-family:var(--f-naskh);font-size:17px;color:var(--ink)}
+.langs .sep{color:var(--ink-3)}
+@media (max-width:520px){.app-list{grid-template-columns:minmax(0,1fr)}.app-list li:nth-child(odd){border-right:0}.app-list li:nth-last-child(2):nth-child(odd){border-bottom:1px solid var(--line)}}
+
+/* Outcomes */
+.outcomes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.outcome{padding:28px 24px 8px 0;display:grid;gap:10px;align-content:start}
+.outcome+.outcome{padding-left:24px;border-left:1px solid var(--line)}
+.outcome .task{font-size:16px;font-weight:600;color:var(--ink);min-height:3em;line-height:1.4}
+.outcome .from{font-size:14px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.outcome .from b{font-weight:600;color:var(--ink-2)}
+.outcome .with{font-size:13px;color:var(--ink-3);margin-bottom:-4px}
+.outcome .to{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,3.6vw,46px);letter-spacing:-.03em;line-height:1;color:var(--blue);font-variant-numeric:tabular-nums}
+.outcomes-note{margin-top:28px;font-size:13.5px;color:var(--ink-3);max-width:70ch}
+@media (max-width:900px){.outcomes{grid-template-columns:repeat(2,minmax(0,1fr))}.outcome:nth-child(3){padding-left:0;border-left:0}.outcome:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:460px){.outcomes{grid-template-columns:minmax(0,1fr)}.outcome+.outcome{padding-left:0;border-left:0;border-top:1px solid var(--line)}.outcome .task{min-height:0}}
+
+/* Deployment */
+.deploy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.mode{border:1px solid var(--line);border-radius:14px;padding:28px;background:var(--card);display:grid;gap:14px;align-content:start}
+.mode.primary{border-color:color-mix(in srgb,var(--blue) 45%,var(--line))}
+.mode h3{font-size:24px;font-weight:700}
+.mode .label{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px}
+.mode p{color:var(--ink-2);font-size:15.5px}
+.mode dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 18px;margin:6px 0 0;font-size:14.5px;border-top:1px solid var(--line);padding-top:16px}
+.mode dt{color:var(--ink-3)}
+.mode dd{margin:0;color:var(--ink)}
+.promises{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;margin-top:clamp(48px,6vw,72px)}
+.promise{display:grid;gap:8px;align-content:start}
+.promise svg{width:22px;height:22px;color:var(--blue)}
+.promise h4{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-top:6px}
+.promise p{font-size:15px;color:var(--ink-2)}
+@media (max-width:900px){.deploy-grid{grid-template-columns:minmax(0,1fr)}.promises{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.promises{grid-template-columns:minmax(0,1fr)}.mode{padding:22px}}
+
+/* Company */
+.company-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
+.company-copy{display:grid;gap:18px}
+.company-copy h2{font-size:clamp(32px,4.2vw,52px);font-weight:700}
+.company-side{display:grid;gap:18px}
+.company-side p{color:var(--ink-2);max-width:56ch}
+.name-note{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center;border-top:1px solid var(--line);padding-top:20px;margin-top:6px}
+.name-note .ur{font-family:var(--f-urdu);font-size:30px;line-height:1.7;color:var(--ink);direction:rtl}
+.name-note p{font-size:14.5px}
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 28px;margin-top:clamp(48px,6vw,72px);padding-top:clamp(40px,5vw,56px);border-top:1px solid var(--line)}
+.person{display:grid;gap:14px;align-content:start}
+.person img{width:88px;height:88px;border-radius:50%;object-fit:cover;filter:grayscale(1) contrast(1.05);background:var(--line)}
+.person h4{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+.person .role{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-top:6px}
+.person p{font-size:14.5px;color:var(--ink-2);margin-top:10px;line-height:1.55}
+.earlier{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:20px 28px;margin-top:clamp(40px,5vw,56px);padding-top:28px;border-top:1px solid var(--line);align-items:start}
+.earlier li b{display:block;font-weight:600;font-size:15px}
+.earlier li span{font-size:14px;color:var(--ink-2)}
+.earlier .label{padding-top:3px;min-width:9em}
+@media (max-width:920px){.company-top{grid-template-columns:minmax(0,1fr);align-items:start}.team{grid-template-columns:repeat(2,minmax(0,1fr))}.earlier{grid-template-columns:repeat(3,minmax(0,1fr))}.earlier .label{grid-column:1/-1}}
+@media (max-width:560px){.team{grid-template-columns:minmax(0,1fr)}.person{grid-template-columns:72px minmax(0,1fr);gap:16px}.person img{width:72px;height:72px}.earlier{grid-template-columns:minmax(0,1fr)}}
+
+/* Contact */
+.contact{background:var(--deep);color:var(--on-deep)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px)}
+.contact h2{font-size:clamp(34px,4.6vw,58px);font-weight:800;letter-spacing:-.03em;color:var(--on-deep)}
+.contact .lede{color:var(--on-deep-2);margin-top:18px}
+.contact .label{color:var(--on-deep-2)}
+.details{display:grid;gap:22px;margin-top:40px}
+.detail{display:grid;gap:4px}
+.detail .val{font-size:17px;color:var(--on-deep);user-select:all;-webkit-user-select:all}
+.detail .val.addr{user-select:text;-webkit-user-select:text}
+.detail a.val{justify-self:start;text-decoration:none;border-bottom:1px solid var(--deep-line)}
+.detail a.val:hover{border-bottom-color:var(--on-deep)}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;background:var(--card);border:1px solid var(--deep-line);color:var(--ink);border-radius:14px;padding:clamp(22px,3vw,32px)}
+.field{display:grid;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:13.5px;font-weight:600;color:var(--ink)}
+.field label span{font-weight:400;color:var(--ink-3)}
+.field input,.field select,.field textarea{font:inherit;font-size:15.5px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px 12px;width:100%;min-width:0;transition:border-color .15s}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+.interest{display:flex;flex-wrap:wrap;gap:8px;border:0;padding:0;margin:0}
+.interest legend{font-size:13.5px;font-weight:600;margin-bottom:8px;padding:0}
+.interest label{position:relative;cursor:pointer}
+.interest input{position:absolute;opacity:0;width:1px;height:1px}
+.interest span{display:inline-block;font-size:14px;padding:8px 13px;border:1px solid var(--line);border-radius:999px;color:var(--ink-2);transition:all .15s}
+.interest input:checked+span{border-color:var(--blue);color:var(--blue);background:var(--blue-soft)}
+.interest input:focus-visible+span{outline:2px solid var(--blue);outline-offset:2px}
+.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:4px}
+.form-foot small{font-size:13px;color:var(--ink-3)}
+.form-status{grid-column:1/-1;font-size:14.5px;border-radius:8px;padding:12px 14px;background:var(--bg-soft);color:var(--ink)}
+.form-status.ok{background:var(--blue-soft)}
+@media (max-width:920px){.contact-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.form{grid-template-columns:minmax(0,1fr)}}
+
+/* Footer */
+.site-footer{padding-block:40px 48px;border-top:1px solid var(--line)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 40px}
+.foot nav{display:flex;flex-wrap:wrap;gap:10px 26px}
+.foot nav a{text-decoration:none;font-size:14.5px;color:var(--ink-2)}
+.foot nav a:hover{color:var(--ink)}
+.foot small{font-size:13.5px;color:var(--ink-3)}
+.social{display:flex;gap:10px}
+.social a{display:grid;place-items:center;width:36px;height:36px;border-radius:8px;border:1px solid var(--line);color:var(--ink-2)}
+.social a:hover{color:var(--ink);border-color:var(--ink-3)}
+.social svg{width:16px;height:16px}
+</style>
 </head>
-<body class="bg-white text-primary-text font-inter antialiased">
-    <!-- Dynamic Header -->
-    <div id="header-placeholder"></div>
+<body>
+<a class="skip" href="#main">Skip to content</a>
 
-    <!-- Main Content -->
-    <main class="w-full">
-        <!-- Hero Section -->
-        <section id="home" class="w-full relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5"></div>
-            <div class="absolute top-20 left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-20 right-20 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
-            <div class="absolute top-1/2 left-1/4 w-64 h-64 bg-green-400/5 rounded-full blur-2xl animate-float" style="animation-delay: -1s;"></div>
-            
-            <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
-                <div class="text-center max-w-5xl mx-auto">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-text mb-4 sm:mb-6 leading-tight animate-fadeInUp">
-                        <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Liwa Labs:</span> Engineering the Future of
-                        <br><span class="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Decentralized Computing</span>
-                    </h1>
-                    <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-text opacity-80 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-4 sm:px-0 animate-fadeInUp" style="animation-delay: 0.2s;">
-                        From scalable cloud solutions and custom Web3 applications to high-efficiency HPC data centers for crypto mining, we provide the infrastructure for innovation.
-                    </p>
-                    
-                    <!-- Stats Section -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-10 animate-fadeInUp" style="animation-delay: 0.4s;">
-                        <div class="text-center">
-                            <div class="text-2xl md:text-3xl font-bold text-accent-blue mb-1">50+</div>
-                            <div class="text-xs md:text-sm text-primary-text opacity-70">Projects Delivered</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl md:text-3xl font-bold text-accent-blue mb-1">24/7</div>
-                            <div class="text-xs md:text-sm text-primary-text opacity-70">Support Available</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl md:text-3xl font-bold text-accent-blue mb-1">6</div>
-                            <div class="text-xs md:text-sm text-primary-text opacity-70">Core Services</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl md:text-3xl font-bold text-accent-blue mb-1">100%</div>
-                            <div class="text-xs md:text-sm text-primary-text opacity-70">Client Satisfaction</div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 sm:mt-10 animate-fadeInUp" style="animation-delay: 0.6s;">
-                        <a href="contact.html" class="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-accent-blue to-blue-600 text-white font-semibold text-base sm:text-lg rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl group">
-                            Get in Touch
-                            <svg class="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+<header class="site-header" id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Liwa Labs, back to top">
+      <img class="mark-dark" src="assets/liwa-mark.png" alt="" width="34" height="34">
+      <img class="mark-light" src="assets/liwa-mark-light.png" alt="" width="34" height="34">
+      <span class="brand-word">LIWA <span>LABS</span></span>
+    </a>
+    <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="#products">Products</a>
+      <a href="#deployment">Deployment</a>
+      <a href="#company">Company</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="#contact">Book a demo</a>
+    </nav>
+  </div>
+</header>
 
-        <!-- Services Section -->
-        <section id="services" class="w-full bg-gradient-to-br from-accent-blue via-blue-600 to-purple-600 relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
-            <div class="absolute top-10 right-10 w-40 h-40 bg-white/5 rounded-full blur-2xl animate-float"></div>
-            <div class="absolute bottom-10 left-10 w-60 h-60 bg-white/5 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
-            
-            <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
-                <div class="text-center mb-12 sm:mb-16">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 animate-fadeInUp">
-                        <span class="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">Our Services</span>
-                    </h2>
-                    <p class="text-base sm:text-lg md:text-xl text-white opacity-90 max-w-3xl mx-auto px-4 sm:px-0 animate-fadeInUp" style="animation-delay: 0.2s;">
-                        Comprehensive technology solutions designed to power your digital transformation and innovation journey.
-                    </p>
-                </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
-                <!-- Card 1: HPC Data Centers -->
-                <div class="service-card bg-white/95 backdrop-blur-sm rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group border border-white/20">
-                    <div class="flex justify-center mb-4 sm:mb-6">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 animate-pulse-slow">
-                            <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-semibold text-primary-text mb-3 sm:mb-4 text-center group-hover:text-accent-blue transition-colors duration-300">
-                        HPC Data Centers
-                    </h3>
-                    <p class="text-sm sm:text-base text-primary-text opacity-70 text-center leading-relaxed mb-4 group-hover:opacity-90 transition-opacity duration-300">
-                        Building and managing high-performance computing (HPC) data centers optimized for large-scale crypto and Bitcoin mining operations.
-                    </p>
-                </div>
+<main id="main">
 
-                <!-- Card 2: Web3 & Blockchain Development -->
-                <div class="service-card bg-white/95 backdrop-blur-sm rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 group border border-white/20">
-                    <div class="flex justify-center mb-4 sm:mb-6">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 animate-pulse-slow">
-                            <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-semibold text-primary-text mb-3 sm:mb-4 text-center group-hover:text-accent-blue transition-colors duration-300">
-                        Web3 & Blockchain Development
-                    </h3>
-                    <p class="text-sm sm:text-base text-primary-text opacity-70 text-center leading-relaxed mb-4 group-hover:opacity-90 transition-opacity duration-300">
-                        Complete development stack for decentralized solutions including smart contract development, dApp creation, and blockchain integration services.
-                    </p>
-                </div>
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="label blue">Liwa Labs · Karachi</p>
+      <h1>Sovereign AI for government and <em>industry.</em></h1>
+      <p class="lede">We build Mulazim, a private AI platform that runs on your own servers, learns from your own records and shows the source behind every answer. Your data never leaves your control.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Book a demo</a>
+        <a class="btn btn-ghost" href="#products">See the products</a>
+      </div>
+      <div class="hero-meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Runs on your premises</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h10M4 19h7"/></svg>Urdu, Sindhi and English</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/></svg>Built in Pakistan</span>
+      </div>
+    </div>
 
-                <!-- Card 3: Web3 & Strategic Consulting -->
-                <div class="bg-white rounded-lg p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="flex justify-center mb-4 sm:mb-6">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 sm:w-8 sm:h-8 text-accent-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-semibold text-primary-text mb-3 sm:mb-4 text-center">
-                        Web3 & Strategic Consulting
-                    </h3>
-                    <p class="text-sm sm:text-base text-primary-text opacity-70 text-center leading-relaxed mb-4">
-                        Expert guidance for navigating the decentralized ecosystem with Web3 consultation and advanced technology training for clients and partners.
-                    </p>
-                </div>
-
-                <!-- Card 4: Financial Technology (FinTech) -->
-                <div class="bg-white rounded-lg p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="flex justify-center mb-4 sm:mb-6">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 sm:w-8 sm:h-8 text-accent-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-semibold text-primary-text mb-3 sm:mb-4 text-center">
-                        Financial Technology (FinTech)
-                    </h3>
-                    <p class="text-sm sm:text-base text-primary-text opacity-70 text-center leading-relaxed mb-4">
-                        Advanced financial technology solutions integrating with Web3 development to create DeFi platforms and blockchain-based financial products.
-                    </p>
-                </div>
-
-                <!-- Card 5: Cloud & Data Infrastructure -->
-                <div class="bg-white rounded-lg p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="flex justify-center mb-4 sm:mb-6">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 sm:w-8 sm:h-8 text-accent-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-semibold text-primary-text mb-3 sm:mb-4 text-center">
-                        Cloud & Data Infrastructure
-                    </h3>
-                    <p class="text-sm sm:text-base text-primary-text opacity-70 text-center leading-relaxed mb-4">
-                        Scalable cloud computing and big data analytics providing essential off-chain and data processing support for high-performance applications.
-                    </p>
-                </div>
-
-                <!-- Card 6: Digital Asset Management -->
-                <div class="bg-white rounded-lg p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="flex justify-center mb-4 sm:mb-6">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 sm:w-8 sm:h-8 text-accent-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-semibold text-primary-text mb-3 sm:mb-4 text-center">
-                        Digital Asset Management
-                    </h3>
-                    <p class="text-sm sm:text-base text-primary-text opacity-70 text-center leading-relaxed mb-4">
-                        Management of state-of-the-art Bitcoin mining infrastructure, positioning us at the core of digital computation and asset creation.
-                    </p>
-                </div>
-                
-                <div class="text-center mt-12 animate-fadeInUp" style="animation-delay: 0.8s;">
-                    <a href="services.html" class="inline-flex items-center bg-white/10 backdrop-blur-sm text-white font-semibold py-3 px-6 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:scale-105 border border-white/30 group">
-                        View All Services
-                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- About Us / The Team Section -->
-        <section id="about" class="w-full bg-gradient-to-br from-gray-50 to-blue-50/30 relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-600/3 to-purple-600/3"></div>
-            <div class="absolute top-20 right-20 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-20 left-20 w-80 h-80 bg-purple-400/5 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
-            
-            <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
-                <div class="text-center mb-12 sm:mb-16">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-text mb-4 sm:mb-6 animate-fadeInUp">
-                        <span class="bg-gradient-to-r from-accent-blue to-purple-600 bg-clip-text text-transparent">Meet the Minds Behind</span>
-                        <br>Liwa Labs
-                    </h2>
-                    <p class="text-base sm:text-lg md:text-xl text-primary-text opacity-80 max-w-3xl mx-auto px-4 sm:px-0 animate-fadeInUp" style="animation-delay: 0.2s;">
-                        Our leadership team combines decades of experience in technology, education, and innovation.
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                    <!-- K.A. MANNAN SPANOGIANNIS -->
-                    <div class="team-card bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 text-center transform hover:-translate-y-2 group border border-gray-100 hover:border-accent-blue/20">
-                        <div class="flex justify-center mb-6">
-                            <div class="w-24 h-24 rounded-full overflow-hidden border-3 border-gray-200 group-hover:border-accent-blue/50 transition-colors duration-300 shadow-lg group-hover:shadow-xl">
-                                <img src="./attached_assets/mani_1754519427867.png" alt="K.A. Mannan Spanogiannis" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="eager">
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-semibold text-primary-text mb-2">
-                            K.A. MANNAN SPANOGIANNIS
-                        </h3>
-                        <p class="text-accent-blue font-medium mb-4">
-                            CEO & CO-FOUNDER
-                        </p>
-                        <p class="text-primary-text opacity-70 text-sm leading-relaxed">
-                            An experienced international entrepreneur with a proven record of building tech ventures and leading successful Web3 projects from concept to launch.
-                        </p>
-                    </div>
-
-                    <!-- GHULAM MUSTAFA RAZA QADRI -->
-                    <div class="team-card bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 text-center transform hover:-translate-y-2 group border border-gray-100 hover:border-green-500/20 animate-fadeInUp" style="animation-delay: 0.6s;">
-                        <div class="flex justify-center mb-6">
-                            <div class="w-24 h-24 rounded-full overflow-hidden border-3 border-gray-200 group-hover:border-green-500/50 transition-colors duration-300 shadow-lg group-hover:shadow-xl">
-                                <img src="./attached_assets/ghulam_1754519427866.jpeg" alt="Ghulam Mustafa Raza Qadri" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="eager">
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-semibold text-primary-text mb-2">
-                            GHULAM MUSTAFA RAZA QADRI
-                        </h3>
-                        <p class="bg-gradient-to-r from-green-500 to-blue-600 bg-clip-text text-transparent font-medium mb-4">
-                            CO-FOUNDER
-                        </p>
-                        <p class="text-primary-text opacity-70 text-sm leading-relaxed">
-                            An elite engineer and decentralization advocate with 8+ years of experience. He has provided technical leadership for key ventures and his educational work has impacted over 120,000 students in Pakistan.
-                        </p>
-                    </div>
-
-                    <!-- ENGR. MUHAMMAD MOIZ YOUSUF -->
-                    <div class="team-card bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 text-center transform hover:-translate-y-2 group border border-gray-100 hover:border-purple-500/20 animate-fadeInUp" style="animation-delay: 0.8s;">
-                        <div class="flex justify-center mb-6">
-                            <div class="w-24 h-24 rounded-full overflow-hidden border-3 border-gray-200 group-hover:border-purple-500/50 transition-colors duration-300 shadow-lg group-hover:shadow-xl">
-                                <img src="./attached_assets/moiz_1754604876141.jpg" alt="Engr. Muhammad Moiz Yousuf" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="eager">
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-semibold text-primary-text mb-2">
-                            ENGR. MUHAMMAD MOIZ YOUSUF
-                        </h3>
-                        <p class="bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent font-medium mb-4">
-                            CO-FOUNDER
-                        </p>
-                        <p class="text-primary-text opacity-70 text-sm leading-relaxed">
-                            A PEC Registered Automotive Engineer and Web 3.0 entrepreneur who co-founded CERBERUS-TECH and is the youngest committee chairman in the history of the FPCCI.
-                        </p>
-                    </div>
-
-                    <!-- MUHAMMAD AMMAR IRFAN BHABHA -->
-                    <div class="team-card bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 text-center transform hover:-translate-y-2 group border border-gray-100 hover:border-yellow-500/20 animate-fadeInUp" style="animation-delay: 1.0s;">
-                        <div class="flex justify-center mb-6">
-                            <div class="w-24 h-24 rounded-full overflow-hidden border-3 border-gray-200 group-hover:border-yellow-500/50 transition-colors duration-300 shadow-lg group-hover:shadow-xl">
-                                <img src="./attached_assets/Ammar Picture_1754519438188.jpg" alt="Muhammad Ammar Irfan Bhabha" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" loading="eager">
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-semibold text-primary-text mb-2">
-                            MUHAMMAD AMMAR IRFAN BHABHA
-                        </h3>
-                        <p class="bg-gradient-to-r from-yellow-500 to-orange-600 bg-clip-text text-transparent font-medium mb-4">
-                            CO-FOUNDER
-                        </p>
-                        <p class="text-primary-text opacity-70 text-sm leading-relaxed">
-                            A nationally recognized tech visionary and recipient of the 'Fakhar-e-Pakistan' award. He is the CEO of Bhabha Technologies, an International AI Champion (recognized by the Govt. of Russia), and serves in Pakistan's Youth Parliament.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="w-full bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30 relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-600/3 to-purple-600/3"></div>
-            <div class="absolute top-20 left-20 w-64 h-64 bg-blue-400/8 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-20 right-20 w-80 h-80 bg-purple-400/8 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
-            <div class="absolute top-1/2 left-1/3 w-48 h-48 bg-green-400/5 rounded-full blur-2xl animate-float" style="animation-delay: -1s;"></div>
-            
-            <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
-                <div class="text-center mb-12 sm:mb-16">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-text mb-4 sm:mb-6 animate-fadeInUp">
-                        <span class="bg-gradient-to-r from-accent-blue to-purple-600 bg-clip-text text-transparent">Get in Touch</span>
-                    </h2>
-                    <p class="text-base sm:text-lg md:text-xl text-primary-text opacity-80 max-w-3xl mx-auto px-4 sm:px-0 animate-fadeInUp" style="animation-delay: 0.2s;">
-                        Ready to transform your business with cutting-edge technology? Let's discuss your project.
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 max-w-6xl mx-auto">
-                    <!-- Contact Form -->
-                    <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl border border-white/40 animate-fadeInUp contact-form" style="animation-delay: 0.4s;">
-                        <h3 class="text-xl sm:text-2xl font-semibold text-primary-text mb-4 sm:mb-6">
-                            <span class="bg-gradient-to-r from-accent-blue to-purple-600 bg-clip-text text-transparent">Send us a message</span>
-                        </h3>
-                        <form id="home-contact-form" class="space-y-6" action="/submit-contact" method="POST">
-                            <div>
-                                <label for="first-name" class="block text-sm font-medium text-primary-text mb-2">First Name</label>
-                                <input type="text" id="first-name" name="first-name" required 
-                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-colors">
-                            </div>
-                            <div>
-                                <label for="last-name-home" class="block text-sm font-medium text-primary-text mb-2">Last Name</label>
-                                <input type="text" id="last-name-home" name="last-name" required 
-                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-colors">
-                            </div>
-                            <div>
-                                <label for="email-home" class="block text-sm font-medium text-primary-text mb-2">Email</label>
-                                <input type="email" id="email-home" name="email" required 
-                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-colors">
-                            </div>
-                            <div>
-                                <label for="phone-home" class="block text-sm font-medium text-primary-text mb-2">Phone (Optional)</label>
-                                <input type="tel" id="phone-home" name="phone" 
-                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-colors">
-                            </div>
-                            <div>
-                                <label for="subject-home" class="block text-sm font-medium text-primary-text mb-2">Service Interest</label>
-                                <select id="subject-home" name="subject" required 
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-colors">
-                                    <option value="">Select a service...</option>
-                                    <option value="HPC Data Centers">HPC Data Centers</option>
-                                    <option value="Web3 & Blockchain Development">Web3 & Blockchain Development</option>
-                                    <option value="Web3 & Strategic Consulting">Web3 & Strategic Consulting</option>
-                                    <option value="Financial Technology (FinTech)">Financial Technology (FinTech)</option>
-                                    <option value="Cloud & Data Infrastructure">Cloud & Data Infrastructure</option>
-                                    <option value="Digital Asset Management">Digital Asset Management</option>
-                                    <option value="General Inquiry">General Inquiry</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="message-home" class="block text-sm font-medium text-primary-text mb-2">Message</label>
-                                <textarea id="message-home" name="message" rows="5" required 
-                                          class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent-blue focus:border-accent-blue transition-colors resize-vertical"></textarea>
-                            </div>
-                            <button type="submit" id="home-submit-btn"
-                                    class="w-full bg-gradient-to-r from-accent-blue to-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl group">
-                                <span class="flex items-center justify-center">
-                                    <span id="home-btn-text">Send Message</span>
-                                    <svg id="home-submit-icon" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                                    </svg>
-                                    <svg id="home-loading-icon" class="w-4 h-4 ml-2 animate-spin hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.49 8.49l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.49-8.49l2.83-2.83"></path>
-                                    </svg>
-                                </span>
-                            </button>
-                            <!-- Form Feedback -->
-                            <div id="home-form-message" class="hidden"></div>
-                        </form>
-                    </div>
-
-                    <!-- Contact Information -->
-                    <div class="space-y-6 sm:space-y-8 animate-fadeInUp" style="animation-delay: 0.6s;">
-                        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl border border-white/40">
-                            <h3 class="text-xl sm:text-2xl font-semibold text-primary-text mb-4 sm:mb-6">
-                                <span class="bg-gradient-to-r from-accent-blue to-purple-600 bg-clip-text text-transparent">Contact Information</span>
-                            </h3>
-                            <div class="space-y-4 sm:space-y-6">
-                                <div class="flex items-start space-x-3 sm:space-x-4 p-4 bg-gradient-to-r from-blue-50/50 to-purple-50/50 rounded-xl hover:shadow-md transition-shadow duration-300">
-                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg animate-pulse-slow">
-                                        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-primary-text text-sm sm:text-base">Email</h4>
-                                        <p class="text-primary-text opacity-70 text-sm sm:text-base">info@liwalabs.com</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-start space-x-3 sm:space-x-4 p-4 bg-gradient-to-r from-orange-50/50 to-red-50/50 rounded-xl hover:shadow-md transition-shadow duration-300">
-                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg animate-pulse-slow">
-                                        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-primary-text text-sm sm:text-base">Phone</h4>
-                                        <p class="text-primary-text opacity-70 text-sm sm:text-base">+92 326 2263160</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-start space-x-3 sm:space-x-4 p-4 bg-gradient-to-r from-green-50/50 to-blue-50/50 rounded-xl hover:shadow-md transition-shadow duration-300">
-                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg animate-pulse-slow">
-                                        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-primary-text text-sm sm:text-base">Address</h4>
-                                        <p class="text-primary-text opacity-70 leading-relaxed text-sm sm:text-base">
-                                            <a href="https://maps.app.goo.gl/D2wzi4vhPHQvCu5S8" target="_blank" rel="noopener noreferrer" class="hover:text-accent-blue transition-colors duration-200">
-                                                Office 505, Tai Roshan Trade Center,<br>
-                                                Shaheed e Millat Road, Karachi
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="w-full bg-primary-text text-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-            <div class="flex flex-col sm:flex-row justify-between items-center">
-                <div class="mb-4 sm:mb-0">
-                    <p class="text-center sm:text-left text-sm sm:text-base">&copy; 2024 Liwa Labs. All Rights Reserved.</p>
-                </div>
-                
-                <div class="flex space-x-4 sm:space-x-6">
-                    <!-- Instagram Icon -->
-                    <a href="https://www.instagram.com/liwalabs" target="_blank" rel="noopener noreferrer" 
-                       class="w-8 h-8 sm:w-10 sm:h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors duration-200">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </a>
-                    
-                    <!-- Twitter/X Icon -->
-                    <a href="https://twitter.com/liwalabs" target="_blank" rel="noopener noreferrer" 
-                       class="w-8 h-8 sm:w-10 sm:h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors duration-200">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+    <div>
+      <div class="answer" role="img" aria-label="Example: Mulazim summarises an English budget circular in Urdu and cites the page it used.">
+        <div class="answer-bar">
+          <span class="who"><i></i>Mulazim</span>
+          <span class="label">On-premises · Offline</span>
         </div>
-    </footer>
+        <div class="answer-body">
+          <div class="q">
+            <div class="file"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>budget-circular-2026-27.pdf · 14 pages</div>
+            Explain this circular in Urdu. What do departments have to do?
+          </div>
+          <div class="a">
+            <p class="urdu" lang="ur">تمام محکمے اپنے نظرثانی شدہ بجٹ تخمینے ۱۵ مارچ تک محکمۂ خزانہ کو جمع کرائیں۔ نئے منصوبوں کے لیے منظور شدہ پی سی ون لازمی ہے۔</p>
+            <p class="en">All departments must send revised budget estimates to the Finance Department by 15 March. New schemes need an approved PC-1.</p>
+            <div class="cites">
+              <span class="cite"><b>p. 2</b> ¶ 4 · Submission deadline</span>
+              <span class="cite"><b>p. 6</b> ¶ 1 · New schemes</span>
+            </div>
+          </div>
+        </div>
+        <div class="answer-foot">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Every line linked to its page</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Never sent outside</span>
+        </div>
+      </div>
+      <p class="mock-note">Illustrative example</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Dynamic Components Script -->
-    <script src="js/components.js"></script>
+<!-- Audience -->
+<section class="audience" aria-label="Who we work with">
+  <div class="wrap audience-row">
+    <span class="label">Built for</span>
+    <div class="item">Legislatures<small>Assemblies and secretariats</small></div>
+    <div class="item">Government<small>Ministries and departments</small></div>
+    <div class="item">Enterprises<small>Finance, operations, data teams</small></div>
+    <div class="item">Engineering<small>Automotive and aerospace makers</small></div>
+  </div>
+</section>
 
-    <!-- Home Contact Form Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const homeForm = document.getElementById('home-contact-form');
-            const homeSubmitBtn = document.getElementById('home-submit-btn');
-            const homeBtnText = document.getElementById('home-btn-text');
-            const homeSubmitIcon = document.getElementById('home-submit-icon');
-            const homeLoadingIcon = document.getElementById('home-loading-icon');
-            const homeFormMessage = document.getElementById('home-form-message');
+<!-- Products -->
+<section class="section" id="products">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="label blue">Products</p>
+      <h2>One private AI platform. Three products.</h2>
+      <p class="lede">Mulazim is one platform that runs inside your organisation. Each product is built on it for a specific kind of work, and each can run fully offline on your own hardware.</p>
+    </div>
 
-            homeForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                // Show loading state
-                homeSubmitBtn.disabled = true;
-                homeBtnText.textContent = 'Sending...';
-                homeSubmitIcon.classList.add('hidden');
-                homeLoadingIcon.classList.remove('hidden');
-                homeFormMessage.classList.add('hidden');
-                
-                try {
-                    const formData = new FormData(homeForm);
-                    
-                    const response = await fetch('/submit-contact', {
-                        method: 'POST',
-                        body: formData
-                    });
-                    
-                    const result = await response.json();
-                    
-                    if (response.ok && result.success) {
-                        // Success
-                        homeFormMessage.innerHTML = `
-                            <div class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg flex items-center">
-                                <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span>${result.message}</span>
-                            </div>
-                        `;
-                        homeFormMessage.classList.remove('hidden');
-                        homeForm.reset();
-                    } else {
-                        // Error
-                        homeFormMessage.innerHTML = `
-                            <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg flex items-center">
-                                <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>${result.error || 'Failed to send message. Please try again.'}</span>
-                            </div>
-                        `;
-                        homeFormMessage.classList.remove('hidden');
-                    }
-                } catch (error) {
-                    // Network error
-                    homeFormMessage.innerHTML = `
-                        <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg flex items-center">
-                            <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Network error. Please check your connection and try again.</span>
-                        </div>
-                    `;
-                    homeFormMessage.classList.remove('hidden');
-                } finally {
-                    // Reset button state
-                    homeSubmitBtn.disabled = false;
-                    homeBtnText.textContent = 'Send Message';
-                    homeSubmitIcon.classList.remove('hidden');
-                    homeLoadingIcon.classList.add('hidden');
-                }
-            });
-        });
-    </script>
+    <div class="products-index">
+      <a class="pi" href="#mulazim-ai">
+        <h3>Mulazim AI <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></h3>
+        <p>An AI analyst for your organisation. Asks your databases and documents, answers with the source.</p>
+      </a>
+      <a class="pi" href="#mulazim-studio">
+        <h3>Mulazim Studio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></h3>
+        <p>An engineering design team of AI specialists. From a brief to CAD models and analysis, with you approving every step.</p>
+      </a>
+      <a class="pi" href="#assembly-os">
+        <h3>Assembly OS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></h3>
+        <p>Sixteen applications that run a legislative assembly, from bill drafting to questions, records and HR.</p>
+      </a>
+    </div>
+
+    <!-- Mulazim AI -->
+    <article class="product" id="mulazim-ai">
+      <div>
+        <p class="label blue">Mulazim AI</p>
+        <h3>Ask your organisation anything.</h3>
+        <p class="tagline">Answers from your own databases and documents, with every figure and quote traced back to where it came from.</p>
+        <p class="desc">Public chatbots have never seen your records, and anything you paste into them leaves your control. Mulazim connects to your systems inside your network, reasons over the data and writes up what it finds.</p>
+        <ul class="feats">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg><span><b>Data analyst.</b> Plain-language questions over your ERP and databases, answered with the numbers behind them.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg><span><b>Document answers.</b> Search across laws, rules, policies and files, with the clause or page cited.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span><b>Reports and decks.</b> Findings written up as reports, spreadsheets and slide decks you can edit.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg><span><b>Video analysis.</b> Mission Control counts and tracks what appears in recorded or live camera footage, processed on site.</span></li>
+        </ul>
+        <a class="btn btn-ghost" href="https://mulazimai.com" target="_blank" rel="noopener">Visit mulazimai.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      </div>
+      <div class="product-visual">
+        <div class="panel" role="img" aria-label="Example: Mulazim AI explains a margin drop by querying the sales database, and shows each query it ran.">
+          <div class="panel-head"><span>Data analyst</span><span class="label">Example</span></div>
+          <div class="panel-body trace">
+            <p class="ask">Why did the Pro Maple Bat lose margin in 2023?</p>
+            <div class="steps">
+              <div class="step"><b>Read the question</b>Product: Pro Maple Bat · period: 2022 vs 2023</div>
+              <div class="step"><b>Compared 2022 with 2023</b><code>v_product_margin_change</code></div>
+              <div class="step"><b>Split price from cost</b>Unit cost up 22% from Q1 2023, price unchanged</div>
+              <div class="step" style="padding-bottom:4px"><b>Concluded</b>The drop is driven by cost, not by discounting</div>
+            </div>
+            <div class="result">
+              <div><p class="k">Margin change</p><p class="v neg">−11.3 pp</p></div>
+              <div><p class="k">Unit cost</p><p class="v">+22%</p></div>
+              <div><p class="k">Driver</p><p class="v blue">Cost</p></div>
+            </div>
+          </div>
+          <div class="ro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg>Read-only access. The database itself refuses any change.</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Mulazim Studio -->
+    <article class="product" id="mulazim-studio">
+      <div>
+        <p class="label blue">Mulazim Studio</p>
+        <h3>An engineering team of AI specialists.</h3>
+        <p class="tagline">Give it a brief and reference designs. Get blueprints, CAD models, analysis and renders, reviewed at every step.</p>
+        <p class="desc">Studio plans the work as a graph of specialist roles, from body design and chassis to propulsion and homologation, and runs it with real engineering tools. Nothing moves forward until an engineer approves it.</p>
+        <ul class="feats">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7 6h10M6 8l5 8M18 8l-5 8"/></svg><span><b>59 specialist roles.</b> Automotive, armoured vehicle and drone engineering, picked per project.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12M21 7l-9 5-9-5"/></svg><span><b>Real outputs.</b> STEP, STL and 3D models, FEA, renders and dimensioned drawings.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span><b>Human gates.</b> Approve or send back with comments. Open issues need a written waiver.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span><b>Your materials.</b> Designs use your own catalogue of materials and processes, ranked by availability.</span></li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact" data-interest="studio">Request a walkthrough</a>
+      </div>
+      <div class="product-visual">
+        <div class="panel">
+          <div class="panel-head"><span>Project · Utility vehicle, iteration 2</span><span class="label">Example</span></div>
+          <div class="panel-body pipeline">
+            <div class="phases" aria-label="Planning phases, all complete">
+              <span class="phase done">Interpret</span><span class="arrow">→</span>
+              <span class="phase done">Goal</span><span class="arrow">→</span>
+              <span class="phase done">Research</span><span class="arrow">→</span>
+              <span class="phase done">Ratify</span><span class="arrow">→</span>
+              <span class="phase done">Plan</span>
+            </div>
+            <div class="graph-wrap">
+              <svg class="graph" viewBox="0 0 560 206" role="img" aria-label="Plan graph: blueprint engineer feeds chassis, body design and spec designer; these feed the CAD modeler, which waits at an approval gate before review.">
+                <path class="edge" d="M124 103 C150 103 150 40 176 40"/>
+                <path class="edge" d="M124 103 L176 103"/>
+                <path class="edge" d="M124 103 C150 103 150 166 176 166"/>
+                <path class="edge" d="M288 40 C318 40 318 103 346 103"/>
+                <path class="edge" d="M288 103 L346 103"/>
+                <path class="edge" d="M288 166 C318 166 318 103 346 103"/>
+                <path class="edge" d="M458 103 L488 103" stroke-dasharray="3 3"/>
+                <rect class="node ok" x="12" y="80" width="112" height="46" rx="8"/>
+                <text x="24" y="100">blueprint</text><text class="sub" x="24" y="115">approved</text>
+                <rect class="node ok" x="176" y="17" width="112" height="46" rx="8"/>
+                <text x="188" y="37">chassis</text><text class="sub" x="188" y="52">approved</text>
+                <rect class="node ok" x="176" y="80" width="112" height="46" rx="8"/>
+                <text x="188" y="100">body design</text><text class="sub" x="188" y="115">approved</text>
+                <rect class="node ok" x="176" y="143" width="112" height="46" rx="8"/>
+                <text x="188" y="163">spec</text><text class="sub" x="188" y="178">approved</text>
+                <rect class="node" x="346" y="80" width="112" height="46" rx="8"/>
+                <text x="358" y="100">cad.vehicle</text><text class="sub" x="358" y="115">awaiting gate</text>
+                <circle class="gate" cx="124" cy="103" r="4"/><circle class="gate" cx="288" cy="40" r="4"/><circle class="gate" cx="288" cy="103" r="4"/><circle class="gate" cx="288" cy="166" r="4"/>
+                <circle class="gate-wait" cx="458" cy="103" r="5"/>
+                <rect class="node" x="488" y="80" width="62" height="46" rx="8" stroke-dasharray="3 3"/>
+                <text x="498" y="107">review</text>
+              </svg>
+            </div>
+            <div class="gate-card">
+              <div><p class="t">Gate: CAD model of the vehicle</p><p class="s">Mass within margin · CG check passed · 0 open findings</p></div>
+              <div class="gate-actions" aria-hidden="true"><span class="chip">Send back</span><span class="chip approve">Approve</span></div>
+            </div>
+            <div class="outputs" aria-label="Output files"><span>vehicle.step</span><span>vehicle.glb</span><span>modal-fea.pdf</span><span>render-front.png</span><span>drawing-a3.pdf</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Assembly OS -->
+    <article class="product" id="assembly-os">
+      <div>
+        <p class="label blue">Assembly OS</p>
+        <h3>Sixteen applications. One platform.</h3>
+        <p class="tagline">Purpose-built for a legislative assembly: its members, officers and staff, each seeing only what their role allows.</p>
+        <p class="desc">Assembly OS learns from the Assembly's own rules, records and proceedings, and works in Urdu, Sindhi and English by voice or text. It runs inside the Assembly, without the internet, and records every action.</p>
+        <ul class="feats">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg><span><b>Bills, start to finish.</b> Research, first draft and a legal check against existing law, for the Law branch to finalise.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9h8M8 13h5"/><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg><span><b>Questions and replies.</b> Sorted by subject, sent to the right minister, tracked until answered.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg><span><b>Paper to digital.</b> Old files scanned into a permanent, searchable archive.</span></li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact" data-interest="assembly">Request a briefing</a>
+      </div>
+      <div class="product-visual">
+        <div class="apps">
+          <section class="app-group" aria-label="Applications for members and executives">
+            <header><b>Members and executives</b><span>5 apps</span></header>
+            <ul class="app-list">
+              <li><b>Bill drafting and scrutiny</b>Research, draft, check</li>
+              <li><b>Proceedings journal</b>Every sitting, searchable</li>
+              <li><b>Approvals</b>Files arrive summarised</li>
+              <li><b>Dashboards and reports</b>The Assembly at a glance</li>
+              <li><b>Meetings and schedule</b>Sittings without clashes</li>
+            </ul>
+          </section>
+          <section class="app-group" aria-label="Applications for officers">
+            <header><b>Officers</b><span>6 apps</span></header>
+            <ul class="app-list">
+              <li><b>Rules and precedents</b>Past rulings in seconds</li>
+              <li><b>Questions and replies</b>From sitting to answer</li>
+              <li><b>Drafting assistant</b>Letters from your templates</li>
+              <li><b>Correspondence</b>Read, routed, followed up</li>
+              <li><b>Deadlines and alerts</b>Before anything falls due</li>
+              <li><b>Digital records</b>Paper made searchable</li>
+            </ul>
+          </section>
+          <section class="app-group" aria-label="Applications for everyone">
+            <header><b>Everyone</b><span>5 apps</span></header>
+            <ul class="app-list">
+              <li><b>Translator</b>By voice or text</li>
+              <li><b>Document summariser</b>Any document, in brief</li>
+              <li><b>Staff helpdesk</b>Procedures, any hour</li>
+              <li><b>HR self-service</b>Leave, pay and records</li>
+              <li><b>Smart search</b>Any record you may see</li>
+            </ul>
+          </section>
+          <p class="langs" aria-label="Languages: Urdu, Sindhi, English"><span class="ur" lang="ur">اردو</span><span class="sep">·</span><span class="sd" lang="sd">سنڌي</span><span class="sep">·</span><span>English</span></p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Outcomes -->
+<section class="section band" aria-labelledby="outcomes-h">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="label blue">What changes</p>
+      <h2 id="outcomes-h">Days of desk work, done in minutes.</h2>
+      <p class="lede">Mulazim does the groundwork. People stay in charge of every decision.</p>
+    </div>
+    <div class="outcomes">
+      <div class="outcome"><p class="task">Researching a new bill</p><p class="from">By hand: <b>5 days</b></p><p class="with">With Mulazim</p><p class="to">30 min</p></div>
+      <div class="outcome"><p class="task">Preparing a sitting's questions</p><p class="from">By hand: <b>1 week</b></p><p class="with">With Mulazim</p><p class="to">1 day</p></div>
+      <div class="outcome"><p class="task">Summarising the daily mail</p><p class="from">By hand: <b>2 hours</b></p><p class="with">With Mulazim</p><p class="to">5 min</p></div>
+      <div class="outcome"><p class="task">Translating a document</p><p class="from">By hand: <b>2 days</b></p><p class="with">With Mulazim</p><p class="to">2 min</p></div>
+    </div>
+    <p class="outcomes-note">Estimates for typical Assembly tasks, measured against the same work done manually.</p>
+  </div>
+</section>
+
+<!-- Deployment -->
+<section class="section" id="deployment">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="label blue">Deployment</p>
+      <h2>Your data stays where it is.</h2>
+      <p class="lede">Mulazim is installed in your environment, not rented from ours. Choose how it runs; you can change later without rebuilding anything.</p>
+    </div>
+    <div class="deploy-grid">
+      <div class="mode primary">
+        <p class="label blue"><span>On-premises</span><span>Fully offline</span></p>
+        <h3>Blackbox</h3>
+        <p>The whole platform, including the AI models, runs on your own GPU server. It can work with no internet connection at all.</p>
+        <dl>
+          <dt>Leaves your building</dt><dd>Nothing</dd>
+          <dt>Hardware</dt><dd>One GPU server in your data centre</dd>
+          <dt>Suits</dt><dd>Assemblies, ministries, defence, regulated data</dd>
+        </dl>
+      </div>
+      <div class="mode">
+        <p class="label"><span>Private cloud</span><span>No GPU needed</span></p>
+        <h3>Networked</h3>
+        <p>The platform runs on your servers and calls a leading AI model of your choice for language generation. Search, storage and access control stay on your side.</p>
+        <dl>
+          <dt>Leaves your building</dt><dd>Only the text of each request, to the model you choose</dd>
+          <dt>Hardware</dt><dd>Standard servers</dd>
+          <dt>Suits</dt><dd>Enterprises and pilots</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="promises">
+      <div class="promise">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/></svg>
+        <h4>Owned outright</h4>
+        <p>Installed on your hardware under your control. No dependency on a foreign platform.</p>
+      </div>
+      <div class="promise">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 11l2 2 4-4"/></svg>
+        <h4>Access by role</h4>
+        <p>Each person sees only what their role allows. Passwords and keys never reach the AI.</p>
+      </div>
+      <div class="promise">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h8M8 8h4"/></svg>
+        <h4>A full record</h4>
+        <p>Every request and every action is logged, so nothing goes unaccounted for.</p>
+      </div>
+      <div class="promise">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        <h4>Answers you can check</h4>
+        <p>Figures come with the query that produced them, quotes with the page they came from.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Company -->
+<section class="section band" id="company">
+  <div class="wrap">
+    <div class="company-top">
+      <div class="company-copy">
+        <p class="label blue">Company</p>
+        <h2>An AI lab in Karachi.</h2>
+      </div>
+      <div class="company-side">
+        <p>Liwa Labs builds private AI for institutions that cannot hand their records to a public chatbot. We design, install and support everything ourselves, from the models to the applications people use every day, in the languages our clients work in.</p>
+        <div class="name-note">
+          <span class="ur" lang="ur">ملازم</span>
+          <p><b>Mulazim</b> means one who serves: an aide who knows the office, keeps its confidences and does the groundwork.</p>
+        </div>
+      </div>
+    </div>
+    <div class="team">
+      <div class="person">
+        <img src="assets/team-mannan.jpg" alt="K. A. Mannan Spanogiannis" width="88" height="88">
+        <div><h4>K. A. Mannan Spanogiannis</h4><p class="role">CEO &amp; Co-founder</p><p>International entrepreneur who has built and launched technology ventures from concept to market.</p></div>
+      </div>
+      <div class="person">
+        <img src="assets/team-ghulam.jpg" alt="Ghulam Mustafa Raza Qadri" width="88" height="88">
+        <div><h4>Ghulam Mustafa Raza Qadri</h4><p class="role">Co-founder</p><p>Engineer with more than eight years of technical leadership. His teaching has reached over 120,000 students in Pakistan.</p></div>
+      </div>
+      <div class="person">
+        <img src="assets/team-moiz.jpg" alt="Engr. Muhammad Moiz Yousuf" width="88" height="88">
+        <div><h4>Engr. Muhammad Moiz Yousuf</h4><p class="role">Co-founder</p><p>PEC-registered automotive engineer, and the youngest committee chairman in the history of the FPCCI.</p></div>
+      </div>
+      <div class="person">
+        <img src="assets/team-ammar.jpg" alt="Muhammad Ammar Irfan Bhabha" width="88" height="88">
+        <div><h4>Muhammad Ammar Irfan Bhabha</h4><p class="role">Co-founder</p><p>Recipient of the Fakhar-e-Pakistan award and an International AI Champion. Member of Pakistan's Youth Parliament.</p></div>
+      </div>
+    </div>
+    <ul class="earlier" aria-label="Earlier AI work">
+      <li class="label">Earlier AI work</li>
+      <li><b>Callwala</b><span>AI agent for contact centres that qualifies leads and handles calls.</span></li>
+      <li><b>Eve</b><span>Safety technology behind the Zainab Alert app.</span></li>
+      <li><b>Aitells</b><span>A conversational AI platform, built before today's large language models.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="label">Contact</p>
+      <h2>See it on your own records.</h2>
+      <p class="lede">Tell us what you want to try. We will set up a demo with your documents or data, on your premises or ours.</p>
+      <div class="details">
+        <div class="detail"><span class="label">Email</span><a class="val" href="mailto:info@liwalabs.com">info@liwalabs.com</a></div>
+        <div class="detail"><span class="label">Phone</span><span class="val">+92 326 2263160</span></div>
+        <div class="detail"><span class="label">Office</span><span class="val addr">Office 505, Tai Roshan Trade Center<br>Shaheed-e-Millat Road, Karachi</span></div>
+      </div>
+    </div>
+    <form class="form" id="contact-form" novalidate>
+      <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="cf-org">Organisation</label><input id="cf-org" name="organisation" autocomplete="organization" required></div>
+      <div class="field"><label for="cf-email">Work email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="cf-phone">Phone <span>(optional)</span></label><input id="cf-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <fieldset class="interest field full">
+        <legend>Interested in</legend>
+        <label><input type="radio" name="interest" id="cf-i-ai" value="Mulazim AI" checked><span>Mulazim AI</span></label>
+        <label><input type="radio" name="interest" id="cf-i-studio" value="Mulazim Studio"><span>Mulazim Studio</span></label>
+        <label><input type="radio" name="interest" id="cf-i-assembly" value="Assembly OS"><span>Assembly OS</span></label>
+        <label><input type="radio" name="interest" id="cf-i-other" value="Something else"><span>Something else</span></label>
+      </fieldset>
+      <div class="field full"><label for="cf-msg">What would you like to do?</label><textarea id="cf-msg" name="message" required placeholder="For example: answer questions over our finance data, or digitise our records."></textarea></div>
+      <p class="form-status" id="cf-status" role="status" hidden></p>
+      <div class="form-foot">
+        <small>We reply within one working day.</small>
+        <button class="btn btn-primary" type="submit" id="cf-submit">Send message</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <a class="brand" href="#top" aria-label="Liwa Labs, back to top">
+      <img class="mark-dark" src="assets/liwa-mark.png" alt="" width="34" height="34">
+      <img class="mark-light" src="assets/liwa-mark-light.png" alt="" width="34" height="34">
+      <span class="brand-word">LIWA <span>LABS</span></span>
+    </a>
+    <nav aria-label="Footer">
+      <a href="#mulazim-ai">Mulazim AI</a>
+      <a href="#mulazim-studio">Mulazim Studio</a>
+      <a href="#assembly-os">Assembly OS</a>
+      <a href="#deployment">Deployment</a>
+      <a href="#company">Company</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="social">
+      <a href="https://www.instagram.com/liwalabs" target="_blank" rel="noopener" aria-label="Liwa Labs on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://twitter.com/liwalabs" target="_blank" rel="noopener" aria-label="Liwa Labs on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    </div>
+  </div>
+  <div class="wrap foot" style="margin-top:28px">
+    <small>© <span id="year">2026</span> Liwa Labs. Karachi, Pakistan.</small>
+    <small>Mulazim AI · <a href="https://mulazimai.com" target="_blank" rel="noopener" style="color:inherit">mulazimai.com</a></small>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var header=document.querySelector('.site-header');
+  var onScroll=function(){header.classList.toggle('scrolled',window.scrollY>8)};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var btn=document.getElementById('menu-btn'),links=document.getElementById('nav-links');
+  btn.addEventListener('click',function(){
+    var open=links.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  links.addEventListener('click',function(e){
+    if(e.target.closest('a')){links.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu')}
+  });
+
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+  // Product buttons preselect the interest in the form
+  var map={studio:'cf-i-studio',assembly:'cf-i-assembly',ai:'cf-i-ai'};
+  document.querySelectorAll('[data-interest]').forEach(function(a){
+    a.addEventListener('click',function(){var r=document.getElementById(map[a.dataset.interest]);if(r)r.checked=true});
+  });
+
+  var form=document.getElementById('contact-form'),status=document.getElementById('cf-status'),submit=document.getElementById('cf-submit');
+  function show(msg,ok){status.textContent=msg;status.className='form-status'+(ok?' ok':'');status.hidden=false}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var missing=[].slice.call(form.querySelectorAll('[required]')).filter(function(el){return !el.value.trim()});
+    var email=document.getElementById('cf-email');
+    var names={'cf-name':'your name','cf-org':'your organisation','cf-email':'your work email','cf-msg':'a short message'};
+    if(missing.length){var n=missing.map(function(el){return names[el.id]});show('Please add '+(n.length>1?n.slice(0,-1).join(', ')+' and '+n[n.length-1]:n[0])+'.');missing[0].focus();return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){show('Please enter a valid email address.');email.focus();return}
+    var data={};new FormData(form).forEach(function(v,k){data[k]=String(v).trim()});
+    submit.disabled=true;submit.textContent='Sending…';
+    fetch('/submit-contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){return r.ok?r.json():Promise.reject(r.status)})
+      .then(function(){form.reset();show('Thank you. Your message has reached us, and we will reply within one working day.',true)})
+      .catch(function(){show('Your message could not be sent from this page. Please email info@liwalabs.com or call +92 326 2263160.')})
+      .finally(function(){submit.disabled=false;submit.textContent='Send message'});
+  });
+})();
+</script>
 </body>
 </html>
