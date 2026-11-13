@@ -43,7 +43,7 @@ and `.env` are never served.
 
 ## Brand
 
-- Colours: ink `#0d1520`, blue `#0a71d4`, white. Dark mode is supported.
+- Colours: white background, ink `#0d1520`, blue `#0866c0`. Light theme only, by design.
 - Type (self-hosted in `assets/fonts/`, no Google requests): Archivo (headings), IBM Plex Sans (body), IBM Plex Mono (labels),
   Noto Nastaliq Urdu / Noto Naskh Arabic for Urdu and Sindhi.
 - Logo source: `assets/brand/liwa-logo-source.jpg`.

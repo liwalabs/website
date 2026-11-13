@@ -8,8 +8,7 @@
 <meta property="og:title" content="Liwa Labs: AI, fintech and Web3 products">
 <meta property="og:description" content="A Karachi technology company. Flagship: Mulazim private AI. Sixteen products launched across AI, finance and Web3.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0a0f15" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preload" href="assets/fonts/archivo-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
@@ -17,7 +16,7 @@
 /* Layout: one left-aligned 1160px column; sections breathe on white, product rows alternate text/visual, soft-blue bands mark the two "proof" sections. */
 :root{
   --bg:#ffffff;
-  --bg-soft:#f3f6f9;
+  --bg-soft:#f7f9fb;
   --ink:#0d1520;
   --ink-2:#4b5967;
   --ink-3:#5b6874;
@@ -42,22 +41,8 @@
   --f-naskh:"Noto Naskh Arabic","Noto Nastaliq Urdu",serif;
   --wrap:1160px;
   --r:10px;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0a0f15;--bg-soft:#10171f;--ink:#e8edf3;--ink-2:#a1adb9;--ink-3:#748291;--line:#1e2834;--field-line:#56626f;
-    --blue:#4a9ff0;--blue-strong:#71b5f5;--blue-soft:#0f2236;--on-blue:#06121f;--ok:#3cc28f;--neg:#f08a5d;--card:#0e151d;--deep:#132131;--on-deep:#e8edf3;--on-deep-2:#94a3b2;--deep-line:#22303e;
-    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0a0f15;--bg-soft:#10171f;--ink:#e8edf3;--ink-2:#a1adb9;--ink-3:#748291;--line:#1e2834;--field-line:#56626f;
-  --blue:#4a9ff0;--blue-strong:#71b5f5;--blue-soft:#0f2236;--on-blue:#06121f;--ok:#3cc28f;--neg:#f08a5d;--card:#0e151d;--deep:#132131;--on-deep:#e8edf3;--on-deep-2:#94a3b2;--deep-line:#22303e;
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
-  color-scheme:dark;
-}
-
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -98,9 +83,6 @@ ul{margin:0;padding:0;list-style:none}
 .brand-word{font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:.01em;line-height:1}
 .brand-word span{color:var(--blue)}
 .mark-light{display:none!important}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .mark-dark{display:none!important}:root:not([data-theme="light"]) .mark-light{display:block!important}}
-:root[data-theme="dark"] .mark-dark{display:none!important}
-:root[data-theme="dark"] .mark-light{display:block!important}
 .nav-links{display:flex;align-items:center;gap:30px}
 .nav-links a{text-decoration:none;font-size:15px;font-weight:500;color:var(--ink-2)}
 .nav-links a:hover{color:var(--ink)}
@@ -150,7 +132,8 @@ ul{margin:0;padding:0;list-style:none}
 section[id]{scroll-margin-top:60px}
 .section-head{display:grid;gap:18px;max-width:760px;margin-bottom:clamp(40px,6vw,72px)}
 .section-head h2{font-size:clamp(32px,4.2vw,52px);font-weight:700}
-.band{background:var(--bg-soft)}
+.band{background:var(--bg);border-top:1px solid var(--line)}
+.section+.section:not(.band){border-top:1px solid var(--line)}
 
 /* Products */
 .products-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:clamp(64px,9vw,112px)}
@@ -332,17 +315,17 @@ a.tag.flag:hover{background:var(--blue-strong)}
 @media (max-width:560px){.team{grid-template-columns:minmax(0,1fr)}.person{grid-template-columns:72px minmax(0,1fr);gap:16px}.person img{width:72px;height:72px}}
 
 /* Contact */
-.contact{background:var(--deep);color:var(--on-deep)}
+.contact{background:var(--bg);color:var(--ink);border-top:1px solid var(--line)}
 .contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px)}
-.contact h2{font-size:clamp(34px,4.6vw,58px);font-weight:800;letter-spacing:-.03em;color:var(--on-deep)}
-.contact .lede{color:var(--on-deep-2);margin-top:18px}
-.contact .label{color:var(--on-deep-2)}
+.contact h2{font-size:clamp(34px,4.6vw,58px);font-weight:800;letter-spacing:-.03em;color:var(--ink)}
+.contact .lede{color:var(--ink-2);margin-top:18px}
+.contact .label{color:var(--ink-3)}
 .details{display:grid;gap:22px;margin-top:40px}
 .detail{display:grid;gap:4px}
-.detail .val{font-size:17px;color:var(--on-deep)}
-.detail a.val{justify-self:start;text-decoration:none;border-bottom:1px solid var(--deep-line)}
-.detail a.val:hover{border-bottom-color:var(--on-deep)}
-.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;background:var(--card);border:1px solid var(--deep-line);color:var(--ink);border-radius:14px;padding:clamp(22px,3vw,32px)}
+.detail .val{font-size:17px;color:var(--ink)}
+.detail a.val{justify-self:start;text-decoration:none;border-bottom:1px solid var(--line)}
+.detail a.val:hover{border-bottom-color:var(--blue);color:var(--blue)}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);color:var(--ink);border-radius:14px;padding:clamp(22px,3vw,32px)}
 .field{display:grid;gap:6px}
 .field.full{grid-column:1/-1}
 .field label{font-size:13.5px;font-weight:600;color:var(--ink)}
