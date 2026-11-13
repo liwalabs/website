@@ -6,7 +6,7 @@
 <title>Liwa Labs</title>
 <meta name="description" content="Liwa Labs is a Karachi technology company building AI, fintech and Web3 products, led by Mulazim, a private AI platform for government and industry.">
 <meta property="og:title" content="Liwa Labs: AI, fintech and Web3 products">
-<meta property="og:description" content="A Karachi technology company. Flagship: Mulazim private AI. Sixteen products launched across AI, finance and Web3.">
+<meta property="og:description" content="A Karachi technology company. Flagship: Mulazim private AI. Fifteen products launched across AI, finance and Web3.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -136,7 +136,7 @@ section[id]{scroll-margin-top:60px}
 .section+.section:not(.band){border-top:1px solid var(--line)}
 
 /* Products */
-.products-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:clamp(64px,9vw,112px)}
+.products-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:clamp(64px,9vw,112px)}
 .pi{display:grid;gap:10px;align-content:start;padding:26px 26px 28px;text-decoration:none;color:var(--ink);background:var(--card);transition:background .15s}
 .pi+.pi{border-left:1px solid var(--line)}
 .pi:hover{background:var(--bg-soft)}
@@ -209,25 +209,6 @@ section[id]{scroll-margin-top:60px}
 .outputs span{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-2);border:1px dashed var(--line);border-radius:6px;padding:4px 8px}
 @media (max-width:480px){.gate-card{grid-template-columns:minmax(0,1fr)}.graph-wrap{display:none}}
 
-/* Assembly visual */
-.apps{display:grid;gap:14px}
-.app-group{border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden}
-.app-group header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--bg-soft)}
-.app-group header b{font-family:var(--f-display);font-weight:700;font-size:15px;letter-spacing:-.01em}
-.app-group header span{font-size:12.5px;color:var(--ink-3)}
-.app-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-.app-list li{padding:11px 16px;font-size:14px;border-bottom:1px solid var(--line);color:var(--ink-2)}
-.app-list li b{display:block;color:var(--ink);font-weight:600;font-size:14.5px}
-.app-list li:nth-child(odd){border-right:1px solid var(--line)}
-.app-list li:last-child{border-bottom:0}
-.app-list li:last-child:nth-child(odd){grid-column:1/-1;border-right:0}
-.app-list li:nth-last-child(2):nth-child(odd){border-bottom:0}
-.langs{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--ink-2);padding:2px 2px 0}
-.langs .ur{font-family:var(--f-urdu);font-size:17px;line-height:1.6;color:var(--ink)}
-.langs .sd{font-family:var(--f-naskh);font-size:17px;color:var(--ink)}
-.langs .sep{color:var(--ink-3)}
-@media (max-width:520px){.app-list{grid-template-columns:minmax(0,1fr)}.app-list li:nth-child(odd){border-right:0}.app-list li:nth-last-child(2):nth-child(odd){border-bottom:1px solid var(--line)}}
-
 /* Deployment */
 .deploy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .mode{border:1px solid var(--line);border-radius:14px;padding:28px;background:var(--card);display:grid;gap:14px;align-content:start}
@@ -275,14 +256,6 @@ a.tag.flag:hover{background:var(--blue-strong)}
 .mz-name{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;border-top:1px solid var(--line);padding-top:18px;margin-top:6px;font-size:14.5px;color:var(--ink-2)}
 .mz-name .ur{font-family:var(--f-urdu);font-size:28px;line-height:1.7;color:var(--ink);direction:rtl}
 @media (max-width:920px){.mz-head{grid-template-columns:minmax(0,1fr)}}
-
-/* Time saved (Assembly OS) */
-.saved{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0;margin:28px 0 0;border-top:1px solid var(--line);font-size:15px}
-.saved dt,.saved dd{padding:11px 0;border-bottom:1px solid var(--line)}
-.saved dt{color:var(--ink-2)}
-.saved dd{margin:0;text-align:right;font-family:var(--f-display);font-weight:700;color:var(--blue);font-variant-numeric:tabular-nums;white-space:nowrap}
-.saved dd s{font-family:var(--f-body);font-weight:400;color:var(--ink-3);margin-right:10px}
-.saved-note{font-size:13px;color:var(--ink-3);margin-top:10px}
 
 /* Portfolio */
 .portfolio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:start}
@@ -400,13 +373,12 @@ a.tag.flag:hover{background:var(--blue-strong)}
     </div>
 
     <div class="map" aria-labelledby="map-h">
-      <div class="map-head"><h2 class="label" id="map-h">Our products</h2><span class="label">16 launched</span></div>
+      <div class="map-head"><h2 class="label" id="map-h">Our products</h2><span class="label">15 launched</span></div>
       <div class="map-row">
         <h3>AI</h3>
         <ul>
           <li><a class="tag flag" href="#mulazim-ai">Mulazim AI</a></li>
           <li><a class="tag flag" href="#mulazim-studio">Mulazim Studio</a></li>
-          <li><a class="tag flag" href="#assembly-os">Assembly OS</a></li>
           <li><span class="tag">Callwala</span></li>
           <li><span class="tag">Aitells</span></li>
           <li><span class="tag">Eve</span></li>
@@ -482,7 +454,7 @@ a.tag.flag:hover{background:var(--blue-strong)}
       <div class="section-head">
         <p class="label blue">Flagship · Mulazim</p>
         <h2>Private AI for government and industry.</h2>
-        <p class="lede">Mulazim is an AI platform installed inside your organisation. It works from your own databases and documents, cites the source behind every answer, and can run fully offline. Three products are built on it.</p>
+        <p class="lede">Mulazim is an AI platform installed inside your organisation. It works from your own databases and documents, cites the source behind every answer, and can run fully offline. Two products are built on it.</p>
         <p class="mz-name"><span class="ur" lang="ur">ملازم</span><span><b>Mulazim</b> means one who serves: an aide who knows the office, keeps its confidences and does the groundwork.</span></p>
       </div>
       <div class="mz-card">
@@ -522,10 +494,6 @@ a.tag.flag:hover{background:var(--blue-strong)}
       <a class="pi" href="#mulazim-studio">
         <h3>Mulazim Studio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></h3>
         <p>An engineering design team of AI specialists. From a brief to CAD models and analysis, with you approving every step.</p>
-      </a>
-      <a class="pi" href="#assembly-os">
-        <h3>Assembly OS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></h3>
-        <p>Sixteen applications that run a legislative assembly, from bill drafting to questions, records and HR.</p>
       </a>
     </div>
 
@@ -627,64 +595,6 @@ a.tag.flag:hover{background:var(--blue-strong)}
       </div>
     </article>
 
-    <!-- Assembly OS -->
-    <article class="product" id="assembly-os">
-      <div>
-        <h3 class="label blue">Assembly OS</h3>
-        <p class="ptitle">Sixteen applications for the whole Assembly.</p>
-        <p class="tagline">Purpose-built for a legislative assembly: its members, officers and staff, each seeing only what their role allows.</p>
-        <p class="desc">Assembly OS works from the Assembly's own rules, records and proceedings, in Urdu, Sindhi and English, by voice or text. It runs inside the Assembly, can work without the internet, and keeps an audit record of every action.</p>
-        <ul class="feats">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg><span><b>Bills, start to finish.</b> Research, first draft and a legal check against existing law, for the Law branch to finalise.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9h8M8 13h5"/><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg><span><b>Questions and replies.</b> Sorted by subject, sent to the right minister, tracked until answered.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg><span><b>Paper to digital.</b> Old files scanned into a permanent, searchable archive.</span></li>
-        </ul>
-        <dl class="saved">
-          <dt>Researching a bill</dt><dd><s>5 days</s> 30 min</dd>
-          <dt>Preparing a sitting's questions</dt><dd><s>1 week</s> 1 day</dd>
-          <dt>Summarising the daily mail</dt><dd><s>2 hours</s> 5 min</dd>
-          <dt>Translating a document</dt><dd><s>2 days</s> 2 min</dd>
-        </dl>
-        <p class="saved-note">Estimated times, by hand against Assembly OS.</p>
-        <a class="btn btn-ghost" href="#contact" data-interest="assembly">Request a briefing</a>
-      </div>
-      <div class="product-visual">
-        <div class="apps">
-          <section class="app-group" aria-label="Applications for members and executives">
-            <header><b>Members and executives</b><span>5 apps</span></header>
-            <ul class="app-list">
-              <li><b>Bill drafting and scrutiny</b>Research, draft, check</li>
-              <li><b>Proceedings journal</b>Every sitting, searchable</li>
-              <li><b>Approvals</b>Files arrive summarised</li>
-              <li><b>Dashboards and reports</b>The Assembly at a glance</li>
-              <li><b>Meetings and schedule</b>Sittings without clashes</li>
-            </ul>
-          </section>
-          <section class="app-group" aria-label="Applications for officers">
-            <header><b>Officers</b><span>6 apps</span></header>
-            <ul class="app-list">
-              <li><b>Rules and precedents</b>Past rulings in seconds</li>
-              <li><b>Questions and replies</b>From sitting to answer</li>
-              <li><b>Drafting assistant</b>Letters from your templates</li>
-              <li><b>Correspondence</b>Read, routed, followed up</li>
-              <li><b>Deadlines and alerts</b>Before anything falls due</li>
-              <li><b>Digital records</b>Paper made searchable</li>
-            </ul>
-          </section>
-          <section class="app-group" aria-label="Applications for everyone">
-            <header><b>Everyone</b><span>5 apps</span></header>
-            <ul class="app-list">
-              <li><b>Translator</b>By voice or text</li>
-              <li><b>Document summariser</b>Any document, in brief</li>
-              <li><b>Staff helpdesk</b>Procedures, any hour</li>
-              <li><b>HR self-service</b>Leave, pay and records</li>
-              <li><b>Smart search</b>Any record you may see</li>
-            </ul>
-          </section>
-          <p class="langs"><span class="ur" lang="ur">اردو</span><span class="sep">·</span><span class="sd" lang="sd">سنڌي</span><span class="sep">·</span><span>English</span></p>
-        </div>
-      </div>
-    </article>
   </div>
 </section>
 
@@ -704,7 +614,7 @@ a.tag.flag:hover{background:var(--blue-strong)}
         <dl>
           <dt>Leaves your building</dt><dd>Nothing. It can run air-gapped.</dd>
           <dt>Hardware</dt><dd>One GPU server in your data centre</dd>
-          <dt>Suits</dt><dd>Assemblies, ministries, banks, regulated data</dd>
+          <dt>Suits</dt><dd>Ministries, banks, regulated data</dd>
         </dl>
       </div>
       <div class="mode">
@@ -793,7 +703,7 @@ a.tag.flag:hover{background:var(--blue-strong)}
         <h2>A technology company in Karachi.</h2>
       </div>
       <div class="company-side">
-        <p>Liwa Labs is a product and engineering company. Our founders bring backgrounds in engineering, entrepreneurship, education and public service, and our team has launched sixteen products in AI, finance and Web3.</p>
+        <p>Liwa Labs is a product and engineering company. Our founders bring backgrounds in engineering, entrepreneurship, education and public service, and our team has launched fifteen products in AI, finance and Web3.</p>
         <p>We design, build and support everything ourselves, from smart contracts to on-premises AI.</p>
       </div>
     </div>
@@ -903,7 +813,7 @@ a.tag.flag:hover{background:var(--blue-strong)}
   document.getElementById('year').textContent=new Date().getFullYear();
 
   // Product buttons preselect the interest in the form
-  var map={studio:'cf-i-mulazim',assembly:'cf-i-mulazim',ai:'cf-i-mulazim'};
+  var map={studio:'cf-i-mulazim',ai:'cf-i-mulazim'};
   document.querySelectorAll('[data-interest]').forEach(function(a){
     a.addEventListener('click',function(){var r=document.getElementById(map[a.dataset.interest]);if(r)r.checked=true});
   });

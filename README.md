@@ -1,6 +1,6 @@
 # Liwa Labs website
 
-The company site for Liwa Labs: AI, fintech and Web3 products and services, with the Mulazim platform (Mulazim AI, Mulazim Studio, Assembly OS) as the flagship.
+The company site for Liwa Labs: AI, fintech and Web3 products and services, with the Mulazim platform (Mulazim AI, Mulazim Studio) as the flagship.
 
 A single static page (`index.html`, inline CSS and JS, no build step) plus a
 small Flask app (`app.py`) that serves it and sends the contact form by email.
