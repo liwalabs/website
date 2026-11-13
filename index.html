@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Liwa Labs</title>
-<meta name="description" content="Liwa Labs builds Mulazim, a sovereign AI platform for government and industry: Mulazim AI, Mulazim Studio and Assembly OS. Runs on your own servers. Built in Pakistan.">
-<meta property="og:title" content="Liwa Labs: Sovereign AI for government and industry">
-<meta property="og:description" content="Mulazim AI, Mulazim Studio and Assembly OS. Private AI that runs on your own servers and cites its sources. Built in Pakistan.">
+<meta name="description" content="Liwa Labs is a Karachi technology company building AI, fintech and Web3 products, led by Mulazim, a private AI platform for government and industry.">
+<meta property="og:title" content="Liwa Labs: AI, fintech and Web3 products">
+<meta property="og:description" content="A Karachi technology company. Flagship: Mulazim private AI. Sixteen products launched across AI, finance and Web3.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0a0f15" media="(prefers-color-scheme: dark)">
@@ -118,13 +118,10 @@ ul{margin:0;padding:0;list-style:none}
 /* Hero */
 .hero{padding-block:clamp(56px,9vw,112px) clamp(56px,8vw,96px)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(40px,6vw,88px);align-items:center}
-.hero h1{font-size:clamp(42px,6.4vw,80px);font-weight:800;letter-spacing:-.035em;line-height:1.0;margin-top:22px}
+.hero h1{font-size:clamp(40px,5.8vw,74px);font-weight:800;letter-spacing:-.035em;line-height:1.0;margin-top:22px}
 .hero h1 em{font-style:normal;color:var(--blue)}
 .hero .lede{margin-top:26px}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
-.hero-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:40px;color:var(--ink-3);font-size:14px}
-.hero-meta span{display:inline-flex;align-items:center;gap:8px}
-.hero-meta svg{width:16px;height:16px;color:var(--blue)}
 @media (max-width:920px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
 
 /* Answer card (product mock) */
@@ -147,14 +144,6 @@ ul{margin:0;padding:0;list-style:none}
 .answer-foot span{display:inline-flex;align-items:center;gap:6px}
 .answer-foot svg{width:13px;height:13px}
 .mock-note{margin-top:10px;font-size:12.5px;color:var(--ink-3);text-align:right}
-
-/* Audience strip */
-.audience{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.audience-row{display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr));align-items:start;gap:24px;padding-block:26px}
-.audience-row .label{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;line-height:1.4}
-.audience-row .item{font-family:var(--f-display);font-weight:600;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
-.audience-row .item small{display:block;font-family:var(--f-body);font-weight:400;font-size:13.5px;color:var(--ink-3);letter-spacing:0;margin-top:2px}
-@media (max-width:860px){.audience-row{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.audience-row .label{grid-column:1/-1}}
 
 /* Sections */
 .section{padding-block:clamp(72px,10vw,128px)}
@@ -256,19 +245,6 @@ section[id]{scroll-margin-top:60px}
 .langs .sep{color:var(--ink-3)}
 @media (max-width:520px){.app-list{grid-template-columns:minmax(0,1fr)}.app-list li:nth-child(odd){border-right:0}.app-list li:nth-last-child(2):nth-child(odd){border-bottom:1px solid var(--line)}}
 
-/* Outcomes */
-.outcomes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
-.outcome{padding:28px 24px 8px 0;display:grid;gap:10px;align-content:start}
-.outcome+.outcome{padding-left:24px;border-left:1px solid var(--line)}
-.outcome .task{font-size:16px;font-weight:600;color:var(--ink);min-height:3em;line-height:1.4}
-.outcome .from{font-size:14px;color:var(--ink-3);font-variant-numeric:tabular-nums}
-.outcome .from b{font-weight:600;color:var(--ink-2)}
-.outcome .with{font-size:13px;color:var(--ink-3);margin-bottom:-4px}
-.outcome .to{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,3.6vw,46px);letter-spacing:-.03em;line-height:1;color:var(--blue);font-variant-numeric:tabular-nums}
-.outcomes-note{margin-top:28px;font-size:13.5px;color:var(--ink-3);max-width:70ch}
-@media (max-width:900px){.outcomes{grid-template-columns:repeat(2,minmax(0,1fr))}.outcome:nth-child(3){padding-left:0;border-left:0}.outcome:nth-child(n+3){border-top:1px solid var(--line)}}
-@media (max-width:460px){.outcomes{grid-template-columns:minmax(0,1fr)}.outcome+.outcome{padding-left:0;border-left:0;border-top:1px solid var(--line)}.outcome .task{min-height:0}}
-
 /* Deployment */
 .deploy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .mode{border:1px solid var(--line);border-radius:14px;padding:28px;background:var(--card);display:grid;gap:14px;align-content:start}
@@ -286,6 +262,44 @@ section[id]{scroll-margin-top:60px}
 .promise p{font-size:15px;color:var(--ink-2)}
 @media (max-width:900px){.deploy-grid{grid-template-columns:minmax(0,1fr)}.promises{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.promises{grid-template-columns:minmax(0,1fr)}.mode{padding:22px}}
+
+/* Product map (hero) */
+.map{border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--shadow);padding:6px 22px 18px}
+.map-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.map-head h2.label{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;line-height:1.4}
+.map-row{display:grid;gap:10px;padding:16px 0;border-bottom:1px solid var(--line)}
+.map-row h3{font-family:var(--f-display);font-size:15px;font-weight:700;letter-spacing:-.01em}
+.map-row ul{display:flex;flex-wrap:wrap;gap:6px}
+.tag{display:inline-block;font-size:13.5px;line-height:1.2;padding:7px 11px;border-radius:7px;border:1px solid var(--line);color:var(--ink);background:var(--bg);text-decoration:none;white-space:nowrap}
+.tag.flag{background:var(--blue);border-color:var(--blue);color:var(--on-blue);font-weight:600}
+a.tag.flag:hover{background:var(--blue-strong)}
+.map-foot{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);padding-top:14px}
+.map-foot .tag{width:14px;height:14px;padding:0;border-radius:4px}
+
+/* Services */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;border-top:1px solid var(--line)}
+.svc{display:grid;gap:10px;align-content:start;padding:28px 0;border-bottom:1px solid var(--line)}
+.svc h3{font-size:22px;font-weight:700}
+.svc p{color:var(--ink-2);font-size:15.5px;max-width:52ch}
+.svc .svc-work{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;font-size:14.5px;color:var(--ink)}
+.svc .svc-work .label{font-size:11.5px}
+.svc:last-child:nth-child(odd){grid-column:1/-1}
+@media (max-width:760px){.services{grid-template-columns:minmax(0,1fr)}}
+
+/* Mulazim intro */
+.mz-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:clamp(40px,6vw,88px);align-items:start;margin-bottom:clamp(48px,7vw,80px)}
+.mz-head .section-head{margin-bottom:0}
+.mz-name{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;border-top:1px solid var(--line);padding-top:18px;margin-top:6px;font-size:14.5px;color:var(--ink-2)}
+.mz-name .ur{font-family:var(--f-urdu);font-size:28px;line-height:1.7;color:var(--ink);direction:rtl}
+@media (max-width:920px){.mz-head{grid-template-columns:minmax(0,1fr)}}
+
+/* Time saved (Assembly OS) */
+.saved{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0;margin:28px 0 0;border-top:1px solid var(--line);font-size:15px}
+.saved dt,.saved dd{padding:11px 0;border-bottom:1px solid var(--line)}
+.saved dt{color:var(--ink-2)}
+.saved dd{margin:0;text-align:right;font-family:var(--f-display);font-weight:700;color:var(--blue);font-variant-numeric:tabular-nums;white-space:nowrap}
+.saved dd s{font-family:var(--f-body);font-weight:400;color:var(--ink-3);margin-right:10px}
+.saved-note{font-size:13px;color:var(--ink-3);margin-top:10px}
 
 /* Portfolio */
 .portfolio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:start}
@@ -378,12 +392,11 @@ section[id]{scroll-margin-top:60px}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <nav class="nav-links" id="nav-links" aria-label="Main">
-      <a href="#products">Products</a>
-      <a href="#deployment">Deployment</a>
-      <a href="#portfolio">Portfolio</a>
+      <a href="#services">What we do</a>
+      <a href="#mulazim">Mulazim</a>
+      <a href="#work">Work</a>
       <a href="#company">Company</a>
-      <a href="#contact">Contact</a>
-      <a class="btn btn-primary" href="#contact">Book a demo</a>
+      <a class="btn btn-primary" href="#contact">Contact us</a>
     </nav>
   </div>
 </header>
@@ -395,20 +408,101 @@ section[id]{scroll-margin-top:60px}
   <div class="wrap hero-grid">
     <div>
       <p class="label blue">Liwa Labs · Karachi</p>
-      <h1>Sovereign AI for government and <em>industry.</em></h1>
-      <p class="lede">Our flagship, Mulazim, is a private AI platform installed on your own servers. It works from your own databases and documents, shows the source behind every answer, and can run fully offline.</p>
+      <h1>We build AI, fintech and <em>Web3</em> products.</h1>
+      <p class="lede">Liwa Labs is a technology company. We design, build and run our own products, led by the Mulazim private AI platform, and we build software for governments, enterprises and founders.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="#contact">Book a demo</a>
-        <a class="btn btn-ghost" href="#products">See the products</a>
-      </div>
-      <div class="hero-meta">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Runs on your premises</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Cites its sources</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/></svg>Built in Pakistan</span>
+        <a class="btn btn-primary" href="#contact">Start a conversation</a>
+        <a class="btn btn-ghost" href="#work">See our work</a>
       </div>
     </div>
 
-    <div>
+    <div class="map" aria-labelledby="map-h">
+      <div class="map-head"><h2 class="label" id="map-h">Our products</h2><span class="label">16 launched</span></div>
+      <div class="map-row">
+        <h3>AI</h3>
+        <ul>
+          <li><a class="tag flag" href="#mulazim-ai">Mulazim AI</a></li>
+          <li><a class="tag flag" href="#mulazim-studio">Mulazim Studio</a></li>
+          <li><a class="tag flag" href="#assembly-os">Assembly OS</a></li>
+          <li><span class="tag">Callwala</span></li>
+          <li><span class="tag">Aitells</span></li>
+          <li><span class="tag">Eve</span></li>
+          <li><span class="tag">Swift Me</span></li>
+        </ul>
+      </div>
+      <div class="map-row">
+        <h3>FinTech &amp; DeFi</h3>
+        <ul>
+          <li><span class="tag">Oro Gold</span></li>
+          <li><span class="tag">Liquid Prop</span></li>
+          <li><span class="tag">Zar</span></li>
+        </ul>
+      </div>
+      <div class="map-row">
+        <h3>Blockchain &amp; Web3</h3>
+        <ul>
+          <li><span class="tag">Honeycomb Protocol</span></li>
+          <li><span class="tag">Sol Patrol</span></li>
+          <li><span class="tag">Ocean Explorers</span></li>
+          <li><span class="tag">RFRSH</span></li>
+          <li><span class="tag">Bright Switch</span></li>
+          <li><span class="tag">Pooks</span></li>
+        </ul>
+      </div>
+      <p class="map-foot"><span class="tag flag" aria-hidden="true">&nbsp;</span> Mulazim platform, our flagship</p>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section band" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="label blue">What we do</p>
+      <h2>Five practices, one engineering team.</h2>
+      <p class="lede">We take products from idea to launch, then keep them running. Each practice is backed by products we have shipped ourselves.</p>
+    </div>
+    <ul class="services">
+      <li class="svc">
+        <h3>AI products &amp; custom AI</h3>
+        <p>Private assistants, document and data analysis, voice agents for contact centres. Built on our own Mulazim platform or to your specification, on your servers or in the cloud.</p>
+        <p class="svc-work"><span class="label">Our work</span> Mulazim, Callwala, Aitells, Eve</p>
+      </li>
+      <li class="svc">
+        <h3>Blockchain &amp; Web3 development</h3>
+        <p>Smart contracts, dApps, protocols, games and NFT platforms, from concept to mainnet launch.</p>
+        <p class="svc-work"><span class="label">Our work</span> Honeycomb Protocol, Sol Patrol, RFRSH</p>
+      </li>
+      <li class="svc">
+        <h3>FinTech</h3>
+        <p>Digital wallets, card and payment products, tokenised real-world assets and DeFi platforms.</p>
+        <p class="svc-work"><span class="label">Our work</span> Oro Gold, Liquid Prop, Zar</p>
+      </li>
+      <li class="svc">
+        <h3>Cloud &amp; data infrastructure</h3>
+        <p>Cloud platforms, data pipelines and analytics, and on-premises servers for private AI.</p>
+        <p class="svc-work"><span class="label">Our work</span> Mulazim Blackbox deployments</p>
+      </li>
+      <li class="svc">
+        <h3>Strategy &amp; training</h3>
+        <p>Technology strategy for leadership teams, and hands-on training in AI and Web3 for staff and partners.</p>
+        <p class="svc-work"><span class="label">Our work</span> Programmes reaching over 120,000 students</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Mulazim -->
+<section class="section" id="mulazim">
+  <div class="wrap">
+    <div class="mz-head">
+      <div class="section-head">
+        <p class="label blue">Flagship · Mulazim</p>
+        <h2>Private AI for government and industry.</h2>
+        <p class="lede">Mulazim is an AI platform installed inside your organisation. It works from your own databases and documents, cites the source behind every answer, and can run fully offline. Three products are built on it.</p>
+        <p class="mz-name"><span class="ur" lang="ur">ملازم</span><span><b>Mulazim</b> means one who serves: an aide who knows the office, keeps its confidences and does the groundwork.</span></p>
+      </div>
+      <div class="mz-card">
       <div class="answer" role="img" aria-label="Example: Mulazim summarises an English budget circular in Urdu and cites the page it used.">
         <div class="answer-bar">
           <span class="who"><i></i>Mulazim</span>
@@ -434,28 +528,7 @@ section[id]{scroll-margin-top:60px}
         </div>
       </div>
       <p class="mock-note">Illustrative example</p>
-    </div>
-  </div>
-</section>
-
-<!-- Audience -->
-<section class="audience" aria-labelledby="aud-h">
-  <div class="wrap audience-row">
-    <h2 class="label" id="aud-h">Built for</h2>
-    <div class="item">Legislatures<small>Assemblies and secretariats</small></div>
-    <div class="item">Government<small>Ministries and departments</small></div>
-    <div class="item">Enterprises<small>Finance, operations, data teams</small></div>
-    <div class="item">Engineering<small>Automotive, defence and drones</small></div>
-  </div>
-</section>
-
-<!-- Products -->
-<section class="section" id="products">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="label blue">Flagship · Mulazim</p>
-      <h2>One private AI platform, three products.</h2>
-      <p class="lede">Mulazim is one platform that runs inside your organisation. Each product is built on it for a specific kind of work, and each can run fully offline on your own hardware.</p>
+      </div>
     </div>
 
     <div class="products-index">
@@ -583,6 +656,13 @@ section[id]{scroll-margin-top:60px}
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9h8M8 13h5"/><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg><span><b>Questions and replies.</b> Sorted by subject, sent to the right minister, tracked until answered.</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg><span><b>Paper to digital.</b> Old files scanned into a permanent, searchable archive.</span></li>
         </ul>
+        <dl class="saved">
+          <dt>Researching a bill</dt><dd><s>5 days</s> 30 min</dd>
+          <dt>Preparing a sitting's questions</dt><dd><s>1 week</s> 1 day</dd>
+          <dt>Summarising the daily mail</dt><dd><s>2 hours</s> 5 min</dd>
+          <dt>Translating a document</dt><dd><s>2 days</s> 2 min</dd>
+        </dl>
+        <p class="saved-note">Estimated times, by hand against Assembly OS.</p>
         <a class="btn btn-ghost" href="#contact" data-interest="assembly">Request a briefing</a>
       </div>
       <div class="product-visual">
@@ -625,29 +705,11 @@ section[id]{scroll-margin-top:60px}
   </div>
 </section>
 
-<!-- Outcomes -->
-<section class="section band" aria-labelledby="outcomes-h">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="label blue">What changes</p>
-      <h2 id="outcomes-h">Days of desk work, done in minutes.</h2>
-      <p class="lede">Mulazim does the groundwork. People stay in charge of every decision.</p>
-    </div>
-    <div class="outcomes">
-      <div class="outcome"><p class="task">Researching a new bill</p><p class="from">By hand: <b>5 days</b></p><p class="with">With Mulazim</p><p class="to">30 min</p></div>
-      <div class="outcome"><p class="task">Preparing a sitting's questions</p><p class="from">By hand: <b>1 week</b></p><p class="with">With Mulazim</p><p class="to">1 day</p></div>
-      <div class="outcome"><p class="task">Summarising the daily mail</p><p class="from">By hand: <b>2 hours</b></p><p class="with">With Mulazim</p><p class="to">5 min</p></div>
-      <div class="outcome"><p class="task">Translating a document</p><p class="from">By hand: <b>2 days</b></p><p class="with">With Mulazim</p><p class="to">2 min</p></div>
-    </div>
-    <p class="outcomes-note">Estimated times for typical Assembly tasks, compared with the same work done by hand.</p>
-  </div>
-</section>
-
 <!-- Deployment -->
-<section class="section" id="deployment">
+<section class="section band" id="deployment">
   <div class="wrap">
     <div class="section-head">
-      <p class="label blue">Deployment</p>
+      <p class="label blue">Mulazim · Deployment</p>
       <h2>Runs where your data lives.</h2>
       <p class="lede">Mulazim is installed in your environment, not rented from ours. Choose how it generates answers. You can switch later without rebuilding anything.</p>
     </div>
@@ -699,12 +761,12 @@ section[id]{scroll-margin-top:60px}
 </section>
 
 <!-- Portfolio -->
-<section class="section" id="portfolio">
+<section class="section" id="work">
   <div class="wrap">
     <div class="section-head">
       <p class="label blue">Portfolio</p>
       <h2>Products we have built and launched.</h2>
-      <p class="lede">Mulazim is our flagship. Alongside it, our team has shipped products in AI, finance and Web3.</p>
+      <p class="lede">Beyond Mulazim, our team has shipped thirteen products across AI, finance and Web3.</p>
     </div>
     <div class="portfolio">
       <section class="pf-group" aria-labelledby="pf-ai">
@@ -748,11 +810,8 @@ section[id]{scroll-margin-top:60px}
         <h2>A technology company in Karachi.</h2>
       </div>
       <div class="company-side">
-        <p>Liwa Labs builds private AI for institutions that cannot hand their records to a public chatbot, alongside financial and Web3 products used around the world. We design, build and support everything ourselves.</p>
-        <div class="name-note">
-          <span class="ur" lang="ur">ملازم</span>
-          <p><b>Mulazim</b> means one who serves: an aide who knows the office, keeps its confidences and does the groundwork.</p>
-        </div>
+        <p>Liwa Labs is a product and engineering company. Our founders bring backgrounds in engineering, entrepreneurship, education and public service, and our team has launched sixteen products in AI, finance and Web3.</p>
+        <p>We design, build and support everything ourselves, from smart contracts to on-premises AI.</p>
       </div>
     </div>
     <div class="team">
@@ -781,8 +840,8 @@ section[id]{scroll-margin-top:60px}
   <div class="wrap contact-grid">
     <div>
       <p class="label">Contact</p>
-      <h2>See it on your own records.</h2>
-      <p class="lede">Tell us what you want to try. We will set up a demo with your documents or data, on your premises or ours.</p>
+      <h2>Tell us what you are building.</h2>
+      <p class="lede">A new product, a platform to scale, or a Mulazim demo on your own records. We reply within one working day.</p>
       <div class="details">
         <div class="detail"><span class="label">Email</span><a class="val" href="mailto:info@liwalabs.com">info@liwalabs.com</a></div>
         <div class="detail"><span class="label">Phone</span><a class="val" href="tel:+923262263160">+92 326 2263160</a></div>
@@ -796,15 +855,16 @@ section[id]{scroll-margin-top:60px}
       <div class="field"><label for="cf-phone">Phone <span>(optional)</span></label><input id="cf-phone" name="phone" type="tel" autocomplete="tel"></div>
       <fieldset class="interest field full">
         <legend>Interested in</legend>
-        <label><input type="radio" name="interest" id="cf-i-ai" value="Mulazim AI" checked><span>Mulazim AI</span></label>
-        <label><input type="radio" name="interest" id="cf-i-studio" value="Mulazim Studio"><span>Mulazim Studio</span></label>
-        <label><input type="radio" name="interest" id="cf-i-assembly" value="Assembly OS"><span>Assembly OS</span></label>
+        <label><input type="radio" name="interest" id="cf-i-mulazim" value="Mulazim" checked><span>Mulazim</span></label>
+        <label><input type="radio" name="interest" id="cf-i-ai" value="AI development"><span>AI development</span></label>
+        <label><input type="radio" name="interest" id="cf-i-fintech" value="FinTech"><span>FinTech</span></label>
+        <label><input type="radio" name="interest" id="cf-i-web3" value="Web3 and blockchain"><span>Web3 &amp; blockchain</span></label>
         <label><input type="radio" name="interest" id="cf-i-other" value="Something else"><span>Something else</span></label>
       </fieldset>
-      <div class="field full"><label for="cf-msg">What would you like to do?</label><textarea id="cf-msg" name="message" required placeholder="For example: answer questions over our finance data, or digitise our records."></textarea></div>
+      <div class="field full"><label for="cf-msg">What would you like to do?</label><textarea id="cf-msg" name="message" required placeholder="For example: a wallet app for our customers, or private AI over our finance data."></textarea></div>
       <p class="form-status" id="cf-status" role="status" aria-live="polite" hidden></p>
       <div class="form-foot">
-        <small>We reply within one working day.</small>
+        <small>Your details are used only to reply to you.</small>
         <button class="btn btn-primary" type="submit" id="cf-submit">Send message</button>
       </div>
     </form>
@@ -821,11 +881,9 @@ section[id]{scroll-margin-top:60px}
       <span class="brand-word">LIWA <span>LABS</span></span>
     </a>
     <nav aria-label="Footer">
-      <a href="#mulazim-ai">Mulazim AI</a>
-      <a href="#mulazim-studio">Mulazim Studio</a>
-      <a href="#assembly-os">Assembly OS</a>
-      <a href="#deployment">Deployment</a>
-      <a href="#portfolio">Portfolio</a>
+      <a href="#services">What we do</a>
+      <a href="#mulazim">Mulazim</a>
+      <a href="#work">Work</a>
       <a href="#company">Company</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -836,7 +894,7 @@ section[id]{scroll-margin-top:60px}
   </div>
   <div class="wrap foot" style="margin-top:28px">
     <small>© <span id="year">2026</span> Liwa Labs. Karachi, Pakistan.</small>
-    <small>Mulazim AI · <a href="https://mulazimai.com" target="_blank" rel="noopener" style="color:inherit">mulazimai.com</a></small>
+    <small>Flagship: Mulazim · <a href="https://mulazimai.com" target="_blank" rel="noopener" style="color:inherit">mulazimai.com</a></small>
   </div>
 </footer>
 
@@ -862,7 +920,7 @@ section[id]{scroll-margin-top:60px}
   document.getElementById('year').textContent=new Date().getFullYear();
 
   // Product buttons preselect the interest in the form
-  var map={studio:'cf-i-studio',assembly:'cf-i-assembly',ai:'cf-i-ai'};
+  var map={studio:'cf-i-mulazim',assembly:'cf-i-mulazim',ai:'cf-i-mulazim'};
   document.querySelectorAll('[data-interest]').forEach(function(a){
     a.addEventListener('click',function(){var r=document.getElementById(map[a.dataset.interest]);if(r)r.checked=true});
   });
