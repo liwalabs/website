@@ -55,16 +55,16 @@ def submit_contact():
         message_content = data.get('message', '').strip()
 
         # Validate required fields
-        if not all([name, organisation, email, message_content]):
+        if not all([name, email, message_content]):
             return jsonify({'error': 'Missing required fields'}), 400
 
-        subject = f"Website enquiry: {interest} ({organisation})"
+        subject = f"Website enquiry: {interest} ({name})"
 
         email_body = f"""
 New enquiry from the Liwa Labs website:
 
 Name: {name}
-Organisation: {organisation}
+Organisation: {organisation or 'Not provided'}
 Email: {email}
 Phone: {phone if phone else 'Not provided'}
 Interested in: {interest}

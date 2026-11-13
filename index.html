@@ -4,356 +4,238 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Liwa Labs</title>
-<meta name="description" content="Liwa Labs is a Karachi technology company building AI, fintech and Web3 products, led by Mulazim, a private AI platform for government and industry.">
-<meta property="og:title" content="Liwa Labs: AI, fintech and Web3 products">
-<meta property="og:description" content="A Karachi technology company. Flagship: Mulazim private AI. Products across AI, government software, finance and Web3.">
+<meta name="description" content="Liwa Labs is a Karachi technology company building AI, government software, fintech and Web3 products. Flagship: Mulazim, private AI for one institution.">
+<meta property="og:title" content="Liwa Labs">
+<meta property="og:description" content="We build AI, government software, fintech and Web3 products. Flagship: Mulazim.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preload" href="assets/fonts/archivo-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
-/* Layout: one left-aligned 1160px column; sections breathe on white, product rows alternate text/visual, soft-blue bands mark the two "proof" sections. */
+/* Layout: one 1160px column; each section sits on its own light tint (white, mist, sky, white, mist, sky) so the page reads in clear bands. */
 :root{
   --bg:#ffffff;
-  --bg-soft:#f7f9fb;
+  --mist:#f4f7fb;
+  --sky:#eaf3fd;
   --ink:#0d1520;
   --ink-2:#4b5967;
   --ink-3:#5b6874;
-  --line:#e1e7ee;
+  --line:#dfe6ee;
   --field-line:#8b97a3;
   --blue:#0866c0;
   --blue-strong:#075bb0;
-  --blue-soft:#e9f2fc;
+  --blue-soft:#dcebfb;
   --on-blue:#ffffff;
   --ok:#11845b;
-  --neg:#c2410c;
+  --ok-soft:#e3f4ec;
+  --gold:#94650a;
+  --gold-soft:#fbf1dc;
+  --violet:#5b47c4;
+  --violet-soft:#ece9fb;
   --card:#ffffff;
-  --deep:#0d1520;
-  --on-deep:#ffffff;
-  --on-deep-2:#a9b6c3;
-  --deep-line:#25313e;
-  --shadow:0 1px 2px rgba(13,21,32,.05),0 8px 24px -12px rgba(13,21,32,.12);
+  --foot-text:#c9d3dd;
+  --foot-line:#2b3a4a;
+  --shadow:0 1px 2px rgba(13,21,32,.05),0 10px 30px -14px rgba(13,21,32,.16);
   --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
   --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --f-urdu:"Noto Nastaliq Urdu","Noto Naskh Arabic","Jameel Noori Nastaleeq",serif;
-  --f-naskh:"Noto Naskh Arabic","Noto Nastaliq Urdu",serif;
   --wrap:1160px;
-  --r:10px;
   color-scheme:light;
 }
+
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
 img{max-width:100%;display:block}
 a{color:inherit}
-h1,h2,h3,h4{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.02em;line-height:1.08}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.02em;line-height:1.08}
 p{margin:0}
 ul{margin:0;padding:0;list-style:none}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 
 .wrap{max-width:calc(var(--wrap) + 64px);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 @media (min-width:720px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
-
-.label{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:500}
-.label.blue{color:var(--blue)}
-.lede{font-size:clamp(17px,1.6vw,19px);color:var(--ink-2);max-width:60ch}
-.mono{font-family:var(--f-mono)}
-
+.label{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-weight:500}
+.lede{font-size:clamp(17px,1.5vw,19px);color:var(--ink-2);max-width:56ch}
 .skip{position:absolute;left:16px;top:-60px;z-index:100;background:var(--blue);color:var(--on-blue);padding:10px 14px;border-radius:8px;font-weight:600;text-decoration:none}
 .skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;gap:.5em;font:600 15px/1 var(--f-body);padding:13px 20px;border-radius:8px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:600 15px/1 var(--f-body);padding:13px 20px;border-radius:8px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,color .15s,transform .15s}
+.btn:hover{transform:translateY(-1px)}
 .btn-primary{background:var(--blue);color:var(--on-blue)}
 .btn-primary:hover{background:var(--blue-strong)}
-.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
-.btn-ghost:hover{border-color:var(--ink-3)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--bg)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
 .btn svg{width:16px;height:16px}
 
 /* Header */
-.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
 .site-header.scrolled{border-bottom-color:var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:24px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
 .brand img{width:34px;height:34px}
 .brand-word{font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:.01em;line-height:1}
 .brand-word span{color:var(--blue)}
-.mark-light{display:none!important}
 .nav-links{display:flex;align-items:center;gap:30px}
-.nav-links a{text-decoration:none;font-size:15px;font-weight:500;color:var(--ink-2)}
-.nav-links a:hover{color:var(--ink)}
+.nav-links a{text-decoration:none;font-size:15px;font-weight:500;color:var(--ink-2);position:relative}
+.nav-links a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.nav-links a:not(.btn):hover{color:var(--ink)}
+.nav-links a:not(.btn):hover::after{transform:scaleX(1)}
 .nav-links .btn{color:var(--on-blue);padding:10px 16px}
 .menu-btn{display:none;background:none;border:0;color:var(--ink);padding:8px;margin-right:-8px;cursor:pointer}
 .menu-btn svg{width:24px;height:24px}
-@media (max-width:860px){
+@media (max-width:820px){
   .menu-btn{display:block}
-  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px))}
+  .nav-links{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px))}
   .nav-links.open{display:flex}
   .nav-links a{padding:14px 0;border-bottom:1px solid var(--line);font-size:17px}
+  .nav-links a:not(.btn)::after{display:none}
   .nav-links .btn{margin-top:16px;justify-content:center;border-bottom:0;padding:14px}
 }
 
-/* Hero */
-.hero{padding-block:clamp(56px,9vw,112px) clamp(56px,8vw,96px)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(40px,6vw,88px);align-items:center}
-.hero h1{font-size:clamp(40px,5.8vw,74px);font-weight:800;letter-spacing:-.035em;line-height:1.0;margin-top:22px}
-.hero h1 em{font-style:normal;color:var(--blue)}
-.hero .lede{margin-top:26px}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
-@media (max-width:920px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
-
-/* Answer card (product mock) */
-.answer{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;font-size:15px}
-.answer-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--bg-soft)}
-.answer-bar .who{display:flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px}
-.answer-bar .who i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:block}
-.answer-bar .label{font-size:11px}
-.answer-body{padding:20px 20px 22px;display:grid;gap:16px}
-.q{justify-self:end;max-width:88%;background:var(--blue-soft);color:var(--ink);padding:10px 14px;border-radius:12px 12px 2px 12px;font-size:14.5px}
-.q .file{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:12px;color:var(--ink-2);margin-bottom:6px}
-.q .file svg{width:14px;height:14px}
-.a{display:grid;gap:12px}
-.urdu{font-family:var(--f-urdu);direction:rtl;text-align:right;font-size:19px;line-height:2.15;color:var(--ink)}
-.a .en{color:var(--ink-2);font-size:14px;line-height:1.55}
-.cites{display:flex;flex-wrap:wrap;gap:6px}
-.cite{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;color:var(--blue);background:var(--blue-soft);border-radius:6px;padding:4px 8px}
-.cite b{font-weight:500;color:var(--ink-2)}
-.answer-foot{display:flex;flex-wrap:wrap;gap:6px 16px;padding:12px 20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
-.answer-foot span{display:inline-flex;align-items:center;gap:6px}
-.answer-foot svg{width:13px;height:13px}
-.mock-note{margin-top:10px;font-size:12.5px;color:var(--ink-3);text-align:right}
-
 /* Sections */
-.section{padding-block:clamp(72px,10vw,128px)}
-section[id]{scroll-margin-top:60px}
-.section-head{display:grid;gap:18px;max-width:760px;margin-bottom:clamp(40px,6vw,72px)}
-.section-head h2{font-size:clamp(32px,4.2vw,52px);font-weight:700}
-.band{background:var(--bg);border-top:1px solid var(--line)}
-.section+.section:not(.band){border-top:1px solid var(--line)}
+.section{padding-block:clamp(64px,8vw,104px);scroll-margin-top:56px}
+.t-mist{background:var(--mist)}
+.t-sky{background:var(--sky)}
+.head{display:grid;gap:14px;max-width:720px;margin-bottom:clamp(32px,4vw,48px)}
+.head h2{font-size:clamp(30px,3.8vw,46px);font-weight:700}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;padding-block:clamp(64px,9vw,120px);background:radial-gradient(60% 80% at 85% 20%,var(--sky) 0,transparent 70%),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,.6fr);gap:32px;align-items:center}
+.hero h1{font-size:clamp(38px,5.2vw,64px);font-weight:800;letter-spacing:-.035em;line-height:1.02;margin-top:20px}
+.hero h1 .w{display:inline-block;animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero .lede{margin-top:22px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;animation:rise .7s .5s cubic-bezier(.2,.7,.2,1) both}
+.swoosh{width:100%;max-width:420px;justify-self:end}
+.swoosh path{fill:none;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 1.6s cubic-bezier(.6,0,.2,1) forwards}
+.swoosh .s1{stroke:var(--blue);stroke-width:18;animation-delay:.2s}
+.swoosh .s2{stroke:var(--blue);stroke-width:10;opacity:.55;animation-delay:.45s}
+.swoosh .s3{stroke:var(--ink);stroke-width:5;opacity:.8;animation-delay:.05s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (max-width:820px){.hero-grid{grid-template-columns:minmax(0,1fr)}.swoosh{display:none}}
 
 /* Products */
-.products-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:clamp(64px,9vw,112px)}
-.pi{display:grid;gap:10px;align-content:start;padding:26px 26px 28px;text-decoration:none;color:var(--ink);background:var(--card);transition:background .15s}
-.pi+.pi{border-left:1px solid var(--line)}
-.pi:hover{background:var(--bg-soft)}
-.pi h3{font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.pi h3 svg{width:18px;height:18px;color:var(--blue);flex:none;transition:transform .15s}
-.pi:hover h3 svg{transform:translateY(2px)}
-.pi p{color:var(--ink-2);font-size:15.5px}
-@media (max-width:860px){.products-index{grid-template-columns:minmax(0,1fr)}.pi+.pi{border-left:0;border-top:1px solid var(--line)}}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.filter{font:500 14px/1 var(--f-body);padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink-2);cursor:pointer;transition:all .15s}
+.filter:hover{border-color:var(--blue);color:var(--blue)}
+.filter[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.card{position:relative;display:grid;gap:8px;align-content:start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--blue) 30%,var(--line))}
+.card h3{font-size:18px;font-weight:700;letter-spacing:-.01em}
+.card p{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.featured{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.featured .card{padding:24px;gap:10px}
+.featured .card h3{font-size:22px}
+.featured .card p{font-size:15.5px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:5px;font-weight:500}
+.tag.ai{background:var(--blue-soft);color:var(--blue)}
+.tag.gov{background:var(--ok-soft);color:var(--ok)}
+.tag.fin{background:var(--gold-soft);color:var(--gold)}
+.tag.web3{background:var(--violet-soft);color:var(--violet)}
+.tag.flag{background:var(--blue);color:var(--on-blue)}
+.live{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--ok)}
+.live i{position:relative;width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.live i::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ok);animation:pulse 2.2s ease-out infinite}
+@keyframes pulse{from{transform:scale(1);opacity:.6}to{transform:scale(2.8);opacity:0}}
+.card.hide{display:none}
+.card-link{text-decoration:none;color:inherit;border-color:color-mix(in srgb,var(--blue) 35%,var(--line))}
+.more{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--blue);margin-top:4px}
+.more svg{width:15px;height:15px;transition:transform .2s}
+.card-link:hover .more svg{transform:translateY(3px)}
+.note{margin-top:16px;font-size:14px;color:var(--ink-3)}
+@media (max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.featured{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.grid{gap:10px}.card{padding:14px}.card h3{font-size:16px}.card p{font-size:13.5px}.featured .card{padding:18px}}
+@media (max-width:330px){.grid{grid-template-columns:minmax(0,1fr)}}
 
-.product{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,6vw,80px);align-items:start;scroll-margin-top:96px}
-.product+.product{margin-top:clamp(80px,11vw,140px);padding-top:clamp(80px,11vw,140px);border-top:1px solid var(--line)}
-.product h3.label{font-family:var(--f-mono);font-size:12.5px;line-height:1.4;letter-spacing:.08em}
-.product .ptitle{font-family:var(--f-display);font-size:clamp(30px,3.6vw,44px);font-weight:700;margin-top:14px;letter-spacing:-.02em;line-height:1.08;text-wrap:balance;color:var(--ink)}
-.product .tagline{font-size:19px;color:var(--ink);margin-top:14px;font-weight:500;max-width:34ch;line-height:1.45}
-.product .desc{color:var(--ink-2);margin-top:16px;max-width:52ch}
-.feats{display:grid;gap:0;margin-top:28px;border-top:1px solid var(--line)}
-.feats li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--ink-2)}
-.feats li b{color:var(--ink);font-weight:600}
-.feats svg{width:18px;height:18px;color:var(--blue);margin-top:3px}
-.product .btn{margin-top:28px}
-.product-visual{min-width:0;position:sticky;top:100px}
-@media (max-width:920px){.product{grid-template-columns:minmax(0,1fr)}.product-visual{position:static}}
-
-/* Analyst visual */
-.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
-.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--bg-soft);font-size:13.5px;font-weight:600}
-.panel-body{padding:20px 18px}
-.trace{display:grid;gap:14px}
-.trace .ask{font-family:var(--f-display);font-weight:600;font-size:19px;letter-spacing:-.01em;line-height:1.3}
-.steps{display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
-.step{position:relative;padding:4px 0 14px 20px;font-size:14px;color:var(--ink-2)}
-.step::before{content:"";position:absolute;left:-7px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--blue)}
-.step b{display:block;color:var(--ink);font-weight:600;font-size:14.5px}
-.step code{font-family:var(--f-mono);font-size:12px;color:var(--blue);background:var(--blue-soft);padding:2px 6px;border-radius:4px;word-break:break-word}
-.result{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.result div{background:var(--card);padding:14px}
-.result .k{font-size:12px;color:var(--ink-3)}
-.result .v{font-family:var(--f-display);font-weight:700;font-size:24px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin-top:2px}
-.result .v{white-space:nowrap}
-.result .v.neg{color:var(--neg)}
-.result .v.blue{color:var(--blue)}
-.ro{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);padding:12px 18px;border-top:1px solid var(--line)}
-.ro svg{width:14px;height:14px;color:var(--ok);flex:none}
-@media (max-width:480px){.result div{padding:12px 10px}.result .v{font-size:18px}}
-@media (max-width:370px){.result .v{font-size:16px}}
-
-/* Studio visual */
-.pipeline{display:grid;gap:18px}
-.phases{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.phase{font-family:var(--f-mono);font-size:12px;padding:6px 10px;border-radius:6px;border:1px solid var(--line);color:var(--ink-2);background:var(--card)}
-.phase.done{color:var(--ink);border-color:color-mix(in srgb,var(--blue) 35%,var(--line))}
-.ph{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
-.arrow{color:var(--ink-3);font-size:12px}
-.graph-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--bg-soft)}
-.graph{display:block;min-width:520px;width:100%;height:auto}
-.graph text{font-family:var(--f-mono);font-size:11px;fill:var(--ink)}
-.graph .sub{fill:var(--ink-3);font-size:10px}
-.graph .node{fill:var(--card);stroke:var(--line)}
-.graph .node.ok{stroke:var(--blue)}
-.graph .edge{stroke:var(--ink-3);stroke-width:1.2;fill:none}
-.graph .gate{fill:var(--blue)}
-.graph .gate-wait{fill:var(--card);stroke:var(--blue);stroke-width:1.5}
-.gate-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--card)}
-.gate-card .t{font-weight:600;font-size:14.5px}
-.gate-card .s{font-size:13px;color:var(--ink-3);margin-top:2px}
-.gate-actions{display:flex;gap:8px}
-.chip{font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:7px;border:1px solid var(--line);color:var(--ink-2);background:var(--card)}
-.chip.approve{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
-.outputs{display:flex;flex-wrap:wrap;gap:6px}
-.outputs span{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-2);border:1px dashed var(--line);border-radius:6px;padding:4px 8px}
-@media (max-width:480px){.gate-card{grid-template-columns:minmax(0,1fr)}.graph-wrap{display:none}}
-
-/* Deployment */
-.deploy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.mode{border:1px solid var(--line);border-radius:14px;padding:28px;background:var(--card);display:grid;gap:14px;align-content:start}
-.mode.primary{border-color:color-mix(in srgb,var(--blue) 45%,var(--line))}
-.mode h3{font-size:24px;font-weight:700}
-.mode .label{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px}
-.mode p{color:var(--ink-2);font-size:15.5px}
-.mode dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 18px;margin:6px 0 0;font-size:14.5px;border-top:1px solid var(--line);padding-top:16px}
-.mode dt{color:var(--ink-3)}
-.mode dd{margin:0;color:var(--ink)}
-.promises{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;margin-top:clamp(48px,6vw,72px)}
-.promise{display:grid;gap:8px;align-content:start}
-.promise svg{width:22px;height:22px;color:var(--blue)}
-.promise h4{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-top:6px}
-.promise p{font-size:15px;color:var(--ink-2)}
-@media (max-width:900px){.deploy-grid{grid-template-columns:minmax(0,1fr)}.promises{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:480px){.promises{grid-template-columns:minmax(0,1fr)}.mode{padding:22px}}
-
-/* Product map (hero) */
-.map{border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--shadow);padding:6px 22px 18px}
-.map-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
-.map-head h2.label{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;line-height:1.4}
-.map-row{display:grid;gap:10px;padding:16px 0;border-bottom:1px solid var(--line)}
-.map-row h3{font-family:var(--f-display);font-size:15px;font-weight:700;letter-spacing:-.01em}
-.map-row ul{display:flex;flex-wrap:wrap;gap:6px}
-.tag{display:inline-block;font-size:13.5px;line-height:1.2;padding:7px 11px;border-radius:7px;border:1px solid var(--line);color:var(--ink);background:var(--bg);text-decoration:none;white-space:nowrap}
-.tag.flag{background:var(--blue);border-color:var(--blue);color:var(--on-blue);font-weight:600}
-a.tag.flag:hover{background:var(--blue-strong)}
-a.tag:not(.flag):hover{border-color:var(--blue);color:var(--blue)}
-.map-foot{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);padding-top:14px}
-.map-foot .tag{width:14px;height:14px;padding:0;border-radius:4px}
+/* Mulazim */
+.mz{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(36px,6vw,80px);align-items:start}
+.mz .head{margin-bottom:0}
+.facts{display:grid;gap:12px;margin-top:28px}
+.facts li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;font-size:15.5px;color:var(--ink-2)}
+.facts b{color:var(--ink);font-weight:600}
+.facts svg{width:18px;height:18px;color:var(--blue);margin-top:3px}
+.mz .btn{margin-top:28px}
+.family{background:var(--card);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.family-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line)}
+.family-head .label{color:var(--ink-3)}
+.family li{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr);gap:4px 18px;padding:15px 20px;border-bottom:1px solid var(--line);transition:background .15s}
+.family li:last-child{border-bottom:0}
+.family li:hover{background:var(--mist)}
+.family b{font-family:var(--f-display);font-weight:700;font-size:17px;letter-spacing:-.01em}
+.family small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-top:3px}
+.family span{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+@media (max-width:900px){.mz{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.family li{grid-template-columns:minmax(0,1fr)}}
 
 /* Services */
-.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;border-top:1px solid var(--line)}
-.svc{display:grid;gap:10px;align-content:start;padding:28px 0;border-bottom:1px solid var(--line)}
-.svc h3{font-size:22px;font-weight:700}
-.svc p{color:var(--ink-2);font-size:15.5px;max-width:52ch}
-.svc .svc-work{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;font-size:14.5px;color:var(--ink)}
-.svc .svc-work .label{font-size:11.5px}
-.svc:last-child:nth-child(odd){grid-column:1/-1}
-@media (max-width:760px){.services{grid-template-columns:minmax(0,1fr)}}
+.services{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.svc{display:grid;gap:8px;align-content:start;padding:20px;border-radius:12px;border:1px solid var(--line);background:var(--bg);transition:border-color .2s,transform .2s}
+.svc:hover{border-color:var(--blue);transform:translateY(-3px)}
+.svc svg{width:24px;height:24px;color:var(--blue)}
+.svc h3{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-top:6px}
+.svc p{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+@media (max-width:980px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}.svc:last-child{grid-column:1/-1}}
+@media (max-width:520px){.services{gap:10px}.svc{padding:14px}.svc h3{font-size:15.5px}.svc p{font-size:13.5px}}
 
-/* Mulazim intro */
-.mz-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:clamp(40px,6vw,88px);align-items:start;margin-bottom:clamp(48px,7vw,80px)}
-.mz-head .section-head{margin-bottom:0}
-.mz-name{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;border-top:1px solid var(--line);padding-top:18px;margin-top:6px;font-size:14.5px;color:var(--ink-2)}
-.mz-name .ur{font-family:var(--f-urdu);font-size:28px;line-height:1.7;color:var(--ink);direction:rtl}
-@media (max-width:920px){.mz-head{grid-template-columns:minmax(0,1fr)}}
-
-/* Government software */
-.gov{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
-.gov-item{border:1px solid var(--line);border-radius:14px;padding:clamp(22px,3vw,32px);background:var(--card);display:grid;gap:14px;min-width:0}
-.gov-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.gov-top h3.label{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;line-height:1.4}
-.status{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2)}
-.status.live{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 40%,var(--line))}
-.gov-title{font-family:var(--f-display);font-weight:700;font-size:clamp(24px,2.6vw,30px);letter-spacing:-.02em;line-height:1.15;text-wrap:balance}
-.gov-item .desc{color:var(--ink-2);font-size:15.5px}
-.gov-item .feats{margin-top:4px}
-.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.search-demo{border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13.5px}
-.sd-box{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--bg-soft);font-family:var(--f-mono);font-size:12.5px;color:var(--ink)}
-.sd-box svg{width:14px;height:14px;color:var(--ink-3)}
-.sd-row{display:grid;gap:2px;padding:10px 12px;border-bottom:1px solid var(--line)}
-.sd-row:last-child{border-bottom:0}
-.sd-row b{font-weight:600;color:var(--ink)}
-.sd-row span{color:var(--ink-2)}
-.sd-row mark{background:var(--blue-soft);color:var(--blue);padding:0 2px;border-radius:3px}
-@media (max-width:900px){.gov{grid-template-columns:minmax(0,1fr)}}
-
-/* Portfolio */
-.portfolio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:start}
-.pf-group{border-top:2px solid var(--ink);padding-top:18px;min-width:0}
-.pf-group header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:4px}
-.pf-group h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
-.pf-group header span{font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
-.pf-group li{padding:14px 0;border-bottom:1px solid var(--line);display:grid;gap:4px}
-.pf-group li:last-child{border-bottom:0}
-.pf-group li b{font-weight:600;font-size:16px}
-.pf-group li span{font-size:14.5px;color:var(--ink-2);line-height:1.55}
-@media (max-width:900px){.portfolio{grid-template-columns:minmax(0,1fr);gap:40px}}
-
-/* Company */
-.company-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
-.company-copy{display:grid;gap:18px}
-.company-copy h2{font-size:clamp(32px,4.2vw,52px);font-weight:700}
-.company-side{display:grid;gap:18px}
-.company-side p{color:var(--ink-2);max-width:56ch}
-.name-note{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center;border-top:1px solid var(--line);padding-top:20px;margin-top:6px}
-.name-note .ur{font-family:var(--f-urdu);font-size:30px;line-height:1.7;color:var(--ink);direction:rtl}
-.name-note p{font-size:14.5px}
-.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 28px;margin-top:clamp(48px,6vw,72px);padding-top:clamp(40px,5vw,56px);border-top:1px solid var(--line)}
-.person{display:grid;gap:14px;align-content:start}
-.person img{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:center;background:var(--line)}
+/* Team */
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.person{display:grid;justify-items:start;gap:6px}
+.person img{width:96px;height:96px;border-radius:50%;object-fit:cover;background:var(--line);margin-bottom:10px;box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--line);transition:box-shadow .2s}
+.person:hover img{box-shadow:0 0 0 4px var(--bg),0 0 0 6px var(--blue)}
 .person h3{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
-.person .role{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-top:6px}
-.person p{font-size:14.5px;color:var(--ink-2);margin-top:10px;line-height:1.55}
-@media (max-width:920px){.company-top{grid-template-columns:minmax(0,1fr);align-items:start}.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.team{grid-template-columns:minmax(0,1fr)}.person{grid-template-columns:72px minmax(0,1fr);gap:16px}.person img{width:72px;height:72px}}
+.person p{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+@media (max-width:820px){.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* Contact */
-.contact{background:var(--bg);color:var(--ink);border-top:1px solid var(--line)}
-.contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px)}
-.contact h2{font-size:clamp(34px,4.6vw,58px);font-weight:800;letter-spacing:-.03em;color:var(--ink)}
-.contact .lede{color:var(--ink-2);margin-top:18px}
-.contact .label{color:var(--ink-3)}
-.details{display:grid;gap:22px;margin-top:40px}
-.detail{display:grid;gap:4px}
-.detail .val{font-size:17px;color:var(--ink)}
-.detail a.val{justify-self:start;text-decoration:none;border-bottom:1px solid var(--line)}
-.detail a.val:hover{border-bottom-color:var(--blue);color:var(--blue)}
-.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);color:var(--ink);border-radius:14px;padding:clamp(22px,3vw,32px)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,6vw,80px);align-items:start}
+.details{display:grid;gap:18px;margin-top:32px}
+.detail{display:grid;gap:2px}
+.detail .label{color:var(--ink-3);font-size:11.5px}
+.detail a{font-size:18px;text-decoration:none;justify-self:start;border-bottom:1px solid var(--line)}
+.detail a:hover{color:var(--blue);border-bottom-color:var(--blue)}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;background:var(--card);border-radius:14px;padding:clamp(22px,3vw,30px);box-shadow:var(--shadow)}
 .field{display:grid;gap:6px}
 .field.full{grid-column:1/-1}
-.field label{font-size:13.5px;font-weight:600;color:var(--ink)}
-.field label span{font-weight:400;color:var(--ink-3)}
-.field input,.field select,.field textarea{font:inherit;font-size:15.5px;color:var(--ink);background:var(--bg);border:1px solid var(--field-line);border-radius:8px;padding:11px 12px;width:100%;min-width:0;transition:border-color .15s}
-.field textarea{min-height:120px;resize:vertical}
-.field [aria-invalid="true"]{border-color:var(--neg)}
+.field label{font-size:13.5px;font-weight:600}
+.field input,.field select,.field textarea{font:inherit;font-size:15.5px;color:var(--ink);background:var(--bg);border:1px solid var(--field-line);border-radius:8px;padding:11px 12px;width:100%;min-width:0;transition:border-color .15s,box-shadow .15s}
+.field textarea{min-height:110px;resize:vertical}
+.field [aria-invalid="true"]{border-color:#c2410c}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
-.interest{display:flex;flex-wrap:wrap;gap:8px;border:0;padding:0;margin:0}
-.interest legend{font-size:13.5px;font-weight:600;margin-bottom:8px;padding:0}
-.interest label{position:relative;cursor:pointer}
-.interest input{position:absolute;opacity:0;width:1px;height:1px}
-.interest span{display:inline-block;font-size:14px;padding:8px 13px;border:1px solid var(--field-line);border-radius:999px;color:var(--ink-2);transition:all .15s}
-.interest input:checked+span{border-color:var(--blue);color:var(--blue);background:var(--blue-soft)}
-.interest input:focus-visible+span{outline:2px solid var(--blue);outline-offset:2px}
-.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:4px}
+.form-status{grid-column:1/-1;font-size:14.5px;border-radius:8px;padding:12px 14px;background:var(--mist)}
+.form-status.ok{background:var(--ok-soft)}
+.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
 .form-foot small{font-size:13px;color:var(--ink-3)}
-.form-status{grid-column:1/-1;font-size:14.5px;border-radius:8px;padding:12px 14px;background:var(--bg-soft);color:var(--ink)}
-.form-status.ok{background:var(--blue-soft)}
-@media (max-width:920px){.contact-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){.contact-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:520px){.form{grid-template-columns:minmax(0,1fr)}}
 
 /* Footer */
-.site-footer{padding-block:40px 48px;border-top:1px solid var(--line)}
-.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 40px}
-.foot nav{display:flex;flex-wrap:wrap;gap:10px 26px}
-.foot nav a{text-decoration:none;font-size:14.5px;color:var(--ink-2)}
-.foot nav a:hover{color:var(--ink)}
-.foot small{font-size:13.5px;color:var(--ink-3)}
+.site-footer{background:var(--ink);color:var(--foot-text);padding-block:28px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 32px;font-size:14px}
+.foot a{color:var(--on-blue);text-decoration:none}
+.foot a:hover{text-decoration:underline}
 .social{display:flex;gap:10px}
-.social a{display:grid;place-items:center;width:36px;height:36px;border-radius:8px;border:1px solid var(--line);color:var(--ink-2)}
-.social a:hover{color:var(--ink);border-color:var(--ink-3)}
-.social svg{width:16px;height:16px}
+.social a{display:grid;place-items:center;width:34px;height:34px;border-radius:8px;border:1px solid var(--foot-line);color:var(--on-blue)}
+.social a:hover{border-color:var(--on-blue);text-decoration:none}
+.social svg{width:15px;height:15px}
+
+/* Scroll reveal: only applied once the script runs; everything is visible without it */
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .swoosh path{stroke-dashoffset:0}
+  .js .reveal{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -362,19 +244,17 @@ a.tag:not(.flag):hover{border-color:var(--blue);color:var(--blue)}
 <header class="site-header" id="top">
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Liwa Labs, back to top">
-      <img class="mark-dark" src="assets/liwa-mark.png" alt="" width="34" height="34">
-      <img class="mark-light" src="assets/liwa-mark-light.png" alt="" width="34" height="34">
+      <img src="assets/liwa-mark.png" alt="" width="34" height="34">
       <span class="brand-word">LIWA <span>LABS</span></span>
     </a>
     <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <nav class="nav-links" id="nav-links" aria-label="Main">
-      <a href="#services">What we do</a>
+      <a href="#products">Products</a>
       <a href="#mulazim">Mulazim</a>
-      <a href="#government">Government</a>
-      <a href="#work">Work</a>
-      <a href="#company">Company</a>
+      <a href="#services">Services</a>
+      <a href="#team">Team</a>
       <a class="btn btn-primary" href="#contact">Contact us</a>
     </nav>
   </div>
@@ -386,452 +266,162 @@ a.tag:not(.flag):hover{border-color:var(--blue);color:var(--blue)}
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="label blue">Liwa Labs · Karachi</p>
-      <h1>We build AI, fintech and <em>Web3</em> products.</h1>
-      <p class="lede">Liwa Labs is a technology company. We design, build and run our own products, led by the Mulazim private AI platform, and we build software for government departments, enterprises and founders.</p>
+      <p class="label">Liwa Labs · Karachi</p>
+      <h1><span class="w" style="animation-delay:.05s">We build AI,</span> <span class="w" style="animation-delay:.15s">government software,</span> <span class="w" style="animation-delay:.25s">fintech and</span> <span class="w" style="animation-delay:.35s"><em>Web3</em> products.</span></h1>
+      <p class="lede">A technology company that designs, builds and runs its own products, and builds software for clients.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="#contact">Start a conversation</a>
-        <a class="btn btn-ghost" href="#work">See our work</a>
+        <a class="btn btn-primary" href="#products">See our products</a>
+        <a class="btn btn-ghost" href="#contact">Contact us</a>
       </div>
     </div>
+    <svg class="swoosh" viewBox="0 0 400 360" aria-hidden="true">
+      <path class="s3" d="M10 70 C 170 50, 320 110, 392 230"/>
+      <path class="s1" d="M10 150 C 165 140, 295 200, 380 305"/>
+      <path class="s2" d="M70 222 C 185 222, 275 262, 335 335"/>
+    </svg>
+  </div>
+</section>
 
-    <div class="map" aria-labelledby="map-h">
-      <div class="map-head"><h2 class="label" id="map-h">Our products</h2><span class="label">17 products</span></div>
-      <div class="map-row">
-        <h3>AI</h3>
-        <ul>
-          <li><a class="tag flag" href="#mulazim-ai">Mulazim AI</a></li>
-          <li><a class="tag flag" href="#mulazim-studio">Mulazim Studio</a></li>
-          <li><span class="tag">Callwala</span></li>
-          <li><span class="tag">Aitells</span></li>
-          <li><span class="tag">Eve</span></li>
-          <li><span class="tag">Swift Me</span></li>
-        </ul>
+<!-- Products -->
+<section class="section t-mist" id="products">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="label">Products</p>
+      <h2>What we have built.</h2>
+      <p class="lede">Products across AI, government, finance and Web3. Two are in daily use in a Government of Sindh directorate.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter products">
+      <button class="filter" type="button" data-f="all" aria-pressed="true">All</button>
+      <button class="filter" type="button" data-f="ai" aria-pressed="false">AI</button>
+      <button class="filter" type="button" data-f="gov" aria-pressed="false">Government</button>
+      <button class="filter" type="button" data-f="fin" aria-pressed="false">FinTech</button>
+      <button class="filter" type="button" data-f="web3" aria-pressed="false">Web3</button>
+    </div>
+    <div class="grid" id="grid">
+      <div class="featured">
+        <a class="card reveal card-link" data-c="ai" href="#mulazim">
+          <div class="tags"><span class="tag flag">Flagship</span><span class="tag ai">AI</span></div>
+          <h3>Mulazim</h3>
+          <p>Private AI that works from your own records. Seven products on one platform.</p>
+          <span class="more">See Mulazim products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+        </a>
+        <article class="card reveal" data-c="gov">
+          <div class="tags"><span class="tag gov">Government</span><span class="live"><i></i>In use</span></div>
+          <h3>e-DFA</h3>
+          <p>Draft, review, approve and print official letters. Versions are numbered and locked.</p>
+        </article>
+        <article class="card reveal" data-c="gov">
+          <div class="tags"><span class="tag gov">Government</span><span class="live"><i></i>In use</span></div>
+          <h3>e-DMS</h3>
+          <p>Scan paper with a phone or PC. Find any document by its text.</p>
+        </article>
       </div>
-      <div class="map-row">
-        <h3>Government</h3>
-        <ul>
-          <li><a class="tag" href="#e-dfa">e-DFA</a></li>
-          <li><a class="tag" href="#e-dms">e-DMS</a></li>
-        </ul>
+      <article class="card reveal" data-c="ai"><div class="tags"><span class="tag ai">AI</span></div><h3>Callwala</h3><p>AI call agent for contact centres. Qualifies leads.</p></article>
+      <article class="card reveal" data-c="ai"><div class="tags"><span class="tag ai">AI</span></div><h3>Aitells</h3><p>Conversational AI that answers questions in natural language.</p></article>
+      <article class="card reveal" data-c="fin"><div class="tags"><span class="tag fin">FinTech</span></div><h3>Oro Gold</h3><p>Gold-backed digital token. Invest, trade, earn and borrow.</p></article>
+      <article class="card reveal" data-c="fin"><div class="tags"><span class="tag fin">FinTech</span></div><h3>Liquid Prop</h3><p>Fractional ownership of U.S. property, on the blockchain.</p></article>
+      <article class="card reveal" data-c="fin"><div class="tags"><span class="tag fin">FinTech</span></div><h3>Zar</h3><p>Wallet for digital dollars, with Visa cards.</p></article>
+      <article class="card reveal" data-c="web3"><div class="tags"><span class="tag web3">Web3</span></div><h3>Honeycomb Protocol</h3><p>Developer utilities for games and projects on Solana.</p></article>
+      <article class="card reveal" data-c="web3"><div class="tags"><span class="tag web3">Web3</span></div><h3>Ocean Explorers</h3><p>Strategy game on Solana with NFT ownership.</p></article>
+    </div>
+    <p class="note">e-DFA and e-DMS both run on the department's own server.</p>
+  </div>
+</section>
+
+<!-- Mulazim -->
+<section class="section t-sky" id="mulazim">
+  <div class="wrap mz">
+    <div class="reveal">
+      <div class="head">
+        <p class="label">Flagship · Mulazim</p>
+        <h2>AI built for one institution. Yours.</h2>
+        <p class="lede">Mulazim runs inside your organisation, works from your own records and cites the source behind every answer.</p>
       </div>
-      <div class="map-row">
-        <h3>FinTech &amp; DeFi</h3>
-        <ul>
-          <li><span class="tag">Oro Gold</span></li>
-          <li><span class="tag">Liquid Prop</span></li>
-          <li><span class="tag">Zar</span></li>
-        </ul>
-      </div>
-      <div class="map-row">
-        <h3>Blockchain &amp; Web3</h3>
-        <ul>
-          <li><span class="tag">Honeycomb Protocol</span></li>
-          <li><span class="tag">Sol Patrol</span></li>
-          <li><span class="tag">Ocean Explorers</span></li>
-          <li><span class="tag">RFRSH</span></li>
-          <li><span class="tag">Bright Switch</span></li>
-          <li><span class="tag">Pooks</span></li>
-        </ul>
-      </div>
-      <p class="map-foot"><span class="tag flag" aria-hidden="true">&nbsp;</span> Mulazim platform, our flagship</p>
+      <ul class="facts">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg><span><b>Runs on your servers.</b> Fully offline as Blackbox, or with a hosted model.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/></svg><span><b>Read-only.</b> It queries your databases and cannot change them.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 11l2 2 4-4"/></svg><span><b>Access by role.</b> Each person sees only what their role allows.</span></li>
+      </ul>
+      <a class="btn btn-primary" href="https://mulazimai.com" target="_blank" rel="noopener">Visit mulazimai.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+    </div>
+    <div class="family reveal">
+      <div class="family-head"><span class="label">Mulazim products</span><span class="label">7</span></div>
+      <ul>
+        <li><div><b>Mulazim AI</b><small>Everyone</small></div><span>Chat with your data and documents. Answers cite their source.</span></li>
+        <li><div><b>Mulazim Studio</b><small>Engineering</small></div><span>AI specialists take a product brief to CAD, analysis and drawings.</span></li>
+        <li><div><b>Vakel AI</b><small>Legal and risk</small></div><span>Statutes and judgments. Every answer cites the law.</span></li>
+        <li><div><b>Ustad</b><small>Learning and compliance</small></div><span>Checks courses against standards. Grades exams to one rubric.</span></li>
+        <li><div><b>RCS</b><small>Executives</small></div><span>Clash-free schedules, live KPI answers, decisions tracked.</span></li>
+        <li><div><b>AATS</b><small>Operations</small></div><span>Reads manuals, incidents and sensor history. Forecasts failures.</span></li>
+        <li><div><b>Shahid</b><small>Sites and security</small></div><span>Runs on the camera. No streaming, no cloud.</span></li>
+      </ul>
     </div>
   </div>
 </section>
 
 <!-- Services -->
-<section class="section band" id="services">
+<section class="section" id="services">
   <div class="wrap">
-    <div class="section-head">
-      <p class="label blue">What we do</p>
-      <h2>Five practices, one engineering team.</h2>
-      <p class="lede">We take products from idea to launch, then keep them running. Each practice is backed by products we have shipped ourselves.</p>
+    <div class="head reveal">
+      <p class="label">Services</p>
+      <h2>We also build for clients.</h2>
+      <p class="lede">The same team that ships our products takes yours from idea to launch.</p>
     </div>
-    <ul class="services">
-      <li class="svc">
-        <h3>AI products &amp; custom AI</h3>
-        <p>Private assistants, document and data analysis, voice agents for contact centres. Built on our own Mulazim platform or to your specification, on your servers or in the cloud.</p>
-        <p class="svc-work"><span class="label">Our work</span> Mulazim, e-DFA, Callwala, Aitells, Eve</p>
-      </li>
-      <li class="svc">
-        <h3>Blockchain &amp; Web3 development</h3>
-        <p>Smart contracts, dApps, protocols, games and NFT platforms, from concept to mainnet launch.</p>
-        <p class="svc-work"><span class="label">Our work</span> Honeycomb Protocol, Sol Patrol, RFRSH</p>
-      </li>
-      <li class="svc">
-        <h3>FinTech</h3>
-        <p>Digital wallets, card and payment products, tokenised real-world assets and DeFi platforms.</p>
-        <p class="svc-work"><span class="label">Our work</span> Oro Gold, Liquid Prop, Zar</p>
-      </li>
-      <li class="svc">
-        <h3>Cloud &amp; data infrastructure</h3>
-        <p>Cloud platforms, data pipelines and analytics, and on-premises servers for private AI.</p>
-        <p class="svc-work"><span class="label">Our work</span> Mulazim Blackbox, e-DFA and e-DMS on department servers</p>
-      </li>
-      <li class="svc">
-        <h3>Strategy &amp; training</h3>
-        <p>Technology strategy for leadership teams, and hands-on training in AI and Web3 for staff and partners.</p>
-        <p class="svc-work"><span class="label">Our work</span> Programmes reaching over 120,000 students</p>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- Mulazim -->
-<section class="section" id="mulazim">
-  <div class="wrap">
-    <div class="mz-head">
-      <div class="section-head">
-        <p class="label blue">Flagship · Mulazim</p>
-        <h2>Private AI for government and industry.</h2>
-        <p class="lede">Mulazim is an AI platform installed inside your organisation. It works from your own databases and documents, cites the source behind every answer, and can run fully offline. Two products are built on it.</p>
-        <p class="mz-name"><span class="ur" lang="ur">ملازم</span><span><b>Mulazim</b> means one who serves: an aide who knows the office, keeps its confidences and does the groundwork.</span></p>
-      </div>
-      <div class="mz-card">
-      <div class="answer" role="img" aria-label="Example: Mulazim summarises an English budget circular in Urdu and cites the page it used.">
-        <div class="answer-bar">
-          <span class="who"><i></i>Mulazim</span>
-          <span class="label">On-premises · Offline</span>
-        </div>
-        <div class="answer-body">
-          <div class="q">
-            <div class="file"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>budget-circular-2026-27.pdf · 14 pages</div>
-            Explain this circular in Urdu. What do departments have to do?
-          </div>
-          <div class="a">
-            <p class="urdu" lang="ur">تمام محکمے اپنے نظرثانی شدہ بجٹ تخمینے ۱۵ مارچ تک محکمۂ خزانہ کو جمع کرائیں۔ نئے منصوبوں کے لیے منظور شدہ پی سی ون لازمی ہے۔</p>
-            <p class="en">All departments must send revised budget estimates to the Finance Department by 15 March. New schemes need an approved PC&#8209;1.</p>
-            <div class="cites">
-              <span class="cite"><b>p. 2</b> ¶ 4 · Submission deadline</span>
-              <span class="cite"><b>p. 6</b> ¶ 1 · New schemes</span>
-            </div>
-          </div>
-        </div>
-        <div class="answer-foot">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Every line linked to its page</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Never sent outside</span>
-        </div>
-      </div>
-      <p class="mock-note">Illustrative example</p>
-      </div>
-    </div>
-
-    <div class="products-index">
-      <a class="pi" href="#mulazim-ai">
-        <h3>Mulazim AI <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></h3>
-        <p>An AI analyst for your organisation. Asks your databases and documents, answers with the source.</p>
-      </a>
-      <a class="pi" href="#mulazim-studio">
-        <h3>Mulazim Studio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></h3>
-        <p>An engineering design team of AI specialists. From a brief to CAD models and analysis, with you approving every step.</p>
-      </a>
-    </div>
-
-    <!-- Mulazim AI -->
-    <article class="product" id="mulazim-ai">
-      <div>
-        <h3 class="label blue">Mulazim AI</h3>
-        <p class="ptitle">Answers from your own data, with the source.</p>
-        <p class="tagline">Ask in plain language. Every figure and quote is traced back to the query or page it came from.</p>
-        <p class="desc">Public chatbots have never seen your records, and anything you paste into them leaves your control. Mulazim connects to your systems inside your network, reasons over the data and writes up what it finds.</p>
-        <ul class="feats">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg><span><b>Data analyst.</b> Plain-language questions over your ERP and databases, answered with the numbers behind them.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg><span><b>Document answers.</b> Search across laws, rules, policies and files, with the clause or page cited.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span><b>Reports and decks.</b> Findings written up as reports, spreadsheets and slide decks you can edit.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg><span><b>Video analysis.</b> Mission Control counts and tracks what appears in recorded or live camera footage, processed on site.</span></li>
-        </ul>
-        <a class="btn btn-ghost" href="https://mulazimai.com" target="_blank" rel="noopener">Visit mulazimai.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-      </div>
-      <div class="product-visual">
-        <div class="panel" role="img" aria-label="Example: Mulazim AI explains a margin drop by querying the sales database, and shows each query it ran.">
-          <div class="panel-head"><span>Data analyst</span><span class="label">Example</span></div>
-          <div class="panel-body trace">
-            <p class="ask">Why did the Pro Maple Bat lose margin in 2023?</p>
-            <div class="steps">
-              <div class="step"><b>Read the question</b>Product: Pro Maple Bat · period: 2022 vs 2023</div>
-              <div class="step"><b>Compared 2022 with 2023</b><code>v_product_margin_change</code></div>
-              <div class="step"><b>Split price from cost</b>Unit cost up 22% from Q1 2023, price unchanged</div>
-              <div class="step" style="padding-bottom:4px"><b>Concluded</b>The drop is driven by cost, not by discounting</div>
-            </div>
-            <div class="result">
-              <div><p class="k">Margin change</p><p class="v neg">−11.3 pp</p></div>
-              <div><p class="k">Unit cost</p><p class="v">+22%</p></div>
-              <div><p class="k">Driver</p><p class="v blue">Cost</p></div>
-            </div>
-          </div>
-          <div class="ro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg>Read-only access. The database itself refuses any change.</div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Mulazim Studio -->
-    <article class="product" id="mulazim-studio">
-      <div>
-        <h3 class="label blue">Mulazim Studio</h3>
-        <p class="ptitle">An engineering team of AI specialists.</p>
-        <p class="tagline">Give it a brief and reference designs. Get blueprints, CAD models, analysis and renders, reviewed at every step.</p>
-        <p class="desc">Studio plans the work as a graph of specialist roles, from body design and chassis to propulsion and homologation, and runs it with real engineering tools. Every step stops at an approval gate, and you decide which gates need an engineer's sign-off.</p>
-        <ul class="feats">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7 6h10M6 8l5 8M18 8l-5 8"/></svg><span><b>Specialist roles.</b> Body design, chassis, powertrain, aerodynamics, cost and homologation, picked per project.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12M21 7l-9 5-9-5"/></svg><span><b>Real outputs.</b> STEP, STL and 3D models, FEA, renders and dimensioned drawings.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span><b>Human gates.</b> Approve or send back with comments. Open issues need a written waiver.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span><b>Your materials.</b> Designs use your own catalogue of materials and processes, ranked by availability.</span></li>
-        </ul>
-        <a class="btn btn-ghost" href="#contact" data-interest="studio">Request a walkthrough</a>
-      </div>
-      <div class="product-visual">
-        <div class="panel">
-          <div class="panel-head"><span>Project · Utility vehicle, iteration 2</span><span class="label">Example</span></div>
-          <div class="panel-body pipeline">
-            <div class="phases">
-              <span class="ph"><span class="phase done">Interpret</span><span class="arrow">→</span></span>
-              <span class="ph"><span class="phase done">Goal</span><span class="arrow">→</span></span>
-              <span class="ph"><span class="phase done">Research</span><span class="arrow">→</span></span>
-              <span class="ph"><span class="phase done">Ratify</span><span class="arrow">→</span></span>
-              <span class="ph"><span class="phase done">Plan</span></span>
-            </div>
-            <div class="graph-wrap">
-              <svg class="graph" viewBox="0 0 560 206" role="img" aria-label="Plan graph: blueprint engineer feeds chassis, body design and spec designer; these feed the CAD modeler, which waits at an approval gate before review.">
-                <path class="edge" d="M124 103 C150 103 150 40 176 40"/>
-                <path class="edge" d="M124 103 L176 103"/>
-                <path class="edge" d="M124 103 C150 103 150 166 176 166"/>
-                <path class="edge" d="M288 40 C318 40 318 103 346 103"/>
-                <path class="edge" d="M288 103 L346 103"/>
-                <path class="edge" d="M288 166 C318 166 318 103 346 103"/>
-                <path class="edge" d="M458 103 L488 103" stroke-dasharray="3 3"/>
-                <rect class="node ok" x="12" y="80" width="112" height="46" rx="8"/>
-                <text x="24" y="100">blueprint</text><text class="sub" x="24" y="115">approved</text>
-                <rect class="node ok" x="176" y="17" width="112" height="46" rx="8"/>
-                <text x="188" y="37">chassis</text><text class="sub" x="188" y="52">approved</text>
-                <rect class="node ok" x="176" y="80" width="112" height="46" rx="8"/>
-                <text x="188" y="100">body design</text><text class="sub" x="188" y="115">approved</text>
-                <rect class="node ok" x="176" y="143" width="112" height="46" rx="8"/>
-                <text x="188" y="163">spec</text><text class="sub" x="188" y="178">approved</text>
-                <rect class="node" x="346" y="80" width="112" height="46" rx="8"/>
-                <text x="358" y="100">cad.vehicle</text><text class="sub" x="358" y="115">awaiting gate</text>
-                <circle class="gate" cx="124" cy="103" r="4"/><circle class="gate" cx="288" cy="40" r="4"/><circle class="gate" cx="288" cy="103" r="4"/><circle class="gate" cx="288" cy="166" r="4"/>
-                <circle class="gate-wait" cx="458" cy="103" r="5"/>
-                <rect class="node" x="488" y="80" width="62" height="46" rx="8" stroke-dasharray="3 3"/>
-                <text x="498" y="107">review</text>
-              </svg>
-            </div>
-            <div class="gate-card">
-              <div><p class="t">Gate: CAD model of the vehicle</p><p class="s">Mass within margin · CG check passed · 0&nbsp;open findings</p></div>
-              <div class="gate-actions" aria-hidden="true"><span class="chip">Send back</span><span class="chip approve">Approve</span></div>
-            </div>
-            <div class="outputs"><span>vehicle.step</span><span>vehicle.glb</span><span>modal-fea.pdf</span><span>render-front.png</span><span>drawing-a3.pdf</span></div>
-          </div>
-        </div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- Deployment -->
-<section class="section band" id="deployment">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="label blue">Mulazim · Deployment</p>
-      <h2>Runs where your data lives.</h2>
-      <p class="lede">Mulazim is installed in your environment, not rented from ours. Choose how it generates answers. You can switch later without rebuilding anything.</p>
-    </div>
-    <div class="deploy-grid">
-      <div class="mode primary">
-        <p class="label blue"><span>On-premises</span><span>Fully offline</span></p>
-        <h3>Blackbox</h3>
-        <p>The whole platform, including the AI models, runs on your own GPU server. It can work with no internet connection at all.</p>
-        <dl>
-          <dt>Leaves your building</dt><dd>Nothing. It can run air-gapped.</dd>
-          <dt>Hardware</dt><dd>One GPU server in your data centre</dd>
-          <dt>Suits</dt><dd>Ministries, banks, regulated data</dd>
-        </dl>
-      </div>
-      <div class="mode">
-        <p class="label"><span>Your servers + hosted model</span><span>No GPU needed</span></p>
-        <h3>Networked</h3>
-        <p>The platform runs on your servers and sends each request to a hosted model you choose, such as Claude or DeepSeek, to write the answer. Search, storage, speech and access control stay on your side.</p>
-        <dl>
-          <dt>Leaves your building</dt><dd>Each question, with the document passages or database rows used to answer it</dd>
-          <dt>Hardware</dt><dd>Standard servers</dd>
-          <dt>Suits</dt><dd>Enterprises and pilots</dd>
-        </dl>
-      </div>
-    </div>
-    <div class="promises">
-      <div class="promise">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/></svg>
-        <h4>Installed, not rented</h4>
-        <p>Runs on your hardware under your control. Move to fully offline whenever you are ready.</p>
-      </div>
-      <div class="promise">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 11l2 2 4-4"/></svg>
-        <h4>Access by role</h4>
-        <p>Each person sees only what their role allows. Database passwords and keys never reach the AI.</p>
-      </div>
-      <div class="promise">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg>
-        <h4>Read-only data access</h4>
-        <p>The AI queries your databases through a read-only account. The database itself refuses any change.</p>
-      </div>
-      <div class="promise">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
-        <h4>Answers you can check</h4>
-        <p>Figures come with the query that produced them, quotes with the page they came from.</p>
-      </div>
+    <div class="services">
+      <div class="svc reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg><h3>AI products and custom AI</h3><p>Private assistants, document analysis, voice agents.</p></div>
+      <div class="svc reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14M14 17.5h-4a3 3 0 0 1-3-3V10"/></svg><h3>Blockchain and Web3</h3><p>Smart contracts, dApps, protocols and games.</p></div>
+      <div class="svc reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg><h3>FinTech</h3><p>Wallets, card and payment products, tokenised assets.</p></div>
+      <div class="svc reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.6-8 6 6 0 0 1 11.6 1.5A3.5 3.5 0 0 1 17.5 18z"/></svg><h3>Cloud and data</h3><p>Cloud platforms, data pipelines, on-premises AI servers.</p></div>
+      <div class="svc reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg><h3>Strategy and training</h3><p>Technology strategy and staff training in AI and Web3.</p></div>
     </div>
   </div>
 </section>
 
-<!-- Government software -->
-<section class="section" id="government">
+<!-- Team -->
+<section class="section t-mist" id="team">
   <div class="wrap">
-    <div class="section-head">
-      <p class="label blue">Government software</p>
-      <h2>Office work, moved off paper.</h2>
-      <p class="lede">Two systems built for a directorate of the Government of Sindh. Both install on the department's own server with a one-file installer, work on the office network, and keep every record on that server.</p>
-    </div>
-    <div class="gov">
-      <article class="gov-item" id="e-dfa">
-        <div class="gov-top"><h3 class="label blue">e-DFA</h3><span class="status live">In use</span></div>
-        <p class="gov-title">Draft, review and approve official letters.</p>
-        <p class="desc">Drafters write letters in the browser. Each draft goes up to the reviewing officer and the approving authority, and comes back with comments until it is approved and printed on the department's letterhead.</p>
-        <div class="flow" aria-label="A letter's path: draft, review, approve, print">
-          <span class="ph"><span class="phase done">Draft</span><span class="arrow">→</span></span>
-          <span class="ph"><span class="phase done">Review</span><span class="arrow">→</span></span>
-          <span class="ph"><span class="phase done">Approve</span><span class="arrow">→</span></span>
-          <span class="ph"><span class="phase done">Print</span></span>
-        </div>
-        <ul class="feats">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg><span><b>One copy, every version kept.</b> The server numbers each version and links it to the last, so no one can work on the wrong file or alter an approved letter.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9h8M8 13h5"/><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg><span><b>No missed corrections.</b> Every comment stays open until it is resolved, and a draft cannot go back up while any comment is open.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg><span><b>Mulazim AI built in.</b> Grammar checks, more formal wording and a private document summariser, running on the department's own server.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="7" rx="1"/><rect x="4" y="10" width="16" height="7" rx="1"/><path d="M8 17v4h8v-4"/></svg><span><b>Letters ready to sign.</b> PDF and Word output on the official letterhead, from the department's own templates.</span></li>
-        </ul>
-      </article>
-      <article class="gov-item" id="e-dms">
-        <div class="gov-top"><h3 class="label blue">e-DMS</h3><span class="status live">In use</span></div>
-        <p class="gov-title">Scan, search and file the department's documents.</p>
-        <p class="desc">Officers capture paper with a phone camera or upload it from a PC. The server reads the text, so every document can be found by what it says, and each officer files their own documents in their own dashboard.</p>
-        <div class="search-demo" aria-hidden="true">
-          <div class="sd-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>revised estimates</div>
-          <div class="sd-row"><b>Finance circular, March.pdf</b><span>p. 2 · “…send <mark>revised estimates</mark> to the Finance Department by…”</span></div>
-          <div class="sd-row"><b>Notification 0412 (scan).pdf</b><span>p. 1 · “…the <mark>revised estimates</mark> for the current year…”</span></div>
-        </div>
-        <ul class="feats">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg><span><b>Capture anywhere.</b> Phone camera or PC upload. Captures made without a connection wait on the phone and upload later.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span><b>Searchable text.</b> Text is read on the server, never in the cloud, and every scan becomes a searchable PDF.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><b>Personal stays personal.</b> A personal document is seen only by its owner and the people they share it with, not even by an administrator.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg><span><b>Handover built in.</b> When an officer moves on, the administrator transfers their official documents to the successor.</span></li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- Portfolio -->
-<section class="section" id="work">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="label blue">Portfolio</p>
-      <h2>Products we have built and launched.</h2>
-      <p class="lede">Beyond Mulazim, our team has shipped thirteen products across AI, finance and Web3.</p>
-    </div>
-    <div class="portfolio">
-      <section class="pf-group" aria-labelledby="pf-ai">
-        <header><h3 id="pf-ai">AI &amp; Mobile</h3><span>4 products</span></header>
-        <ul>
-          <li><b>Aitells</b><span>A conversational AI platform developed before the widespread adoption of modern LLMs, designed to understand and respond to user queries in natural language.</span></li>
-          <li><b>Callwala</b><span>An AI-driven representative for contact centres that qualifies leads, handles calls intelligently and cuts operational costs.</span></li>
-          <li><b>Eve</b><span>The core anti-harassment technology providing tools for user safety and security, and the foundation of the official Zainab Alert app.</span></li>
-          <li><b>Swift Me</b><span>A one-window application for the restaurants of a shopping mall or food street, streamlining ordering and discovery.</span></li>
-        </ul>
-      </section>
-      <section class="pf-group" aria-labelledby="pf-fin">
-        <header><h3 id="pf-fin">FinTech &amp; DeFi</h3><span>3 products</span></header>
-        <ul>
-          <li><b>Oro Gold</b><span>A comprehensive on-chain ecosystem built on a fully gold-backed digital token, enabling users to instantly invest, trade, earn and borrow.</span></li>
-          <li><b>Liquid Prop</b><span>A platform democratising real estate investment through fractional ownership of U.S. properties on the blockchain.</span></li>
-          <li><b>Zar</b><span>A digital wallet enabling users to convert cash into digital dollars and spend globally with virtual and physical Visa cards.</span></li>
-        </ul>
-      </section>
-      <section class="pf-group" aria-labelledby="pf-web3">
-        <header><h3 id="pf-web3">Blockchain &amp; Web3</h3><span>6 products</span></header>
-        <ul>
-          <li><b>Honeycomb Protocol</b><span>A foundational platform on the Solana blockchain that provides essential utilities to decentralised projects and streamlines development for game creators.</span></li>
-          <li><b>Sol Patrol</b><span>A real-time multiplayer strategy game on Solana where players build cities, form guilds and send NFTs on missions to conquer the grid.</span></li>
-          <li><b>Ocean Explorers</b><span>A blockchain-based strategy game on Solana combining NFT ownership with immersive, on-chain strategic missions.</span></li>
-          <li><b>RFRSH</b><span>An all-in-one platform for Solana NFTs, offering portfolio tracking, wallet analytics, trading tools and market data.</span></li>
-          <li><b>Bright Switch</b><span>A burn-to-mint platform on Solana that lets users exchange old NFT collections for new ones.</span></li>
-          <li><b>Pooks</b><span>A digital collectible on the blockchain that serves as an online avatar and grants membership to the Pooks community.</span></li>
-        </ul>
-      </section>
-    </div>
-  </div>
-</section>
-
-<!-- Company -->
-<section class="section band" id="company">
-  <div class="wrap">
-    <div class="company-top">
-      <div class="company-copy">
-        <p class="label blue">Company</p>
-        <h2>A technology company in Karachi.</h2>
-      </div>
-      <div class="company-side">
-        <p>Liwa Labs is a product and engineering company. Our founders bring backgrounds in engineering, entrepreneurship, education and public service, and our team has built products in AI, government software, finance and Web3.</p>
-        <p>We design, build and support everything ourselves, from smart contracts to on-premises AI.</p>
-      </div>
+    <div class="head reveal">
+      <p class="label">Team</p>
+      <h2>Four co-founders.</h2>
+      <p class="lede">Backgrounds in engineering, entrepreneurship, education and public service.</p>
     </div>
     <div class="team">
-      <div class="person">
-        <img src="assets/team-mannan.jpg" alt="" width="88" height="88">
-        <div><h3>K. A. Mannan Spanogiannis</h3><p class="role">CEO &amp; Co-founder</p><p>An experienced international entrepreneur with a proven record of building tech ventures and leading successful Web3 projects from concept to launch.</p></div>
-      </div>
-      <div class="person">
-        <img src="assets/team-ghulam.jpg" alt="" width="88" height="88">
-        <div><h3>Ghulam Mustafa Raza Qadri</h3><p class="role">Co-founder</p><p>An engineer and decentralisation advocate with 8+ years of experience. He has provided technical leadership for key ventures, and his educational work has reached over 120,000 students in Pakistan.</p></div>
-      </div>
-      <div class="person">
-        <img src="assets/team-moiz.jpg" alt="" width="88" height="88">
-        <div><h3>Engr. Muhammad Moiz Yousuf</h3><p class="role">Co-founder</p><p>A PEC-registered automotive engineer and Web 3.0 entrepreneur who co-founded Cerberus-Tech, and the youngest committee chairman in the history of the FPCCI.</p></div>
-      </div>
-      <div class="person">
-        <img src="assets/team-ammar.jpg" alt="" width="88" height="88">
-        <div><h3>Muhammad Ammar Irfan Bhabha</h3><p class="role">Co-founder</p><p>Recipient of the Fakhar-e-Pakistan award, CEO of Bhabha Technologies and an International AI Champion recognised by the Government of Russia. Serves in Pakistan's Youth Parliament.</p></div>
-      </div>
+      <div class="person reveal"><img src="assets/team-mannan.jpg" alt="" width="96" height="96"><h3>K. A. Mannan Spanogiannis</h3><p>CEO &amp; Co-founder</p></div>
+      <div class="person reveal"><img src="assets/team-ghulam.jpg" alt="" width="96" height="96"><h3>Ghulam Mustafa Raza Qadri</h3><p>Co-founder</p></div>
+      <div class="person reveal"><img src="assets/team-moiz.jpg" alt="" width="96" height="96"><h3>Engr. Muhammad Moiz Yousuf</h3><p>Co-founder</p></div>
+      <div class="person reveal"><img src="assets/team-ammar.jpg" alt="" width="96" height="96"><h3>Muhammad Ammar Irfan Bhabha</h3><p>Co-founder</p></div>
     </div>
   </div>
 </section>
 
 <!-- Contact -->
-<section class="section contact" id="contact">
+<section class="section t-sky" id="contact">
   <div class="wrap contact-grid">
-    <div>
-      <p class="label">Contact</p>
-      <h2>Tell us what you are building.</h2>
-      <p class="lede">A new product, a platform to scale, or a Mulazim demo on your own records. We reply within one working day.</p>
+    <div class="reveal">
+      <div class="head">
+        <p class="label">Contact</p>
+        <h2>Tell us what you are building.</h2>
+        <p class="lede">A new product, or a Mulazim demo on your own records. We reply within one working day.</p>
+      </div>
       <div class="details">
-        <div class="detail"><span class="label">Email</span><a class="val" href="mailto:info@liwalabs.com">info@liwalabs.com</a></div>
-        <div class="detail"><span class="label">Phone</span><a class="val" href="tel:+923262263160">+92 326 2263160</a></div>
-        <div class="detail"><span class="label">Office</span><span class="val addr">Office 505, Tai Roshan Trade Center<br>Shaheed-e-Millat Road, Karachi</span></div>
+        <div class="detail"><span class="label">Email</span><a href="mailto:info@liwalabs.com">info@liwalabs.com</a></div>
+        <div class="detail"><span class="label">Phone</span><a href="tel:+923262263160">+92 326 2263160</a></div>
       </div>
     </div>
-    <form class="form" id="contact-form" novalidate>
+    <form class="form reveal" id="contact-form" novalidate>
       <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" autocomplete="name" required></div>
-      <div class="field"><label for="cf-org">Organisation</label><input id="cf-org" name="organisation" autocomplete="organization" required></div>
       <div class="field"><label for="cf-email">Work email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
-      <div class="field"><label for="cf-phone">Phone <span>(optional)</span></label><input id="cf-phone" name="phone" type="tel" autocomplete="tel"></div>
-      <fieldset class="interest field full">
-        <legend>Interested in</legend>
-        <label><input type="radio" name="interest" id="cf-i-mulazim" value="Mulazim" checked><span>Mulazim</span></label>
-        <label><input type="radio" name="interest" id="cf-i-gov" value="e-DFA or e-DMS"><span>e-DFA / e-DMS</span></label>
-        <label><input type="radio" name="interest" id="cf-i-ai" value="AI development"><span>AI development</span></label>
-        <label><input type="radio" name="interest" id="cf-i-fintech" value="FinTech"><span>FinTech</span></label>
-        <label><input type="radio" name="interest" id="cf-i-web3" value="Web3 and blockchain"><span>Web3 &amp; blockchain</span></label>
-        <label><input type="radio" name="interest" id="cf-i-other" value="Something else"><span>Something else</span></label>
-      </fieldset>
-      <div class="field full"><label for="cf-msg">What would you like to do?</label><textarea id="cf-msg" name="message" required placeholder="For example: a wallet app for our customers, or private AI over our finance data."></textarea></div>
+      <div class="field full"><label for="cf-interest">Interested in</label>
+        <select id="cf-interest" name="interest">
+          <option>Mulazim</option>
+          <option>Government software</option>
+          <option>AI</option>
+          <option>FinTech</option>
+          <option>Web3</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field full"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" required></textarea></div>
       <p class="form-status" id="cf-status" role="status" aria-live="polite" hidden></p>
       <div class="form-foot">
         <small>Your details are used only to reply to you.</small>
@@ -845,68 +435,75 @@ a.tag:not(.flag):hover{border-color:var(--blue);color:var(--blue)}
 
 <footer class="site-footer">
   <div class="wrap foot">
-    <a class="brand" href="#top" aria-label="Liwa Labs, back to top">
-      <img class="mark-dark" src="assets/liwa-mark.png" alt="" width="34" height="34">
-      <img class="mark-light" src="assets/liwa-mark-light.png" alt="" width="34" height="34">
-      <span class="brand-word">LIWA <span>LABS</span></span>
-    </a>
-    <nav aria-label="Footer">
-      <a href="#services">What we do</a>
-      <a href="#mulazim">Mulazim</a>
-      <a href="#government">Government</a>
-      <a href="#work">Work</a>
-      <a href="#company">Company</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <span>© <span id="year">2026</span> Liwa Labs. Karachi, Pakistan. · <a href="https://mulazimai.com" target="_blank" rel="noopener">mulazimai.com</a></span>
     <div class="social">
       <a href="https://www.instagram.com/liwalabs" target="_blank" rel="noopener" aria-label="Liwa Labs on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
       <a href="https://x.com/liwalabs" target="_blank" rel="noopener" aria-label="Liwa Labs on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
     </div>
   </div>
-  <div class="wrap foot" style="margin-top:28px">
-    <small>© <span id="year">2026</span> Liwa Labs. Karachi, Pakistan.</small>
-    <small>Flagship: Mulazim · <a href="https://mulazimai.com" target="_blank" rel="noopener" style="color:inherit">mulazimai.com</a></small>
-  </div>
 </footer>
 
 <script>
 (function(){
+  var root=document.documentElement;
   var header=document.querySelector('.site-header');
   var onScroll=function(){header.classList.toggle('scrolled',window.scrollY>8)};
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
+  // Menu
   var btn=document.getElementById('menu-btn'),links=document.getElementById('nav-links');
-  btn.addEventListener('click',function(){
-    var open=links.classList.toggle('open');
-    btn.setAttribute('aria-expanded',open?'true':'false');
-    btn.setAttribute('aria-label',open?'Close menu':'Open menu');
-  });
-  function closeMenu(){links.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu')}
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&links.classList.contains('open')){closeMenu();btn.focus()}});
-  document.addEventListener('click',function(e){if(links.classList.contains('open')&&!e.target.closest('.nav'))closeMenu()});
-  links.addEventListener('click',function(e){
-    if(e.target.closest('a')){links.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu')}
-  });
+  function setMenu(open){links.classList.toggle('open',open);btn.setAttribute('aria-expanded',open?'true':'false');btn.setAttribute('aria-label',open?'Close menu':'Open menu')}
+  btn.addEventListener('click',function(){setMenu(!links.classList.contains('open'))});
+  links.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&links.classList.contains('open')){setMenu(false);btn.focus()}});
+  document.addEventListener('click',function(e){if(links.classList.contains('open')&&!e.target.closest('.nav'))setMenu(false)});
 
   document.getElementById('year').textContent=new Date().getFullYear();
 
-  // Product buttons preselect the interest in the form
-  var map={studio:'cf-i-mulazim',ai:'cf-i-mulazim'};
-  document.querySelectorAll('[data-interest]').forEach(function(a){
-    a.addEventListener('click',function(){var r=document.getElementById(map[a.dataset.interest]);if(r)r.checked=true});
+  // Scroll reveal, staggered within each group. Everything is visible if this never runs.
+  var els=[].slice.call(document.querySelectorAll('.reveal'));
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    root.classList.add('js');
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting)return;
+        var el=en.target,sib=[].slice.call(el.parentNode.children).filter(function(n){return n.classList.contains('reveal')});
+        el.style.transitionDelay=Math.min(sib.indexOf(el),7)*60+'ms';
+        el.classList.add('in');io.unobserve(el);
+      });
+    },{rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el)});
+    setTimeout(function(){els.forEach(function(el){el.classList.add('in')})},4000);
+  }
+
+  // Product filter
+  var filters=[].slice.call(document.querySelectorAll('.filter'));
+  var cards=[].slice.call(document.querySelectorAll('#grid .card'));
+  var featured=document.querySelector('.featured');
+  filters.forEach(function(f){
+    f.addEventListener('click',function(){
+      var c=f.dataset.f;
+      filters.forEach(function(x){x.setAttribute('aria-pressed',x===f?'true':'false')});
+      cards.forEach(function(card){
+        var show=c==='all'||card.dataset.c===c;
+        card.classList.toggle('hide',!show);
+        if(show&&card.animate&&!matchMedia('(prefers-reduced-motion: reduce)').matches){card.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:280,easing:'ease-out'})}
+      });
+      featured.hidden=!featured.querySelector('.card:not(.hide)');
+    });
   });
 
+  // Contact form
   var form=document.getElementById('contact-form'),status=document.getElementById('cf-status'),submit=document.getElementById('cf-submit');
   function show(msg,ok){status.setAttribute('role',ok?'status':'alert');status.textContent=msg;status.className='form-status'+(ok?' ok':'');status.hidden=false}
   form.addEventListener('input',function(e){e.target.removeAttribute('aria-invalid')});
   form.addEventListener('submit',function(e){
     e.preventDefault();
+    var names={'cf-name':'your name','cf-email':'your work email','cf-msg':'a short message'};
     var missing=[].slice.call(form.querySelectorAll('[required]')).filter(function(el){return !el.value.trim()});
-    var email=document.getElementById('cf-email');
-    var names={'cf-name':'your name','cf-org':'your organisation','cf-email':'your work email','cf-msg':'a short message'};
-    form.querySelectorAll('[aria-invalid]').forEach(function(el){el.removeAttribute('aria-invalid')});
-    missing.forEach(function(el){el.setAttribute('aria-invalid','true');el.setAttribute('aria-describedby','cf-status')});
+    missing.forEach(function(el){el.setAttribute('aria-invalid','true')});
     if(missing.length){var n=missing.map(function(el){return names[el.id]});show('Please add '+(n.length>1?n.slice(0,-1).join(', ')+' and '+n[n.length-1]:n[0])+'.');missing[0].focus();return}
+    var email=document.getElementById('cf-email');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){email.setAttribute('aria-invalid','true');show('Please enter a valid email address.');email.focus();return}
     var data={};new FormData(form).forEach(function(v,k){data[k]=String(v).trim()});
     submit.disabled=true;submit.textContent='Sending…';
