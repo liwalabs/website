@@ -12,231 +12,7 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preload" href="assets/fonts/archivo-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
-<style>
-/* Layout: one 1160px column; each section sits on its own light tint (white, mist, sky, white, mist, sky) so the page reads in clear bands. */
-:root{
-  --bg:#ffffff;
-  --mist:#f4f7fb;
-  --sky:#eaf3fd;
-  --ink:#0d1520;
-  --ink-2:#4b5967;
-  --ink-3:#5b6874;
-  --line:#dfe6ee;
-  --field-line:#8b97a3;
-  --blue:#0866c0;
-  --blue-strong:#075bb0;
-  --blue-soft:#dcebfb;
-  --on-blue:#ffffff;
-  --ok:#11845b;
-  --ok-soft:#e3f4ec;
-  --gold:#94650a;
-  --gold-soft:#fbf1dc;
-  --violet:#5b47c4;
-  --violet-soft:#ece9fb;
-  --card:#ffffff;
-  --foot-text:#c9d3dd;
-  --foot-line:#2b3a4a;
-  --shadow:0 1px 2px rgba(13,21,32,.05),0 10px 30px -14px rgba(13,21,32,.16);
-  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --wrap:1160px;
-  color-scheme:light;
-}
-
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
-img{max-width:100%;display:block}
-a{color:inherit}
-h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.02em;line-height:1.08}
-p{margin:0}
-ul{margin:0;padding:0;list-style:none}
-:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
-
-.wrap{max-width:calc(var(--wrap) + 64px);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-@media (min-width:720px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
-.label{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-weight:500}
-.lede{font-size:clamp(17px,1.5vw,19px);color:var(--ink-2);max-width:56ch}
-.skip{position:absolute;left:16px;top:-60px;z-index:100;background:var(--blue);color:var(--on-blue);padding:10px 14px;border-radius:8px;font-weight:600;text-decoration:none}
-.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
-
-/* Buttons */
-.btn{display:inline-flex;align-items:center;gap:.5em;font:600 15px/1 var(--f-body);padding:13px 20px;border-radius:8px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,color .15s,transform .15s}
-.btn:hover{transform:translateY(-1px)}
-.btn-primary{background:var(--blue);color:var(--on-blue)}
-.btn-primary:hover{background:var(--blue-strong)}
-.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--bg)}
-.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
-.btn svg{width:16px;height:16px}
-
-/* Header */
-.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
-.site-header.scrolled{border-bottom-color:var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:24px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-.brand img{width:34px;height:34px}
-.brand-word{font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:.01em;line-height:1}
-.brand-word span{color:var(--blue)}
-.nav-links{display:flex;align-items:center;gap:30px}
-.nav-links a{text-decoration:none;font-size:15px;font-weight:500;color:var(--ink-2);position:relative}
-.nav-links a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .2s}
-.nav-links a:not(.btn):hover{color:var(--ink)}
-.nav-links a:not(.btn):hover::after{transform:scaleX(1)}
-.nav-links .btn{color:var(--on-blue);padding:10px 16px}
-.menu-btn{display:none;background:none;border:0;color:var(--ink);padding:8px;margin-right:-8px;cursor:pointer}
-.menu-btn svg{width:24px;height:24px}
-@media (max-width:820px){
-  .menu-btn{display:block}
-  .nav-links{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px max(16px,env(safe-area-inset-right,0px)) 20px max(16px,env(safe-area-inset-left,0px))}
-  .nav-links.open{display:flex}
-  .nav-links a{padding:14px 0;border-bottom:1px solid var(--line);font-size:17px}
-  .nav-links a:not(.btn)::after{display:none}
-  .nav-links .btn{margin-top:16px;justify-content:center;border-bottom:0;padding:14px}
-}
-
-/* Sections */
-.section{padding-block:clamp(64px,8vw,104px);scroll-margin-top:56px}
-.t-mist{background:var(--mist)}
-.t-sky{background:var(--sky)}
-.head{display:grid;gap:14px;max-width:720px;margin-bottom:clamp(32px,4vw,48px)}
-.head h2{font-size:clamp(30px,3.8vw,46px);font-weight:700}
-
-/* Hero */
-.hero{position:relative;overflow:hidden;padding-block:clamp(64px,9vw,120px);background:radial-gradient(60% 80% at 85% 20%,var(--sky) 0,transparent 70%),var(--bg)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,.6fr);gap:32px;align-items:center}
-.hero h1{font-size:clamp(38px,5.2vw,64px);font-weight:800;letter-spacing:-.035em;line-height:1.02;margin-top:20px}
-.hero h1 .w{display:inline-block;animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
-.hero h1 em{font-style:normal;color:var(--blue)}
-.hero .lede{margin-top:22px}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;animation:rise .7s .5s cubic-bezier(.2,.7,.2,1) both}
-.swoosh{width:100%;max-width:420px;justify-self:end}
-.swoosh path{fill:none;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 1.6s cubic-bezier(.6,0,.2,1) forwards}
-.swoosh .s1{stroke:var(--blue);stroke-width:18;animation-delay:.2s}
-.swoosh .s2{stroke:var(--blue);stroke-width:10;opacity:.55;animation-delay:.45s}
-.swoosh .s3{stroke:var(--ink);stroke-width:5;opacity:.8;animation-delay:.05s}
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes draw{to{stroke-dashoffset:0}}
-@media (max-width:820px){.hero-grid{grid-template-columns:minmax(0,1fr)}.swoosh{display:none}}
-
-/* Products */
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-.filter{font:500 14px/1 var(--f-body);padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink-2);cursor:pointer;transition:all .15s}
-.filter:hover{border-color:var(--blue);color:var(--blue)}
-.filter[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.card{position:relative;display:grid;gap:8px;align-content:start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;transition:transform .2s,box-shadow .2s,border-color .2s}
-.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--blue) 30%,var(--line))}
-.card h3{font-size:18px;font-weight:700;letter-spacing:-.01em}
-.card p{font-size:14.5px;color:var(--ink-2);line-height:1.5}
-.featured{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.featured .card{padding:24px;gap:10px}
-.featured .card h3{font-size:22px}
-.featured .card p{font-size:15.5px}
-.tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:5px;font-weight:500}
-.tag.ai{background:var(--blue-soft);color:var(--blue)}
-.tag.gov{background:var(--ok-soft);color:var(--ok)}
-.tag.fin{background:var(--gold-soft);color:var(--gold)}
-.tag.web3{background:var(--violet-soft);color:var(--violet)}
-.tag.flag{background:var(--blue);color:var(--on-blue)}
-.live{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--ok)}
-.live i{position:relative;width:8px;height:8px;border-radius:50%;background:var(--ok)}
-.live i::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ok);animation:pulse 2.2s ease-out infinite}
-@keyframes pulse{from{transform:scale(1);opacity:.6}to{transform:scale(2.8);opacity:0}}
-.card.hide{display:none}
-.card-link{text-decoration:none;color:inherit;border-color:color-mix(in srgb,var(--blue) 35%,var(--line))}
-.more{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--blue);margin-top:4px}
-.more svg{width:15px;height:15px;transition:transform .2s}
-.card-link:hover .more svg{transform:translateY(3px)}
-.note{margin-top:16px;font-size:14px;color:var(--ink-3)}
-@media (max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.featured{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:520px){.grid{gap:10px}.card{padding:14px}.card h3{font-size:16px}.card p{font-size:13.5px}.featured .card{padding:18px}}
-@media (max-width:330px){.grid{grid-template-columns:minmax(0,1fr)}}
-
-/* Mulazim */
-.mz{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(36px,6vw,80px);align-items:start}
-.mz .head{margin-bottom:0}
-.facts{display:grid;gap:12px;margin-top:28px}
-.facts li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;font-size:15.5px;color:var(--ink-2)}
-.facts b{color:var(--ink);font-weight:600}
-.facts svg{width:18px;height:18px;color:var(--blue);margin-top:3px}
-.mz .btn{margin-top:28px}
-.family{background:var(--card);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
-.family-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line)}
-.family-head .label{color:var(--ink-3)}
-.family li{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr);gap:4px 18px;padding:15px 20px;border-bottom:1px solid var(--line);transition:background .15s}
-.family li:last-child{border-bottom:0}
-.family li:hover{background:var(--mist)}
-.family b{font-family:var(--f-display);font-weight:700;font-size:17px;letter-spacing:-.01em}
-.family small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-top:3px}
-.family span{font-size:14.5px;color:var(--ink-2);line-height:1.5}
-@media (max-width:900px){.mz{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:480px){.family li{grid-template-columns:minmax(0,1fr)}}
-
-/* Services */
-.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.svc{display:grid;gap:8px;align-content:start;padding:20px;border-radius:12px;border:1px solid var(--line);background:var(--bg);transition:border-color .2s,transform .2s}
-.svc:hover{border-color:var(--blue);transform:translateY(-3px)}
-.svc svg{width:24px;height:24px;color:var(--blue)}
-.svc h3{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-top:6px}
-.svc p{font-size:14.5px;color:var(--ink-2);line-height:1.5}
-@media (max-width:980px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:520px){.services{gap:10px}.svc{padding:14px}.svc h3{font-size:15.5px}.svc p{font-size:13.5px}}
-
-/* Team */
-.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
-.person{display:grid;justify-items:start;gap:6px}
-.person img{width:96px;height:96px;border-radius:50%;object-fit:cover;background:var(--line);margin-bottom:10px;box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--line);transition:box-shadow .2s}
-.person:hover img{box-shadow:0 0 0 4px var(--bg),0 0 0 6px var(--blue)}
-.person h3{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
-.person p{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
-@media (max-width:820px){.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
-
-/* Contact */
-.contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,6vw,80px);align-items:start}
-.details{display:grid;gap:18px;margin-top:32px}
-.detail{display:grid;gap:2px}
-.detail .label{color:var(--ink-3);font-size:11.5px}
-.detail a{font-size:18px;text-decoration:none;justify-self:start;border-bottom:1px solid var(--line)}
-.detail a:hover{color:var(--blue);border-bottom-color:var(--blue)}
-.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;background:var(--card);border-radius:14px;padding:clamp(22px,3vw,30px);box-shadow:var(--shadow)}
-.field{display:grid;gap:6px}
-.field.full{grid-column:1/-1}
-.field label{font-size:13.5px;font-weight:600}
-.field input,.field select,.field textarea{font:inherit;font-size:15.5px;color:var(--ink);background:var(--bg);border:1px solid var(--field-line);border-radius:8px;padding:11px 12px;width:100%;min-width:0;transition:border-color .15s,box-shadow .15s}
-.field textarea{min-height:110px;resize:vertical}
-.field [aria-invalid="true"]{border-color:#c2410c}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
-.form-status{grid-column:1/-1;font-size:14.5px;border-radius:8px;padding:12px 14px;background:var(--mist)}
-.form-status.ok{background:var(--ok-soft)}
-.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
-.form-foot small{font-size:13px;color:var(--ink-3)}
-@media (max-width:900px){.contact-grid{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:520px){.form{grid-template-columns:minmax(0,1fr)}}
-
-/* Footer */
-.site-footer{background:var(--ink);color:var(--foot-text);padding-block:28px}
-.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 32px;font-size:14px}
-.foot a{color:var(--on-blue);text-decoration:none}
-.foot a:hover{text-decoration:underline}
-.social{display:flex;gap:10px}
-.social a{display:grid;place-items:center;width:34px;height:34px;border-radius:8px;border:1px solid var(--foot-line);color:var(--on-blue)}
-.social a:hover{border-color:var(--on-blue);text-decoration:none}
-.social svg{width:15px;height:15px}
-
-/* Scroll reveal: only applied once the script runs; everything is visible without it */
-.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
-.js .reveal.in{opacity:1;transform:none}
-
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .swoosh path{stroke-dashoffset:0}
-  .js .reveal{opacity:1;transform:none}
-}
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -251,7 +27,7 @@ ul{margin:0;padding:0;list-style:none}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <nav class="nav-links" id="nav-links" aria-label="Main">
-      <a href="#products">Products</a>
+      <a href="projects.html">Projects</a>
       <a href="#mulazim">Mulazim</a>
       <a href="#services">Services</a>
       <a href="#team">Team</a>
@@ -305,26 +81,26 @@ ul{margin:0;padding:0;list-style:none}
           <p>Private AI that works from your own records. Seven products on one platform.</p>
           <span class="more">See Mulazim products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
         </a>
-        <article class="card reveal" data-c="gov">
+        <a class="card reveal" data-c="gov" href="projects/e-dfa.html">
           <div class="tags"><span class="tag gov">Government</span><span class="live"><i></i>In use</span></div>
           <h3>e-DFA</h3>
           <p>Draft, review, approve and print official letters. Versions are numbered and locked.</p>
-        </article>
-        <article class="card reveal" data-c="gov">
+        </a>
+        <a class="card reveal" data-c="gov" href="projects/e-dms.html">
           <div class="tags"><span class="tag gov">Government</span><span class="live"><i></i>In use</span></div>
           <h3>e-DMS</h3>
           <p>Scan paper with a phone or PC. Find any document by its text.</p>
-        </article>
+        </a>
       </div>
-      <article class="card reveal" data-c="ai"><div class="tags"><span class="tag ai">AI</span></div><h3>Callwala</h3><p>AI call agent for contact centres. Qualifies leads.</p></article>
-      <article class="card reveal" data-c="ai"><div class="tags"><span class="tag ai">AI</span></div><h3>Aitells</h3><p>Conversational AI that answers questions in natural language.</p></article>
-      <article class="card reveal" data-c="fin"><div class="tags"><span class="tag fin">FinTech</span></div><h3>Oro Gold</h3><p>Gold-backed digital token. Invest, trade, earn and borrow.</p></article>
-      <article class="card reveal" data-c="fin"><div class="tags"><span class="tag fin">FinTech</span></div><h3>Liquid Prop</h3><p>Fractional ownership of U.S. property, on the blockchain.</p></article>
-      <article class="card reveal" data-c="fin"><div class="tags"><span class="tag fin">FinTech</span></div><h3>Zar</h3><p>Wallet for digital dollars, with Visa cards.</p></article>
-      <article class="card reveal" data-c="web3"><div class="tags"><span class="tag web3">Web3</span></div><h3>Honeycomb Protocol</h3><p>Developer utilities for games and projects on Solana.</p></article>
-      <article class="card reveal" data-c="web3"><div class="tags"><span class="tag web3">Web3</span></div><h3>Ocean Explorers</h3><p>Strategy game on Solana with NFT ownership.</p></article>
+      <a class="card reveal" data-c="ai" href="projects/callwala.html"><div class="tags"><span class="tag ai">AI</span></div><h3>Callwala</h3><p>AI call agent for contact centres. Qualifies leads.</p></a>
+      <a class="card reveal" data-c="ai" href="projects/aitells.html"><div class="tags"><span class="tag ai">AI</span></div><h3>Aitells</h3><p>Conversational AI that answers questions in natural language.</p></a>
+      <a class="card reveal" data-c="fin" href="projects/oro-gold.html"><div class="tags"><span class="tag fin">FinTech</span></div><h3>Oro Gold</h3><p>Gold-backed digital token. Invest, trade, earn and borrow.</p></a>
+      <a class="card reveal" data-c="fin" href="projects/liquid-prop.html"><div class="tags"><span class="tag fin">FinTech</span></div><h3>Liquid Prop</h3><p>Fractional ownership of U.S. property, on the blockchain.</p></a>
+      <a class="card reveal" data-c="fin" href="projects/zar.html"><div class="tags"><span class="tag fin">FinTech</span></div><h3>Zar</h3><p>Wallet for digital dollars, with Visa cards.</p></a>
+      <a class="card reveal" data-c="web3" href="projects/honeycomb-protocol.html"><div class="tags"><span class="tag web3">Web3</span></div><h3>Honeycomb Protocol</h3><p>Developer utilities for games and projects on Solana.</p></a>
+      <a class="card reveal" data-c="web3" href="projects/ocean-explorers.html"><div class="tags"><span class="tag web3">Web3</span></div><h3>Ocean Explorers</h3><p>Strategy game on Solana with NFT ownership.</p></a>
     </div>
-    <p class="note">e-DFA and e-DMS both run on the department's own server.</p>
+    <div class="grid-foot"><p class="note">e-DFA and e-DMS both run on the department's own server.</p><a class="btn btn-ghost" href="projects.html">All projects <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </div>
 </section>
 
@@ -347,8 +123,8 @@ ul{margin:0;padding:0;list-style:none}
     <div class="family reveal">
       <div class="family-head"><span class="label">Mulazim products</span><span class="label">7</span></div>
       <ul>
-        <li><div><b>Mulazim AI</b><small>Everyone</small></div><span>Chat with your data and documents. Answers cite their source.</span></li>
-        <li><div><b>Mulazim Studio</b><small>Engineering</small></div><span>AI specialists take a product brief to CAD, analysis and drawings.</span></li>
+        <li><div><a href="projects/mulazim-ai.html"><b>Mulazim AI</b></a><small>Everyone</small></div><span>Chat with your data and documents. Answers cite their source. <a class="inl" href="projects/mulazim-ai.html">Details</a></span></li>
+        <li><div><a href="projects/mulazim-studio.html"><b>Mulazim Studio</b></a><small>Engineering</small></div><span>AI specialists take a product brief to CAD, analysis and drawings. <a class="inl" href="projects/mulazim-studio.html">Details</a></span></li>
         <li><div><b>Vakel AI</b><small>Legal and risk</small></div><span>Statutes and judgments. Every answer cites the law.</span></li>
         <li><div><b>Ustad</b><small>Learning and compliance</small></div><span>Checks courses against standards. Grades exams to one rubric.</span></li>
         <li><div><b>RCS</b><small>Executives</small></div><span>Clash-free schedules, live KPI answers, decisions tracked.</span></li>
@@ -442,77 +218,6 @@ ul{margin:0;padding:0;list-style:none}
   </div>
 </footer>
 
-<script>
-(function(){
-  var root=document.documentElement;
-  var header=document.querySelector('.site-header');
-  var onScroll=function(){header.classList.toggle('scrolled',window.scrollY>8)};
-  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
-
-  // Menu
-  var btn=document.getElementById('menu-btn'),links=document.getElementById('nav-links');
-  function setMenu(open){links.classList.toggle('open',open);btn.setAttribute('aria-expanded',open?'true':'false');btn.setAttribute('aria-label',open?'Close menu':'Open menu')}
-  btn.addEventListener('click',function(){setMenu(!links.classList.contains('open'))});
-  links.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&links.classList.contains('open')){setMenu(false);btn.focus()}});
-  document.addEventListener('click',function(e){if(links.classList.contains('open')&&!e.target.closest('.nav'))setMenu(false)});
-
-  document.getElementById('year').textContent=new Date().getFullYear();
-
-  // Scroll reveal, staggered within each group. Everything is visible if this never runs.
-  var els=[].slice.call(document.querySelectorAll('.reveal'));
-  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-    root.classList.add('js');
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(!en.isIntersecting)return;
-        var el=en.target,sib=[].slice.call(el.parentNode.children).filter(function(n){return n.classList.contains('reveal')});
-        el.style.transitionDelay=Math.min(sib.indexOf(el),7)*60+'ms';
-        el.classList.add('in');io.unobserve(el);
-      });
-    },{rootMargin:'0px 0px -8% 0px'});
-    els.forEach(function(el){io.observe(el)});
-    setTimeout(function(){els.forEach(function(el){el.classList.add('in')})},4000);
-  }
-
-  // Product filter
-  var filters=[].slice.call(document.querySelectorAll('.filter'));
-  var cards=[].slice.call(document.querySelectorAll('#grid .card'));
-  var featured=document.querySelector('.featured');
-  filters.forEach(function(f){
-    f.addEventListener('click',function(){
-      var c=f.dataset.f;
-      filters.forEach(function(x){x.setAttribute('aria-pressed',x===f?'true':'false')});
-      cards.forEach(function(card){
-        var show=c==='all'||card.dataset.c===c;
-        card.classList.toggle('hide',!show);
-        if(show&&card.animate&&!matchMedia('(prefers-reduced-motion: reduce)').matches){card.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:280,easing:'ease-out'})}
-      });
-      featured.hidden=!featured.querySelector('.card:not(.hide)');
-    });
-  });
-
-  // Contact form
-  var form=document.getElementById('contact-form'),status=document.getElementById('cf-status'),submit=document.getElementById('cf-submit');
-  function show(msg,ok){status.setAttribute('role',ok?'status':'alert');status.textContent=msg;status.className='form-status'+(ok?' ok':'');status.hidden=false}
-  form.addEventListener('input',function(e){e.target.removeAttribute('aria-invalid')});
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var names={'cf-name':'your name','cf-email':'your work email','cf-msg':'a short message'};
-    var missing=[].slice.call(form.querySelectorAll('[required]')).filter(function(el){return !el.value.trim()});
-    missing.forEach(function(el){el.setAttribute('aria-invalid','true')});
-    if(missing.length){var n=missing.map(function(el){return names[el.id]});show('Please add '+(n.length>1?n.slice(0,-1).join(', ')+' and '+n[n.length-1]:n[0])+'.');missing[0].focus();return}
-    var email=document.getElementById('cf-email');
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){email.setAttribute('aria-invalid','true');show('Please enter a valid email address.');email.focus();return}
-    var data={};new FormData(form).forEach(function(v,k){data[k]=String(v).trim()});
-    submit.disabled=true;submit.textContent='Sending…';
-    fetch('/submit-contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
-      .then(function(r){return r.ok?r.json():Promise.reject(r.status)})
-      .then(function(){form.reset();show('Thank you. Your message has reached us, and we will reply within one working day.',true)})
-      .catch(function(){show('Your message could not be sent from this page. Please email info@liwalabs.com or call +92 326 2263160.')})
-      .finally(function(){submit.disabled=false;submit.textContent='Send message'});
-  });
-})();
-</script>
+<script src="assets/site.js"></script>
 </body>
 </html>

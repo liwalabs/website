@@ -2,11 +2,15 @@
 
 The company site for Liwa Labs: AI, fintech and Web3 products and services, with the Mulazim platform (Mulazim AI, Mulazim Studio) as the flagship.
 
-A single static page (`index.html`, inline CSS and JS, no build step) plus a
-small Flask app (`app.py`) that serves it and sends the contact form by email.
+Static pages plus a small Flask app (`app.py`) that serves them and sends the
+contact form by email.
 
 ```
-index.html        the site
+index.html        the home page
+projects.html     every project in brief (generated)
+projects/*.html   one page per project: intro video, then the details (generated)
+tools/build_site.py  the project content and the generator for the pages above
+assets/site.css, assets/site.js  shared styles and behaviour
 assets/           logo marks (light/dark), favicon, team photos, brand source
 app.py            Flask: serves index.html + assets/, POST /submit-contact
 about.html …      redirects from the old multi-page URLs to the new sections
@@ -20,6 +24,15 @@ python main.py            # http://localhost:5000
 ```
 
 Opening `index.html` directly also works; only the contact form needs the app.
+
+## Projects
+
+Project content lives in `tools/build_site.py`. Edit it, then run
+`python3 tools/build_site.py` to regenerate `projects.html` and `projects/*.html`.
+
+Intro videos: put the file at `assets/video/<slug>.mp4` (optionally a poster
+image at `assets/video/<slug>.jpg`) and run the script again. Until a video is
+there, the page shows an "Intro video coming soon" panel in its place.
 
 ## Contact form email
 

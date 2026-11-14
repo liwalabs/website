@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, send_from_directory, abort
 from flask_mail import Mail, Message
 import os
+import re
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -31,6 +32,14 @@ def index():
 @app.route('/assets/<path:filename>')
 def assets(filename):
     return send_from_directory('assets', filename)
+
+
+@app.route('/projects/<page>')
+def project_page(page):
+    # Only generated project pages: lowercase slug + .html, and the file must exist
+    if not re.fullmatch(r'[a-z0-9-]+\.html', page) or not os.path.isfile(os.path.join('projects', page)):
+        abort(404)
+    return send_from_directory('projects', page)
 
 
 @app.route('/<page>')
