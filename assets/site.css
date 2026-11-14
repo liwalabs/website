@@ -337,3 +337,12 @@ a.card{text-decoration:none;color:inherit}
   .prow p{font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .prow .poster-name{font-size:15px}
 }
+/* whole-row links in the Mulazim panel */
+.family li{display:block;padding:0}
+.family .frow{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr) 18px;gap:4px 18px;align-items:start;padding:15px 20px;text-decoration:none;color:inherit}
+.family .frow .go{width:16px;height:16px;margin-top:4px;color:var(--ink-3);transition:transform .2s,color .2s}
+.family .frow:hover .go{color:var(--blue);transform:translateX(3px)}
+.family .frow:hover b{color:var(--blue)}
+.family-head .inl{font-size:14px}
+.card-link:hover .more svg{transform:translateX(3px)}
+@media (max-width:480px){.family .frow{grid-template-columns:minmax(0,1fr) 18px}.family .frow span{grid-column:1}.family .frow .go{grid-column:2;grid-row:1}}

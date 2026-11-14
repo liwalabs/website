@@ -228,11 +228,6 @@ NEW = {
      "features": [("Safety tools", "Tools that help users stay safe and raise an alarm."),
                   ("Security by design", "Built around protecting the people who use it."),
                   ("Behind Zainab Alert", "The technology the official Zainab Alert app is built on.")]},
-    {"slug": "swift-me", "name": "Swift Me", "cat": "mob",
-     "brief": "A one-window app for the restaurants of a shopping mall or food street, for ordering and discovery.",
-     "features": [("One window", "Every restaurant in a mall or food street in one app."),
-                  ("Discover", "Browse what is on offer before choosing where to eat."),
-                  ("Order", "Place the order from the app.")]},
 ],
 "after:honeycomb-protocol": [
     {"slug": "sol-patrol", "name": "Sol Patrol", "cat": "web3",
@@ -383,7 +378,6 @@ def projects_page():
       <button class="filter" type="button" data-f="gov" aria-pressed="false">Government</button>
       <button class="filter" type="button" data-f="fin" aria-pressed="false">FinTech</button>
       <button class="filter" type="button" data-f="web3" aria-pressed="false">Web3</button>
-      <button class="filter" type="button" data-f="mob" aria-pressed="false">Mobile</button>
     </div>
     <div class="plist">
 {chr(10).join(rows)}

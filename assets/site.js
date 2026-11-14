@@ -47,6 +47,11 @@
     });
   });
 
+  // Open a filter from the address, e.g. projects.html#mulazim
+  function fromHash(){var h=location.hash.slice(1);var f=filters.filter(function(x){return x.dataset.f===h})[0];if(f)f.click()}
+  fromHash();window.addEventListener('hashchange',fromHash);
+  filters.forEach(function(f){f.addEventListener('click',function(){var want=f.dataset.f==='all'?'':'#'+f.dataset.f;if(document.querySelector('.plist')&&location.hash!==want){try{history.replaceState(null,'',want||location.pathname)}catch(e){}}})});
+
   // Contact form
   var form=document.getElementById('contact-form');if(!form)return;var status=document.getElementById('cf-status'),submit=document.getElementById('cf-submit');
   function show(msg,ok){status.setAttribute('role',ok?'status':'alert');status.textContent=msg;status.className='form-status'+(ok?' ok':'');status.hidden=false}
