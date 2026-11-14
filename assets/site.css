@@ -326,3 +326,14 @@ a.card{text-decoration:none;color:inherit}
 .poster.big .poster-soon::after{content:none}
 .soon-pill{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--bg);box-shadow:0 1px 2px rgba(13,21,32,.08)}
 @media (max-width:640px){.poster.big .poster-name,.poster.big .poster-cat{display:none}.poster.big .play{width:56px;height:56px}.poster.big .poster-soon{font-size:13px;gap:10px}}
+:root{--slate:#3d5266;--slate-soft:#e6ebf0}
+.tag.mob{background:var(--slate-soft);color:var(--slate)}
+.tag.mzt{background:var(--bg);color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue-soft)}
+.c-mob{--tint:var(--slate);--tint-soft:var(--slate-soft)}
+@media (min-width:1000px){
+  .plist{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .prow{grid-template-columns:150px minmax(0,1fr) auto;gap:18px}
+  .prow h2{font-size:19px}
+  .prow p{font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .prow .poster-name{font-size:15px}
+}

@@ -17,7 +17,10 @@ CATS = {
     "gov": "Government",
     "fin": "FinTech",
     "web3": "Web3",
+    "mob": "Mobile",
 }
+
+MZ_FACT = ("Website", '<a href="https://mulazimai.com" target="_blank" rel="noopener">mulazimai.com</a>')
 
 PROJECTS = [
     {
@@ -172,6 +175,96 @@ PROJECTS = [
     },
 ]
 
+NEW = {
+"after:mulazim-studio": [
+    {"slug": "vakel-ai", "name": "Vakel AI", "cat": "ai", "mz": True,
+     "brief": "Legal research on Mulazim: statutes and judgments, with every answer citing the law.",
+     "facts": [("For", "Legal and risk teams"), ("Part of", "The Mulazim platform"), MZ_FACT],
+     "features": [("Statutes and judgments", "Searches the law and past judgments together."),
+                  ("Cited and clickable", "Every answer cites the law it relies on, and each citation opens the source."),
+                  ("Less time searching", "Research that took hours of reading comes back in minutes.")]},
+    {"slug": "ustad", "name": "Ustad", "cat": "ai", "mz": True,
+     "brief": "Learning and compliance on Mulazim: courses checked against current standards, and exams set and graded to one rubric.",
+     "facts": [("For", "Learning and compliance teams"), ("Part of", "The Mulazim platform"), MZ_FACT],
+     "features": [("Courses kept current", "Checks course material against the current standards."),
+                  ("Exams you can trust", "Sets exams and grades every answer to the same rubric."),
+                  ("One place for training", "Material, exams and results stay inside your organisation.")]},
+    {"slug": "rcs", "name": "RCS", "cat": "ai", "mz": True,
+     "brief": "A secretary for every executive, on Mulazim: schedules without clashes, live KPI answers and decisions tracked.",
+     "facts": [("For", "Executives and their offices"), ("Part of", "The Mulazim platform"), MZ_FACT],
+     "features": [("Schedules without clashes", "Plans meetings and keeps the calendar clear of conflicts."),
+                  ("Live KPI answers", "Ask about a number and get the current figure from your own systems."),
+                  ("Decisions tracked", "Records what was decided and follows it up.")]},
+    {"slug": "aats", "name": "AATS", "cat": "ai", "mz": True,
+     "brief": "Operations on Mulazim: manuals, incidents and sensor history in one place, with failures forecast before they happen.",
+     "facts": [("For", "Plant and operations teams"), ("Part of", "The Mulazim platform"), MZ_FACT],
+     "features": [("Ask the plant", "Answers from manuals, incident reports and sensor history."),
+                  ("Forecasts failures", "Spots the pattern before a machine breaks down."),
+                  ("Stays on site", "Plant data is read inside your organisation.")]},
+    {"slug": "shahid", "name": "Shahid", "cat": "ai", "mz": True,
+     "brief": "Site security on Mulazim that runs on the camera itself, with no streaming and no cloud.",
+     "facts": [("For", "Sites and security teams"), ("Part of", "The Mulazim platform"), MZ_FACT],
+     "features": [("Runs on the camera", "Analysis happens on the device at each corner."),
+                  ("No streaming, no cloud", "Footage is not sent anywhere to be analysed."),
+                  ("A witness on every corner", "Each camera reports what it sees.")]},
+    {"slug": "assembly-os", "name": "Assembly OS", "cat": "gov", "mz": True,
+     "brief": "Sixteen applications for a legislative assembly, for its members, officers and staff, each seeing only what their role allows.",
+     "facts": [("For", "Members, officers and staff of an assembly"), ("Languages", "Urdu, Sindhi and English, by voice or text"), ("Part of", "The Mulazim platform")],
+     "overview": "Assembly OS works from the assembly's own rules, records and proceedings. It runs inside the assembly, can work without the internet, and keeps an audit record of every action.",
+     "features": [("Bills, start to finish", "Research, a first draft and a legal check against existing law, for the Law branch to finalise."),
+                  ("Questions and replies", "Members' questions sorted by subject, sent to the right minister and tracked until answered."),
+                  ("Approvals and dashboards", "Files arrive summarised, ready to decide, and the whole assembly is visible at a glance."),
+                  ("Proceedings journal", "A searchable record of every sitting."),
+                  ("Translator and summariser", "Any document explained or translated in Urdu, Sindhi or English, by voice or text."),
+                  ("Paper to digital", "Old files scanned into a permanent, searchable archive.")],
+     "extra": ("Who uses what", [
+         ("Members and executives", "Bill drafting and scrutiny, proceedings journal, approvals, dashboards and reports, meetings and schedule."),
+         ("Officers", "Rules and precedents, questions and replies, drafting assistant, correspondence, deadlines and alerts, digital records."),
+         ("Everyone", "Translator, document summariser, staff helpdesk, HR self-service and smart search.")])},
+],
+"after:aitells": [
+    {"slug": "eve", "name": "Eve", "cat": "ai",
+     "brief": "Anti-harassment technology providing tools for user safety and security, and the foundation of the official Zainab Alert app.",
+     "features": [("Safety tools", "Tools that help users stay safe and raise an alarm."),
+                  ("Security by design", "Built around protecting the people who use it."),
+                  ("Behind Zainab Alert", "The technology the official Zainab Alert app is built on.")]},
+    {"slug": "swift-me", "name": "Swift Me", "cat": "mob",
+     "brief": "A one-window app for the restaurants of a shopping mall or food street, for ordering and discovery.",
+     "features": [("One window", "Every restaurant in a mall or food street in one app."),
+                  ("Discover", "Browse what is on offer before choosing where to eat."),
+                  ("Order", "Place the order from the app.")]},
+],
+"after:honeycomb-protocol": [
+    {"slug": "sol-patrol", "name": "Sol Patrol", "cat": "web3",
+     "brief": "A real-time multiplayer strategy game on Solana where players build cities, form guilds and send NFTs on missions to conquer the grid.",
+     "features": [("Build cities", "Grow a city on the grid."),
+                  ("Form guilds", "Team up with other players."),
+                  ("NFT missions", "Send NFTs on missions to conquer territory.")]},
+],
+"after:ocean-explorers": [
+    {"slug": "rfrsh", "name": "RFRSH", "cat": "web3",
+     "brief": "An all-in-one platform for Solana NFTs: portfolio tracking, wallet analytics, trading tools and market data.",
+     "features": [("Portfolio tracking", "See every NFT you hold in one place."),
+                  ("Wallet analytics", "Understand any wallet's holdings and activity."),
+                  ("Trading tools and data", "Market data and tools for buying and selling.")]},
+    {"slug": "bright-switch", "name": "Bright Switch", "cat": "web3",
+     "brief": "A burn-to-mint platform on Solana that lets users exchange old NFT collections for new ones.",
+     "features": [("Burn to mint", "Burn an old NFT and mint a new one in its place."),
+                  ("Refresh collections", "Gives outdated holdings a new life."),
+                  ("On Solana", "Runs entirely on-chain.")]},
+    {"slug": "pooks", "name": "Pooks", "cat": "web3",
+     "brief": "A digital collectible that serves as an online avatar and grants membership to the Pooks community.",
+     "features": [("Online avatar", "Each Pook is a character to use online."),
+                  ("Membership", "Holding one grants entry to the Pooks community."),
+                  ("On-chain", "Ownership is recorded on the blockchain.")]},
+],
+}
+
+for _key, _items in NEW.items():
+    _after = _key.split(":", 1)[1]
+    _i = next(i for i, x in enumerate(PROJECTS) if x["slug"] == _after)
+    PROJECTS[_i + 1:_i + 1] = _items
+
 E = html.escape
 
 
@@ -240,6 +333,8 @@ def tags(p):
     if p.get("flag"):
         t.append('<span class="tag flag">Flagship</span>')
     t.append(f'<span class="tag {p["cat"]}">{CATS[p["cat"]]}</span>')
+    if p.get("mz") or p["slug"].startswith("mulazim"):
+        t.append('<span class="tag mzt">Mulazim</span>')
     if p.get("live"):
         t.append('<span class="live"><i></i>In use</span>')
     return '<div class="tags">' + "".join(t) + "</div>"
@@ -269,7 +364,7 @@ def poster(p, big=True):
 def projects_page():
     rows = []
     for p in PROJECTS:
-        rows.append(f'''      <a class="prow reveal" data-c="{p["cat"]}" href="projects/{p["slug"]}.html">
+        rows.append(f'''      <a class="prow reveal" data-c="{p["cat"]}{" mulazim" if (p.get("mz") or p["slug"].startswith("mulazim")) else ""}" href="projects/{p["slug"]}.html">
         {poster(p, big=False)}
         <div class="prow-body">{tags(p)}<h2>{E(p["name"])}</h2><p>{E(p["brief"])}</p></div>
         <span class="prow-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
@@ -279,14 +374,16 @@ def projects_page():
     <div class="head reveal">
       <p class="label">Projects</p>
       <h1 class="page-title">Every project, in brief.</h1>
-      <p class="lede">Products we have built and launched. Open one for its intro video and the details.</p>
+      <p class="lede">Every product we have built. Open one for its intro video and the details.</p>
     </div>
     <div class="filters" role="group" aria-label="Filter projects">
       <button class="filter" type="button" data-f="all" aria-pressed="true">All</button>
+      <button class="filter" type="button" data-f="mulazim" aria-pressed="false">Mulazim</button>
       <button class="filter" type="button" data-f="ai" aria-pressed="false">AI</button>
       <button class="filter" type="button" data-f="gov" aria-pressed="false">Government</button>
       <button class="filter" type="button" data-f="fin" aria-pressed="false">FinTech</button>
       <button class="filter" type="button" data-f="web3" aria-pressed="false">Web3</button>
+      <button class="filter" type="button" data-f="mob" aria-pressed="false">Mobile</button>
     </div>
     <div class="plist">
 {chr(10).join(rows)}
@@ -368,3 +465,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

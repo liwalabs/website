@@ -39,7 +39,7 @@
       var c=f.dataset.f;
       filters.forEach(function(x){x.setAttribute('aria-pressed',x===f?'true':'false')});
       cards.forEach(function(card){
-        var show=c==='all'||card.dataset.c===c;
+        var show=c==='all'||(' '+card.dataset.c+' ').indexOf(' '+c+' ')>-1;
         card.classList.toggle('hide',!show);
         if(show&&card.animate&&!matchMedia('(prefers-reduced-motion: reduce)').matches){card.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:280,easing:'ease-out'})}
       });
